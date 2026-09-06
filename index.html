@@ -632,44 +632,23 @@
   // ——— build one continuous pipe from the header to the footer ———
   function buildPipe(){
     var W = document.documentElement.clientWidth;
-    if(W <= 700){
-      var Hm = document.getElementById("page").offsetHeight;
-      svg.setAttribute("viewBox", "0 0 " + W + " " + Hm);
-      svg.setAttribute("width", W); svg.setAttribute("height", Hm); svg.style.height = Hm + "px";
-      var ax = Array.prototype.slice.call(document.querySelectorAll("[data-anchor]"));
-      var mx = 9;
-      var ys = ax.slice(1).map(function(el){ return el.getBoundingClientRect().top + window.scrollY + 40; });
-      var endM = ys.length ? (ys[ys.length - 1] + 200) : Hm * 0.45;
-      var dm = "M " + mx + " 0 L " + mx + " " + endM;
-      main.setAttribute("d", dm); ghost.setAttribute("d", dm);
-      ghost.setAttribute("stroke", "#E4EDF6");
-      main.setAttribute("stroke-width", "3.5"); ghost.setAttribute("stroke-width", "3.5");
-      joints.innerHTML = "";
-      ys.forEach(function(y){
-        var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
-        c.setAttribute("cx", mx); c.setAttribute("cy", y); c.setAttribute("r", 4.5);
-        c.setAttribute("fill", "#FFFFFF"); c.setAttribute("stroke", "#2E82E6"); c.setAttribute("stroke-width", "2");
-        c.setAttribute("class", "joint"); joints.appendChild(c);
-      });
-      window.__pipeEnd = endM;
-      return;
-    }
-    var H = document.getElementById("page").offsetHeight;
+        var H = document.getElementById("page").offsetHeight;
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W);
     svg.setAttribute("height", H);
     svg.style.height = H + "px";
 
+    var narrow = W <= 700;
     var content = Math.min(1080, W - 52);
-    var gut = Math.max(16, (W - content) / 2 * 0.42 + 14);   // pipe lives in the gutter
-    var R = Math.min(30, gut * 0.9);
+    var gut = narrow ? 10 : Math.max(16, (W - content) / 2 * 0.42 + 14);   // pipe lives in the gutter
+    var R = narrow ? 10 : Math.min(30, gut * 0.9);
     var anchors = Array.prototype.slice.call(document.querySelectorAll("[data-anchor]"));
 
     var x = gut, d = "M " + x + " 0";
     var pts = [];
     anchors.forEach(function(el, i){
       if(i === 0) return;
-      var y = el.getBoundingClientRect().top + window.scrollY + 46;
+      var y = el.getBoundingClientRect().top + window.scrollY + (narrow ? 26 : 46);
       var nx = (x === gut) ? (W - gut) : gut;
       var dir = nx > x ? 1 : -1;
       d += " L " + x + " " + (y - R);
@@ -679,20 +658,20 @@
       pts.push([x, y], [nx, y]);
       x = nx;
     });
-    var endY = anchors.length ? (anchors[anchors.length-1].getBoundingClientRect().top + window.scrollY + 260) : (H - 60);
+    var endY = anchors.length ? (anchors[anchors.length-1].getBoundingClientRect().top + window.scrollY + (narrow ? 170 : 260)) : (H - 60);
     d += " L " + x + " " + endY;
     main.setAttribute("d", d);
     window.__pipeEnd = endY;
     ghost.setAttribute("d", d);
     ghost.setAttribute("stroke", "#E4EDF6");
-    main.setAttribute("stroke-width", "6"); ghost.setAttribute("stroke-width", "6");
+    main.setAttribute("stroke-width", narrow ? "3.4" : "6"); ghost.setAttribute("stroke-width", narrow ? "3.4" : "6");
 
     joints.innerHTML = "";
     pts.push([x, endY]);
     pts.forEach(function(p){
       var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
-      c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", 5.5);
-      c.setAttribute("fill", "#FFFFFF"); c.setAttribute("stroke", "#2E82E6"); c.setAttribute("stroke-width", "2.5");
+      c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", narrow ? 4 : 5.5);
+      c.setAttribute("fill", "#FFFFFF"); c.setAttribute("stroke", "#2E82E6"); c.setAttribute("stroke-width", narrow ? "1.8" : "2.5");
       c.setAttribute("class", "joint");
       joints.appendChild(c);
     });
