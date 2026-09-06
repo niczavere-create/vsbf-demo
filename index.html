@@ -641,7 +641,7 @@
     var narrow = W <= 700;
     var content = Math.min(1080, W - 52);
     var gut = narrow ? 10 : Math.max(16, (W - content) / 2 * 0.42 + 14);   // pipe lives in the gutter
-    var R = narrow ? 10 : Math.min(30, gut * 0.9);
+    var R = narrow ? 13 : Math.min(38, gut * 0.95);
     var anchors = Array.prototype.slice.call(document.querySelectorAll("[data-anchor]"));
 
     var x = gut, d = "M " + x + " 0";
@@ -686,7 +686,7 @@
     gsap.set(drop, { opacity: 0 });
   } else {
     // hero entrance
-    gsap.from(".h-line > span", { yPercent: 105, duration: .8, stagger: .09, ease: "expo.out" });
+    gsap.from(".h-line > span", { yPercent: 105, duration: 1, stagger: .11, ease: "expo.out" });
     gsap.from(".hero .fade", { opacity: 0, y: 14, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
 
     // certification strip
@@ -696,28 +696,39 @@
     gsap.set(main, { drawSVG: "0%" });
     gsap.to(main, {
       drawSVG: "100%", ease: "none",
-      scrollTrigger: { trigger: "#page", start: "top top", scrub: 0.4,
+      scrollTrigger: { trigger: "#page", start: "top top", scrub: 1.15,
         end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); } }
     });
 
     // a droplet rides the pipe exactly where you are on the page
-    ScrollTrigger.create({ trigger: "#page", start: "top top", scrub: 0.4,
+    var dropTarget = null, dropPos = null;
+    ScrollTrigger.create({ trigger: "#page", start: "top top", scrub: 1.15,
       end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); },
       onUpdate: function(self){
         var L = main.getTotalLength ? main.getTotalLength() : 0;
-        if(L < 60){ drop.style.opacity = 0; return; }
-        var pt = main.getPointAtLength(L * Math.min(1, Math.max(0, self.progress)));
-        drop.setAttribute("cx", pt.x); drop.setAttribute("cy", pt.y);
-        drop.style.opacity = 1;
+        if(L < 60){ dropTarget = null; drop.style.opacity = 0; return; }
+        dropTarget = main.getPointAtLength(L * Math.min(1, Math.max(0, self.progress)));
       }
     });
+
+    // the droplet glides toward its target instead of snapping to it
+    (function glide(){
+      requestAnimationFrame(glide);
+      if(!dropTarget){ return; }
+      if(!dropPos){ dropPos = { x: dropTarget.x, y: dropTarget.y }; }
+      dropPos.x += (dropTarget.x - dropPos.x) * 0.12;
+      dropPos.y += (dropTarget.y - dropPos.y) * 0.12;
+      drop.setAttribute("cx", dropPos.x.toFixed(2));
+      drop.setAttribute("cy", dropPos.y.toFixed(2));
+      if(drop.style.opacity !== "1"){ drop.style.opacity = 1; }
+    })();
     gsap.set(drop, { attr: { r: document.documentElement.clientWidth <= 700 ? 5 : 7 } });
     gsap.to(drop, { attr: { r: document.documentElement.clientWidth <= 700 ? 7 : 9.5 }, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
     // fittings pop when the pipe reaches them
     gsap.utils.toArray(".joint").forEach(function(c){
       gsap.from(c, {
-        scale: 0, transformOrigin: "50% 50%", duration: .4, ease: "back.out(2)",
+        scale: 0, transformOrigin: "50% 50%", duration: .55, ease: "back.out(1.6)",
         scrollTrigger: { trigger: "#page", toggleActions: "play none none reverse",
           start: function(){ return "top top+=" + Math.max(0, parseFloat(c.getAttribute("cy")) - window.innerHeight * 0.8); } }
       });
@@ -725,7 +736,7 @@
 
     // content arrives
     gsap.utils.toArray(".reveal").forEach(function(el){
-      gsap.from(el, { opacity: 0, y: 22, duration: .6, ease: "power2.out",
+      gsap.from(el, { opacity: 0, y: 18, duration: .85, ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 88%" } });
     });
 
