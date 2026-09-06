@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vestsjællands Gas · VVS · Blik — designforslag">
-<meta property="og:description" content="Varmen indenfor. Zinken udenfor. Samme håndværker. Designforslag udarbejdet af Yurii.">
+<meta property="og:description" content="Varmen indenfor. Zinken udenfor. Samme håndværker.">
 <meta property="og:locale" content="da_DK">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231656C8'/%3E%3Cpath d='M9 8v9a7 7 0 0 0 7 7h7' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap">
@@ -204,6 +204,30 @@
   .play svg{width:26px;height:26px;margin-left:4px}
   .vnote{margin-top:12px;font-size:13.5px;color:var(--mute)}
 
+
+  /* ——— mobil ——— */
+  @media (max-width:700px){
+    #pipeLayer{display:none}
+    h1{font-size:clamp(34px,9vw,52px)}
+    h2{font-size:clamp(27px,7.4vw,38px)}
+    section{padding:58px 0}
+    .in{padding:0 20px}
+    .sec-top{margin-bottom:26px}
+    .lead{font-size:16.5px}
+    .bar-in{padding:11px 20px;gap:12px}
+    .bar .btn{display:none}
+    .brand b{font-size:17px;white-space:normal;line-height:1.15}
+    .brand span{display:block;font-size:9px}
+    .hero{padding-top:26px}
+    .hero-meta b{font-size:24px}
+    .fact b{font-size:40px}
+    .info-row a,.info-row b{font-size:26px!important}
+    .score .big{font-size:60px}
+    .rev h3{font-size:20px}
+    .shot .cap b{font-size:18px}
+    body{overflow-wrap:anywhere}
+  }
+
   @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 
@@ -360,7 +384,7 @@
   </section>
 
 
-  <section id="galleri" data-anchor>
+  <section id="galleri">
     <div class="in">
       <div class="sec-top reveal">
         <p class="mono" style="color:var(--ember)">Galleri</p>
@@ -437,7 +461,7 @@
     </div>
   </section>
 
-  <section id="video" data-anchor style="padding-top:0">
+  <section id="video" style="padding-top:0">
     <div class="in">
       <div class="sec-top reveal">
         <p class="mono" style="color:var(--glacier)">Video</p>
@@ -458,7 +482,7 @@
     </div>
   </section>
 
-  <section id="anmeldelser" data-anchor>
+  <section id="anmeldelser">
     <div class="in">
       <div class="sec-top reveal">
         <p class="mono" style="color:var(--ember)">Anmeldelser</p>
@@ -509,7 +533,7 @@
     </div>
   </section>
 
-  <section id="kontakt" data-anchor>
+  <section id="kontakt">
     <div class="in">
       <div class="sec-top reveal">
         <p class="mono" style="color:var(--glacier)">Kontakt</p>
@@ -534,7 +558,7 @@
     </div>
   </section>
 
-  <footer data-anchor>
+  <footer>
     <div class="in">
       <p><b>Vestsjællands Gas · VVS · Blikkenslagerforretning</b> — Dybkær 3, 4230 Skælskør · CVR 42202967 · 28 51 10 70 · pau@vsbf.dk</p>
       <p>Autoriseret VVS-installatør · VE-godkendt · Tekniq Garanti · Rheinzink-kvalificeret</p>
@@ -608,6 +632,7 @@
   // ——— build one continuous pipe from the header to the footer ———
   function buildPipe(){
     var W = document.documentElement.clientWidth;
+    if(W <= 700){ svg.setAttribute("height", 0); svg.style.height = "0px"; main.setAttribute("d", "M0 0"); joints.innerHTML = ""; window.__pipeEnd = 0; return; }
     var H = document.getElementById("page").offsetHeight;
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W);
@@ -633,12 +658,15 @@
       pts.push([x, y], [nx, y]);
       x = nx;
     });
-    d += " L " + x + " " + (H - 60);
+    var endY = anchors.length ? (anchors[anchors.length-1].getBoundingClientRect().top + window.scrollY + 260) : (H - 60);
+    d += " L " + x + " " + endY;
     main.setAttribute("d", d);
+    window.__pipeEnd = endY;
     ghost.setAttribute("d", d);
     ghost.setAttribute("stroke", "#E4EDF6");
 
     joints.innerHTML = "";
+    pts.push([x, endY]);
     pts.forEach(function(p){
       var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
       c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", 5.5);
@@ -667,7 +695,8 @@
     gsap.set(main, { drawSVG: "0%" });
     gsap.to(main, {
       drawSVG: "100%", ease: "none",
-      scrollTrigger: { trigger: "#page", start: "top top", end: "bottom bottom", scrub: 0.4 }
+      scrollTrigger: { trigger: "#page", start: "top top", scrub: 0.4,
+        end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); } }
     });
 
     // a droplet rides the pipe exactly where you are on the page
@@ -675,7 +704,10 @@
     gsap.to(drop, {
       motionPath: { path: main, align: main, alignOrigin: [0.5, 0.5] },
       ease: "none",
-      scrollTrigger: { trigger: "#page", start: "top top", end: "bottom bottom", scrub: 0.4 }
+      scrollTrigger: { trigger: "#page", start: "top top", scrub: 0.4,
+        end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); },
+        onLeave: function(){ gsap.to(drop, { opacity: 0, duration: .3 }); },
+        onEnterBack: function(){ gsap.to(drop, { opacity: 1, duration: .3 }); } }
     });
     gsap.to(drop, { attr: { r: 9.5 }, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
