@@ -207,7 +207,7 @@
 
   /* ——— mobil ——— */
   @media (max-width:700px){
-    #pipeLayer{display:none}
+    #pipeLayer{opacity:.95}
     h1{font-size:clamp(34px,9vw,52px)}
     h2{font-size:clamp(27px,7.4vw,38px)}
     section{padding:58px 0}
@@ -632,7 +632,28 @@
   // ——— build one continuous pipe from the header to the footer ———
   function buildPipe(){
     var W = document.documentElement.clientWidth;
-    if(W <= 700){ svg.setAttribute("height", 0); svg.style.height = "0px"; main.setAttribute("d", "M0 0"); joints.innerHTML = ""; window.__pipeEnd = 0; return; }
+    if(W <= 700){
+      var Hm = document.getElementById("page").offsetHeight;
+      svg.setAttribute("viewBox", "0 0 " + W + " " + Hm);
+      svg.setAttribute("width", W); svg.setAttribute("height", Hm); svg.style.height = Hm + "px";
+      var ax = Array.prototype.slice.call(document.querySelectorAll("[data-anchor]"));
+      var mx = 9;
+      var ys = ax.slice(1).map(function(el){ return el.getBoundingClientRect().top + window.scrollY + 40; });
+      var endM = ys.length ? (ys[ys.length - 1] + 200) : Hm * 0.45;
+      var dm = "M " + mx + " 0 L " + mx + " " + endM;
+      main.setAttribute("d", dm); ghost.setAttribute("d", dm);
+      ghost.setAttribute("stroke", "#E4EDF6");
+      main.setAttribute("stroke-width", "3.5"); ghost.setAttribute("stroke-width", "3.5");
+      joints.innerHTML = "";
+      ys.forEach(function(y){
+        var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+        c.setAttribute("cx", mx); c.setAttribute("cy", y); c.setAttribute("r", 4.5);
+        c.setAttribute("fill", "#FFFFFF"); c.setAttribute("stroke", "#2E82E6"); c.setAttribute("stroke-width", "2");
+        c.setAttribute("class", "joint"); joints.appendChild(c);
+      });
+      window.__pipeEnd = endM;
+      return;
+    }
     var H = document.getElementById("page").offsetHeight;
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W);
@@ -664,6 +685,7 @@
     window.__pipeEnd = endY;
     ghost.setAttribute("d", d);
     ghost.setAttribute("stroke", "#E4EDF6");
+    main.setAttribute("stroke-width", "6"); ghost.setAttribute("stroke-width", "6");
 
     joints.innerHTML = "";
     pts.push([x, endY]);
@@ -703,15 +725,15 @@
     ScrollTrigger.create({ trigger: "#page", start: "top top", scrub: 0.4,
       end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); },
       onUpdate: function(self){
-        var wide = document.documentElement.clientWidth > 700;
-        var L = (wide && main.getTotalLength) ? main.getTotalLength() : 0;
-        if(!wide || L < 60){ drop.style.opacity = 0; return; }
+        var L = main.getTotalLength ? main.getTotalLength() : 0;
+        if(L < 60){ drop.style.opacity = 0; return; }
         var pt = main.getPointAtLength(L * Math.min(1, Math.max(0, self.progress)));
         drop.setAttribute("cx", pt.x); drop.setAttribute("cy", pt.y);
         drop.style.opacity = 1;
       }
     });
-    gsap.to(drop, { attr: { r: 9.5 }, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" });
+    gsap.set(drop, { attr: { r: document.documentElement.clientWidth <= 700 ? 5 : 7 } });
+    gsap.to(drop, { attr: { r: document.documentElement.clientWidth <= 700 ? 7 : 9.5 }, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
     // fittings pop when the pipe reaches them
     gsap.utils.toArray(".joint").forEach(function(c){
