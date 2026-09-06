@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vestsjællands Gas · VVS · Blik — designforslag</title>
+<meta name="description" content="Designforslag til Vestsjællands Gas, VVS og Blikkenslagerforretning i Skælskør. Autoriseret VVS-installatør og blikkenslager i Vestsjælland.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vestsjællands Gas · VVS · Blik — designforslag">
+<meta property="og:description" content="Varmen indenfor. Zinken udenfor. Samme håndværker. Designforslag udarbejdet af Yurii.">
+<meta property="og:locale" content="da_DK">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231656C8'/%3E%3Cpath d='M9 8v9a7 7 0 0 0 7 7h7' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+</head>
+<body>
+<style>
+  :root{
+    --ink:#FFFFFF;            /* страница */
+    --ink-2:#F5F9FD;          /* панели */
+    --ink-3:#EEF4FA;          /* поля ввода */
+    --line:#D9E3EE;
+    --navy:#0A2A5E;           /* тёмный блок */
+    --glacier:#2B7FE0;        /* светло-синий акцент */
+    --ember:#1656C8;          /* основной синий */
+    --copper:#2E82E6;         /* труба */
+    --on-ink:#0B1524;
+    --mute:#55657A;
+    --display:"Darker Grotesque","Helvetica Neue",Arial,sans-serif;
+    --body:"Manrope","Segoe UI",system-ui,sans-serif;
+    --mono:"DM Mono",ui-monospace,Menlo,monospace;
+    --grad-text:linear-gradient(100deg,#4FA3F7 0%,#1656C8 55%,#0A2A5E 100%);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--on-ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--display);margin:0;font-weight:800;line-height:.93;letter-spacing:-.015em;text-wrap:balance}
+  h1{font-size:clamp(50px,8.4vw,124px)}
+  h2{font-size:clamp(36px,5.2vw,68px)}
+  h3{font-size:25px;line-height:1.05}
+  p{margin:0}
+  a{color:inherit}
+  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+  .grad{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* the pipe layer runs the full height of the document */
+  #pipeLayer{position:absolute;top:0;left:0;width:100%;z-index:0;pointer-events:none}
+  #page{position:relative;z-index:1}
+  .in{max-width:1080px;margin:0 auto;padding:0 26px}
+  section{padding:clamp(78px,10vw,140px) 0;position:relative}
+
+  .ribbon{background:var(--ink-2);border-bottom:1px solid var(--line);color:var(--mute);font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px;text-align:center;position:relative;z-index:3}
+  .bar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .bar-in{max-width:1080px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:22px}
+  .brand{margin-right:auto;display:flex;flex-direction:column;gap:2px;min-width:0}
+  .brand b{font-family:var(--display);font-size:23px;line-height:1}
+  .brand span{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+  nav{display:flex;gap:24px}
+  nav a{text-decoration:none;font-size:14.5px;color:var(--mute);transition:color .18s}
+  nav a:hover{color:var(--on-ink)}
+  .btn{white-space:nowrap;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;border-radius:100px;font-weight:600;font-size:15px;padding:13px 22px;text-decoration:none;border:0;cursor:pointer;transition:transform .14s ease;font-family:var(--body)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:scale(.985)}
+  .btn-hot{background:var(--ember);color:#fff;box-shadow:0 10px 24px -14px rgba(22,86,200,.9)}
+  .btn-line{border:1px solid var(--line);color:var(--on-ink);background:transparent}
+  .btn-line:hover{border-color:var(--glacier)}
+  .brand b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  @media (max-width:1240px){nav{gap:17px}nav a{font-size:13.5px}.brand b{font-size:20px}}
+  @media (max-width:1060px){nav{display:none}}
+  @media (max-width:560px){.brand span{display:none}}
+
+  .hero{padding-top:clamp(52px,7vw,96px)}
+  .kicker{color:var(--glacier);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .kicker::before{content:"";width:36px;height:1px;background:var(--ember)}
+  .h-line{display:block;overflow:hidden}
+  .h-line>span{display:block}
+  .hero-sub{margin-top:28px;max-width:52ch;font-size:clamp(17px,1.5vw,20.5px);color:var(--mute)}
+  .hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
+  .hero-meta{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  @media (max-width:700px){.hero-meta{grid-template-columns:1fr}}
+  .hero-meta div{background:var(--ink-2);padding:20px 22px}
+  .hero-meta b{display:block;font-family:var(--display);font-size:30px;line-height:1;margin-bottom:6px}
+  .hero-meta span{font-size:13.5px;color:var(--mute)}
+
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2);overflow:hidden;padding:15px 0;position:relative;z-index:2}
+  .track-m{display:flex;gap:44px;width:max-content;will-change:transform}
+  .track-m span{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:inline-flex;align-items:center;gap:12px;white-space:nowrap}
+  .track-m span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ember)}
+
+  .sec-top{max-width:58ch;display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(34px,5vw,56px)}
+  .lead{color:var(--mute);font-size:18px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 14px 34px -30px rgba(11,21,36,.55)}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:860px){.cards{grid-template-columns:1fr}}
+  .card{padding:clamp(26px,3vw,36px);display:flex;flex-direction:column;gap:18px;transition:transform .22s ease,border-color .22s ease}
+  .card:hover{transform:translateY(-4px)}
+  .card.cold:hover{border-color:#9CC4EE}
+  .card.hot{background:var(--navy);border-color:var(--navy);color:#F2F7FF}
+  .card.hot .lead{color:#B9CDE9}
+  .card.hot li{color:#C6D8EE}
+  .card.hot li::before{background:#4FA3F7}
+  .card.hot:hover{border-color:#123A76}
+  .card ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+  @media (max-width:540px){.card ul{grid-template-columns:1fr}}
+  .card li{font-size:15.5px;padding-left:20px;position:relative;color:var(--mute)}
+  .card li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:2px;border-radius:2px;background:var(--copper)}
+  .card.cold li::before{background:var(--glacier)}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+  @media (max-width:540px){.steps{grid-template-columns:1fr}}
+  .step{display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:1px solid var(--line);position:relative}
+  .step::after{content:"";position:absolute;top:-1px;left:0;width:36%;height:2px;background:var(--ember)}
+  .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ember)}
+  .step p{font-size:15.5px;color:var(--mute)}
+
+  .duo{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:start}
+  @media (max-width:940px){.duo{grid-template-columns:1fr}}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .fact{background:var(--ink-2);padding:26px}
+  .fact b{display:block;font-family:var(--display);font-size:52px;line-height:.9;font-variant-numeric:tabular-nums}
+  .fact.g b{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .fact span{display:block;margin-top:10px;font-size:13.5px;color:var(--mute)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+  .chip{border:1px solid var(--line);background:var(--ink-2);border-radius:100px;padding:8px 16px;font-size:14.5px;color:var(--mute)}
+  .slot{border:1px dashed #A9C4E2;border-radius:18px;padding:26px;background:#EFF6FF;display:flex;flex-direction:column;gap:10px}
+  .slot .mono{color:var(--glacier)}
+  .slot p{color:var(--mute);font-size:15.5px}
+
+  .form-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,52px);align-items:start}
+  @media (max-width:940px){.form-grid{grid-template-columns:1fr}}
+  form{padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:16px}
+  label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
+  input,textarea{font-family:var(--body);font-size:16px;padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:var(--ink-3);color:var(--on-ink)}
+  input::placeholder,textarea::placeholder{color:#8C9BAC}
+  textarea{min-height:104px;resize:vertical}
+  input:focus-visible,textarea:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--glacier);outline-offset:2px}
+  .formnote{font-size:13px;color:var(--mute)}
+  .info-row{padding:20px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
+  .info-row:last-child{border-bottom:0}
+  .info-row a,.info-row b{font-family:var(--display);font-size:32px;line-height:1;text-decoration:none}
+  .info-row .mono{color:var(--mute)}
+
+  footer{background:var(--navy);color:#B9CDE9;padding:52px 0 120px;font-size:14px;position:relative}
+  footer b{color:#fff}
+  footer .in{display:flex;flex-direction:column;gap:11px}
+  footer b{color:var(--on-ink)}
+
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line)}
+  .callbar a{flex:1;text-align:center;text-decoration:none;padding:15px 10px;border-radius:100px;font-weight:600;font-size:16px}
+  .callbar .p{background:var(--ember);color:#fff}
+  .callbar .s{border:1px solid var(--line);color:var(--on-ink)}
+  @media (max-width:900px){.callbar{display:flex}}
+
+
+  /* ——— reviews ——— */
+  .rev-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(20px,3vw,38px);align-items:start}
+  @media (max-width:940px){.rev-grid{grid-template-columns:1fr}}
+  .score{background:var(--navy);color:#fff;border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:10px}
+  .score .big{font-family:var(--display);font-size:76px;line-height:.85;font-variant-numeric:tabular-nums}
+  .stars{display:flex;gap:4px}
+  .stars svg{width:19px;height:19px}
+  .score a{color:#9CC8FF;font-size:14px}
+  .bars{display:flex;flex-direction:column;gap:7px;margin-top:8px}
+  .brow{display:grid;grid-template-columns:26px 1fr 38px;gap:10px;align-items:center;font-size:12.5px;color:#B9CDE9;font-family:var(--mono)}
+  .btrack{height:6px;border-radius:6px;background:rgba(255,255,255,.16);overflow:hidden}
+  .btrack i{display:block;height:100%;background:#4FA3F7;border-radius:6px}
+  .revs{display:flex;flex-direction:column;gap:12px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+  .rev .who{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13.5px;color:var(--mute);font-family:var(--mono)}
+  .rev h3{font-size:23px}
+  .rev.low{border-color:#E4D2B4;background:#FFFCF5}
+  .answer{background:#EFF6FF;border:1px solid #C7DCF5;border-radius:16px;padding:20px 22px;font-size:15.5px;color:#20395C}
+  .answer b{color:var(--ember)}
+
+  /* ——— gallery ——— */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:900px){.gal{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.gal{grid-template-columns:1fr}}
+  .shot{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .22s ease,border-color .22s ease}
+  .shot:hover{transform:translateY(-4px);border-color:#9CC4EE}
+  .shot .art{background:#F1F7FE;position:relative}
+  .shot .art svg{display:block;width:100%;height:auto}
+  .shot .tag{position:absolute;top:10px;left:10px;background:rgba(10,42,94,.9);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 9px;border-radius:100px}
+  .shot .cap{padding:14px 16px;display:flex;flex-direction:column;gap:3px}
+  .shot .cap b{font-family:var(--display);font-size:20px;line-height:1.05}
+  .shot .cap span{font-size:13.5px;color:var(--mute)}
+
+  /* ——— video ——— */
+  .video{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--navy);aspect-ratio:16/9}
+  .video canvas{display:block;width:100%;height:100%}
+  .vlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:clamp(20px,3vw,36px);background:linear-gradient(180deg,rgba(10,42,94,0) 45%,rgba(10,42,94,.86) 100%)}
+  .vlay h3{color:#fff;font-size:clamp(26px,3.4vw,42px);max-width:18ch}
+  .vlay p{color:#C6D8EE;font-size:15px;max-width:52ch}
+  .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.94);border:0;cursor:pointer;display:grid;place-items:center;transition:transform .18s ease}
+  .play:hover{transform:translate(-50%,-50%) scale(1.06)}
+  .play svg{width:26px;height:26px;margin-left:4px}
+  .vnote{margin-top:12px;font-size:13.5px;color:var(--mute)}
+
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<svg id="pipeLayer" aria-hidden="true">
+  <defs>
+    <linearGradient id="pgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7FBEF7"/><stop offset="0.5" stop-color="#2E82E6"/><stop offset="1" stop-color="#0A2A5E"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <path id="pipeGhost" fill="none" stroke="#E4EDF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path id="pipeMain" fill="none" stroke="url(#pgrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+  <g id="joints"></g>
+  <circle id="drop" r="7" fill="#1656C8" filter="url(#glow)" opacity="0"></circle>
+</svg>
+
+<div id="page">
+  <p class="ribbon">Designforslag udarbejdet af Yurii · ikke firmaets officielle hjemmeside</p>
+
+  <header class="bar">
+    <div class="bar-in">
+      <div class="brand">
+        <b>Vestsjællands Gas · VVS · Blik</b>
+        <span>Aut. VVS-installatør · Skælskør</span>
+      </div>
+      <nav>
+        <a href="#ydelser">Ydelser</a><a href="#varme">Varmepumper</a><a href="#galleri">Galleri</a><a href="#anmeldelser">Anmeldelser</a><a href="#omraade">Område</a><a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="btn btn-hot" href="tel:+4528511070">Ring 28 51 10 70</a>
+    </div>
+  </header>
+
+  <section class="hero" data-anchor>
+    <div class="in">
+      <p class="mono kicker">25 år i Skælskør · Vestsjælland</p>
+      <h1>
+        <span class="h-line"><span>Varmen <span class="grad">indenfor</span>.</span></span>
+        <span class="h-line"><span>Zinken udenfor.</span></span>
+        <span class="h-line"><span>Samme håndværker.</span></span>
+      </h1>
+      <p class="hero-sub fade">Autoriseret VVS-installatør og blikkenslager i samme firma. Vi tager varmepumpen, badeværelset, tagrenderne og facaden — så du ikke skal koordinere tre firmaer og tre tidsplaner.</p>
+      <div class="hero-cta fade">
+        <a class="btn btn-hot" href="#kontakt">Få et uforpligtende tilbud</a>
+        <a class="btn btn-line" href="tel:+4528511070">Ring 28 51 10 70</a>
+      </div>
+      <div class="hero-meta fade">
+        <div><b>Samme hverdag</b><span>Vi vender tilbage på din henvendelse</span></div>
+        <div><b>Fast tilbud</b><span>Skriftligt, før vi går i gang</span></div>
+        <div><b data-count="25">25</b><span>år med gas, VVS og blik i Vestsjælland</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="track-m" id="marquee">
+      <span>Autoriseret VVS-installatør</span><span>VE-godkendt</span><span>Tekniq Garanti</span><span>Rheinzink-kvalificeret</span><span>Dybkær 3, 4230 Skælskør</span><span>CVR 42202967</span>
+      <span>Autoriseret VVS-installatør</span><span>VE-godkendt</span><span>Tekniq Garanti</span><span>Rheinzink-kvalificeret</span><span>Dybkær 3, 4230 Skælskør</span><span>CVR 42202967</span>
+    </div>
+  </div>
+
+  <section id="ydelser" data-anchor>
+    <div class="in">
+      <div class="sec-top reveal">
+        <p class="mono" style="color:var(--ember)">Hvad vi laver</p>
+        <h2>To fag, ét firma, én regning</h2>
+        <p class="lead">De fleste boligejere ringer til én VVS'er om varmen og til en anden om taget. Her får du begge dele fra samme værksted i Skælskør — og den samme mand tager telefonen, når du ringer bagefter.</p>
+      </div>
+      <div class="cards">
+        <div class="card panel cold reveal">
+          <p class="mono" style="color:var(--glacier)">Indenfor</p>
+          <h3>VVS, varme og bad</h3>
+          <p class="lead">Alt der har med vand og varme at gøre — fra en utæt vandhane til en helt ny varmekilde.</p>
+          <ul>
+            <li>Varmepumper</li><li>Jordvarme</li><li>Solvarme</li><li>Gulvvarme</li>
+            <li>Gas- og oliefyrsservice</li><li>Stokerkedler og pillefyr</li><li>Kedelcentraler</li><li>Badeværelse</li>
+            <li>Køkken</li><li>Rør og fittings</li><li>BWT vandbehandling</li><li>Ventilationsanlæg</li>
+          </ul>
+        </div>
+        <div class="card panel hot reveal">
+          <p class="mono" style="color:var(--ember)">Udenfor</p>
+          <h3>Blikkenslager og tag</h3>
+          <p class="lead">Zink og metal er et selvstændigt håndværk. Vi er Rheinzink-kvalificerede — det kan ikke alle VVS-firmaer skrive.</p>
+          <ul>
+            <li>Tagrender</li><li>Nedløbsrør</li><li>Tagbeklædning</li><li>Facadebeklædning</li>
+            <li>Zinkarbejde i Rheinzink</li><li>Inddækninger og skotrender</li>
+          </ul>
+          <p class="lead" style="margin-top:auto">Skal taget alligevel skiftes, mens varmepumpen sættes op? Så laver vi begge dele i samme forløb — ét stillads, én opstart, én afslutning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="varme" data-anchor>
+    <div class="in">
+      <div class="duo">
+        <div class="sec-top reveal" style="margin-bottom:0">
+          <p class="mono" style="color:var(--glacier)">Varmepumper</p>
+          <h2>Skal oliefyret <span class="grad">ud i år</span>?</h2>
+          <p class="lead">Vi er VE-godkendt installatør. Det er et krav, hvis du vil søge tilskud til en varmepumpe — og præcis den detalje opdager folk for sent, når håndværkeren er valgt efter laveste timepris.</p>
+          <p class="lead">Vi kommer forbi, ser på huset og regner på, hvad der giver mening hos netop dig: luft/vand, jordvarme eller noget helt tredje. Så lægger vi et fast tilbud på bordet. Passer en varmepumpe ikke til huset, siger vi det — i stedet for at sælge dig en.</p>
+          <div class="hero-cta" style="margin-top:8px"><a class="btn btn-hot" href="#kontakt">Book et besøg</a></div>
+        </div>
+        <div class="facts reveal">
+          <div class="fact g"><b data-count="25">25</b><span>år i faget i Vestsjælland</span></div>
+          <div class="fact"><b data-count="2">2</b><span>fag i ét firma: VVS og blik</span></div>
+          <div class="fact"><b>VE</b><span>godkendt — krav ved tilskud</span></div>
+          <div class="fact"><b>Tekniq</b><span>garanti på vores arbejde</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="forloeb" data-anchor>
+    <div class="in">
+      <div class="sec-top reveal">
+        <p class="mono" style="color:var(--ember)">Sådan foregår det</p>
+        <h2>Fire skridt, ingen overraskelser</h2>
+        <p class="lead">Den hyppigste klage over håndværkere er ikke prisen. Det er, at man ikke ved, hvad der sker — og hvornår. Derfor kører vi altid det samme forløb.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="n">01</span><h3>Du ringer eller skriver</h3><p>Fortæl kort, hvad det handler om. Vi vender tilbage samme hverdag — også hvis svaret er, at opgaven ikke er noget for os.</p></div>
+        <div class="step reveal"><span class="n">02</span><h3>Vi ser på opgaven</h3><p>Vi kigger på huset, måler op og spørger ind til, hvad du gerne vil have ud af det. Besøget koster dig ikke noget.</p></div>
+        <div class="step reveal"><span class="n">03</span><h3>Du får et fast tilbud</h3><p>Skriftligt, med materialer, timer og tidsplan. Du kan læse det i ro og mag, inden du siger ja.</p></div>
+        <div class="step reveal"><span class="n">04</span><h3>Vi udfører arbejdet</h3><p>Aftalte dage, ryddet op efter os og Tekniq Garanti på arbejdet. Ét telefonnummer hele vejen.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="omraade" data-anchor>
+    <div class="in">
+      <div class="duo">
+        <div class="sec-top reveal" style="margin-bottom:0">
+          <p class="mono" style="color:var(--ember)">Hvor vi kører</p>
+          <h2>Lokalt håndværk i Vestsjælland</h2>
+          <p class="lead">Værkstedet ligger på Dybkær 3 i Skælskør, og vi kører i lokalområdet. Det betyder korte køretider — og at vi kan komme forbi igen, hvis der er noget bagefter. Ikke om fjorten dage.</p>
+          <div class="chips">
+            <span class="chip">Skælskør</span><span class="chip">Slagelse</span><span class="chip">Korsør</span>
+            <span class="chip">Sorø</span><span class="chip">Dalmose</span><span class="chip">Boeslunde</span>
+            <span class="chip">Vemmelev</span><span class="chip">Fuglebjerg</span><span class="chip">Bisserup</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="mono" style="color:var(--glacier);margin-bottom:14px">Kort fortalt</p>
+          <h2 style="font-size:36px;margin-bottom:18px">Et værksted, to fagområder</h2>
+          <div class="slot">
+            <p class="mono">Dybkær 3, 4230 Skælskør</p>
+            <p>Herfra kører vi ud til hele Vestsjælland. Ring, hvis du er i tvivl om, om vi dækker din adresse — vi siger det ligeud, hvis turen bliver for lang til, at det kan betale sig for dig.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="galleri" data-anchor>
+    <div class="in">
+      <div class="sec-top reveal">
+        <p class="mono" style="color:var(--ember)">Galleri</p>
+        <h2>Sådan ser arbejdet ud</h2>
+        <p class="lead">Seks pladser til billeder af jeres egne opgaver — én pr. fagområde. Indtil billederne er taget, står der en tegning i det format, fotoet skal have. Ingen stockbilleder: kunder i Vestsjælland kan se forskel.</p>
+      </div>
+      <div class="gal">
+        <figure class="shot reveal" style="margin:0">
+          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+<rect x="86" y="86" width="196" height="130" rx="10" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="184" cy="151" r="46" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M184 151 L184 111 M184 151 L219 172 M184 151 L149 172" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="184" cy="151" r="8" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M282 116 h44 M282 186 h44" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M86 216 v34 M282 216 v34" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M60 250 h280" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M96 66 h50 M96 52 h30" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
+          <figcaption class="cap"><b>Varmepumpe, luft/vand</b><span>Udedel monteret på nordfacaden</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="margin:0">
+          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+<path d="M46 168 L200 66 L354 168" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46 168 h308" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M52 176 h296 a10 10 0 0 1 -10 18 h-276 a10 10 0 0 1 -10 -18 z" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M316 194 v72 a10 10 0 0 0 10 10 h16" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96 122 L200 54 L304 122" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M200 90 v-24" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
+          <figcaption class="cap"><b>Tagrender i zink</b><span>Rheinzink, med nedløb og inddækning</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="margin:0">
+          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+<path d="M120 60 v54" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96 114 h48 a6 6 0 0 1 6 8 l-6 12 h-48 l-6 -12 a6 6 0 0 1 6 -8 z" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M104 150 v22 M120 150 v30 M136 150 v22" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="212" y="96" width="120" height="150" rx="8" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M212 146 h120 M212 196 h120 M272 96 v150" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M84 246 h248" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="120" cy="228" r="12" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
+          <figcaption class="cap"><b>Badeværelse fra bunden</b><span>Rør, afløb, fliser og armaturer</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="margin:0">
+          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+<path d="M50 232 h300" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M74 208 h252" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M78 194 h244 a18 18 0 0 1 0 -36 h-244 a18 18 0 0 1 0 -36 h244 a18 18 0 0 1 0 -36 h-244" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M62 90 v142" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M338 90 v142" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M150 60 v18 M200 52 v26 M250 60 v18" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
+          <figcaption class="cap"><b>Gulvvarme</b><span>Slynger lagt før støbning</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="margin:0">
+          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+<rect x="118" y="64" width="164" height="164" rx="12" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="200" cy="126" r="30" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M200 126 L216 110" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M146 186 h108" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M146 204 h72" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M118 96 h-42 v96 h42" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M282 96 h42 v96 h-42" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M160 64 v-26 M240 64 v-26" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M150 252 h100" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
+          <figcaption class="cap"><b>Fyr og kedelcentral</b><span>Service, udskiftning og fejlfinding</span></figcaption>
+        </figure>
+        <figure class="shot reveal" style="margin:0">
+          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
+<path d="M70 58 v190 M110 58 v190 M150 58 v190 M190 58 v190 M230 58 v190 M270 58 v190 M310 58 v190" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M70 58 h240 M70 248 h240" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M90 58 v190 M170 58 v190 M250 58 v190" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70 120 h240" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
+<path d="M70 186 h240" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
+          <figcaption class="cap"><b>Facadebeklædning</b><span>Stående false i zink</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="video" data-anchor style="padding-top:0">
+    <div class="in">
+      <div class="sec-top reveal">
+        <p class="mono" style="color:var(--glacier)">Video</p>
+        <h2>Et forløb på halvandet minut</h2>
+        <p class="lead">En kort film gør mere end tyve linjer tekst: I går fra oliefyr til varmepumpe, mens en stemme fortæller, hvad der sker hvornår. Rammen står klar — den fyldes med jeres optagelse.</p>
+      </div>
+      <div class="video reveal">
+        <canvas id="vcanvas"></canvas>
+        <button class="play" id="playBtn" aria-label="Afspil video">
+          <svg viewBox="0 0 24 24" fill="#0A2A5E"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="vlay">
+          <h3>Fra oliefyr til varmepumpe på tre dage</h3>
+          <p>Optages hos en rigtig kunde i Skælskør — med tilladelse, uden musik, med håndværkeren der fortæller.</p>
+        </div>
+      </div>
+      <p class="vnote" id="vnote">Videopladsen er tom i designforslaget. På den færdige side ligger filmen her og starter uden lyd.</p>
+    </div>
+  </section>
+
+  <section id="anmeldelser" data-anchor>
+    <div class="in">
+      <div class="sec-top reveal">
+        <p class="mono" style="color:var(--ember)">Anmeldelser</p>
+        <h2>Hvad kunderne har skrevet</h2>
+        <p class="lead">Hentet fra Trustpilot 6. september 2026 — rigtige anmeldelser, også den sure. Vi viser dem, som de står.</p>
+      </div>
+      <div class="rev-grid">
+        <div class="score reveal">
+          <div class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="#4FA3F7"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#4FA3F7"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#4FA3F7"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#4FA3F7" opacity=".55"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="#4FA3F7" opacity=".2"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
+          </div>
+          <p class="big"><span data-count="37">3,7</span></p>
+          <p style="color:#B9CDE9;font-size:14.5px">TrustScore 3,7 af 5 · 4 anmeldelser</p>
+          <div class="bars">
+            <div class="brow"><span>5★</span><span class="btrack"><i style="width:75%"></i></span><span>75%</span></div>
+            <div class="brow"><span>4★</span><span class="btrack"><i style="width:0%"></i></span><span>0%</span></div>
+            <div class="brow"><span>3★</span><span class="btrack"><i style="width:0%"></i></span><span>0%</span></div>
+            <div class="brow"><span>2★</span><span class="btrack"><i style="width:0%"></i></span><span>0%</span></div>
+            <div class="brow"><span>1★</span><span class="btrack"><i style="width:25%"></i></span><span>25%</span></div>
+          </div>
+          <a href="https://dk.trustpilot.com/review/vsbf.dk" target="_blank" rel="noopener">Se alle anmeldelser på Trustpilot →</a>
+        </div>
+        <div class="revs">
+          <article class="rev reveal">
+            <div class="who"><span>Jannick Lauge Jensen</span><span>6. maj 2026</span><span style="color:var(--ember)">★★★★★</span></div>
+            <h3>„Service over gennemsnittet"</h3>
+            <p class="lead" style="font-size:15.5px">Nyt gasfyr sat op, med grundig forklaring undervejs og en pris, kunden selv kalder rimelig.</p>
+          </article>
+          <article class="rev reveal">
+            <div class="who"><span>piet bierlich</span><span>9. december 2024</span><span style="color:var(--ember)">★★★★★</span></div>
+            <h3>„Meget tilfreds"</h3>
+            <p class="lead" style="font-size:15.5px">Roser kvaliteten af arbejdet og beskriver folkene som venlige og grundige. Anbefaler firmaet videre.</p>
+          </article>
+          <article class="rev low reveal">
+            <div class="who"><span>Thomas</span><span>9. januar 2026</span><span style="color:#B4731A">★☆☆☆☆</span></div>
+            <h3>„Håndværkere af værste skuffe!"</h3>
+            <p class="lead" style="font-size:15.5px">Kunden fik en mundtlig pris og oplevede derefter en regning, der lå markant over. Det er den kritik, vi tager alvorligt.</p>
+          </article>
+          <div class="answer reveal">
+            <b>Derfor gør vi det anderledes nu:</b> ingen mundtlige overslag på større opgaver. Du får et <b>fast tilbud på skrift</b> med materialer, timer og tidsplan, inden vi går i gang — og ændrer opgaven sig undervejs, hører du det, før regningen kommer.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" data-anchor>
+    <div class="in">
+      <div class="sec-top reveal">
+        <p class="mono" style="color:var(--glacier)">Kontakt</p>
+        <h2>Her ender røret — hos dig</h2>
+        <p class="lead">Tre felter. Så ringer vi tilbage samme hverdag og aftaler et besøg. Haster det — for eksempel et sprunget rør — så ring med det samme.</p>
+      </div>
+      <div class="form-grid">
+        <form id="lead" class="panel reveal" novalidate>
+          <label>Navn<input name="navn" type="text" autocomplete="name" placeholder="Dit navn" required></label>
+          <label>Telefon<input name="telefon" type="tel" autocomplete="tel" placeholder="12 34 56 78" required></label>
+          <label>Hvad drejer det sig om?<textarea name="opgave" placeholder="F.eks.: oliefyret skal skiftes til varmepumpe, hus på 140 m² i Boeslunde"></textarea></label>
+          <button class="btn btn-hot" type="submit">Få et uforpligtende tilbud</button>
+          <p class="formnote" id="fnote">Vi bruger kun dine oplysninger til at svare på din henvendelse.</p>
+        </form>
+        <div class="reveal">
+          <div class="info-row"><p class="mono">Ring</p><a href="tel:+4528511070">28 51 10 70</a></div>
+          <div class="info-row"><p class="mono">Skriv</p><a href="mailto:pau@vsbf.dk" style="font-size:25px">pau@vsbf.dk</a></div>
+          <div class="info-row"><p class="mono">Værksted</p><b style="font-size:25px">Dybkær 3, 4230 Skælskør</b></div>
+          <div class="info-row"><p class="mono">CVR</p><b style="font-size:25px">42202967</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-anchor>
+    <div class="in">
+      <p><b>Vestsjællands Gas · VVS · Blikkenslagerforretning</b> — Dybkær 3, 4230 Skælskør · CVR 42202967 · 28 51 10 70 · pau@vsbf.dk</p>
+      <p>Autoriseret VVS-installatør · VE-godkendt · Tekniq Garanti · Rheinzink-kvalificeret</p>
+      <p style="color:var(--glacier)">Denne side er et designforslag udarbejdet af Yurii og er ikke firmaets officielle hjemmeside.</p>
+    </div>
+  </footer>
+</div>
+
+<div class="callbar">
+  <a class="p" href="tel:+4528511070">Ring nu</a>
+  <a class="s" href="#kontakt">Få tilbud</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var f = document.getElementById('lead'), note = document.getElementById('fnote');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    note.textContent = 'Formularen er ikke tilsluttet i dette designforslag — ring 28 51 10 70 eller skriv til pau@vsbf.dk.';
+    note.style.color = 'var(--ember)';
+  });
+
+  // ——— blueprint loop in the video frame ———
+  (function(){
+    var cv = document.getElementById("vcanvas"); if(!cv) return;
+    var ctx = cv.getContext("2d"), host = cv.parentElement, W, H, dpr = Math.min(2, window.devicePixelRatio||1), t = 0;
+    function size(){ W = host.clientWidth; H = host.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    var lines = [ {y:.28, s:1.0}, {y:.5, s:.72}, {y:.72, s:1.25} ];
+    function frame(){
+      requestAnimationFrame(frame);
+      if(!reduce) t += 1;
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle = "#0A2A5E"; ctx.fillRect(0,0,W,H);
+      ctx.strokeStyle = "rgba(255,255,255,.06)"; ctx.lineWidth = 1;
+      for(var gx=0; gx<W; gx+=44){ ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+      for(var gy=0; gy<H; gy+=44){ ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
+      lines.forEach(function(l, i){
+        var y = H*l.y;
+        ctx.strokeStyle = "rgba(122,180,247,.5)"; ctx.lineWidth = 5; ctx.lineCap = "round";
+        ctx.setLineDash([]); ctx.beginPath();
+        ctx.moveTo(-20, y); ctx.lineTo(W*0.42, y);
+        ctx.quadraticCurveTo(W*0.5, y, W*0.5, y + (i-1)*40);
+        ctx.lineTo(W+20, y + (i-1)*40); ctx.stroke();
+        ctx.strokeStyle = "#8FD0FF"; ctx.lineWidth = 2.4;
+        ctx.setLineDash([16, 26]); ctx.lineDashOffset = -(t*l.s) % 42;
+        ctx.beginPath();
+        ctx.moveTo(-20, y); ctx.lineTo(W*0.42, y);
+        ctx.quadraticCurveTo(W*0.5, y, W*0.5, y + (i-1)*40);
+        ctx.lineTo(W+20, y + (i-1)*40); ctx.stroke();
+        ctx.setLineDash([]);
+      });
+    }
+    window.addEventListener("resize", size);
+    size(); frame();
+    var btn = document.getElementById("playBtn"), vn = document.getElementById("vnote");
+    if(btn) btn.addEventListener("click", function(){
+      vn.textContent = "Her starter firmaets egen film på den færdige side — i designforslaget er pladsen tom med vilje.";
+      vn.style.color = "var(--ember)";
+    });
+  })();
+
+
+  var svg = document.getElementById("pipeLayer"),
+      main = document.getElementById("pipeMain"),
+      ghost = document.getElementById("pipeGhost"),
+      joints = document.getElementById("joints"),
+      drop = document.getElementById("drop");
+
+  // ——— build one continuous pipe from the header to the footer ———
+  function buildPipe(){
+    var W = document.documentElement.clientWidth;
+    var H = document.getElementById("page").offsetHeight;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", W);
+    svg.setAttribute("height", H);
+    svg.style.height = H + "px";
+
+    var content = Math.min(1080, W - 52);
+    var gut = Math.max(16, (W - content) / 2 * 0.42 + 14);   // pipe lives in the gutter
+    var R = Math.min(30, gut * 0.9);
+    var anchors = Array.prototype.slice.call(document.querySelectorAll("[data-anchor]"));
+
+    var x = gut, d = "M " + x + " 0";
+    var pts = [];
+    anchors.forEach(function(el, i){
+      if(i === 0) return;
+      var y = el.getBoundingClientRect().top + window.scrollY + 46;
+      var nx = (x === gut) ? (W - gut) : gut;
+      var dir = nx > x ? 1 : -1;
+      d += " L " + x + " " + (y - R);
+      d += " Q " + x + " " + y + " " + (x + dir * R) + " " + y;
+      d += " L " + (nx - dir * R) + " " + y;
+      d += " Q " + nx + " " + y + " " + nx + " " + (y + R);
+      pts.push([x, y], [nx, y]);
+      x = nx;
+    });
+    d += " L " + x + " " + (H - 60);
+    main.setAttribute("d", d);
+    ghost.setAttribute("d", d);
+    ghost.setAttribute("stroke", "#E4EDF6");
+
+    joints.innerHTML = "";
+    pts.forEach(function(p){
+      var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", 5.5);
+      c.setAttribute("fill", "#FFFFFF"); c.setAttribute("stroke", "#2E82E6"); c.setAttribute("stroke-width", "2.5");
+      c.setAttribute("class", "joint");
+      joints.appendChild(c);
+    });
+  }
+
+  buildPipe();
+
+  if(!window.gsap){ return; }
+  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, DrawSVGPlugin);
+
+  if(reduce){
+    gsap.set(drop, { opacity: 0 });
+  } else {
+    // hero entrance
+    gsap.from(".h-line > span", { yPercent: 105, duration: .8, stagger: .09, ease: "expo.out" });
+    gsap.from(".hero .fade", { opacity: 0, y: 14, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
+
+    // certification strip
+    gsap.to("#marquee", { xPercent: -50, duration: 34, repeat: -1, ease: "none" });
+
+    // the pipe draws itself across the entire page, tied to the scrollbar
+    gsap.set(main, { drawSVG: "0%" });
+    gsap.to(main, {
+      drawSVG: "100%", ease: "none",
+      scrollTrigger: { trigger: "#page", start: "top top", end: "bottom bottom", scrub: 0.4 }
+    });
+
+    // a droplet rides the pipe exactly where you are on the page
+    gsap.set(drop, { opacity: 1 });
+    gsap.to(drop, {
+      motionPath: { path: main, align: main, alignOrigin: [0.5, 0.5] },
+      ease: "none",
+      scrollTrigger: { trigger: "#page", start: "top top", end: "bottom bottom", scrub: 0.4 }
+    });
+    gsap.to(drop, { attr: { r: 9.5 }, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+    // fittings pop when the pipe reaches them
+    gsap.utils.toArray(".joint").forEach(function(c){
+      gsap.from(c, {
+        scale: 0, transformOrigin: "50% 50%", duration: .4, ease: "back.out(2)",
+        scrollTrigger: { trigger: "#page", toggleActions: "play none none reverse",
+          start: function(){ return "top top+=" + Math.max(0, parseFloat(c.getAttribute("cy")) - window.innerHeight * 0.8); } }
+      });
+    });
+
+    // content arrives
+    gsap.utils.toArray(".reveal").forEach(function(el){
+      gsap.from(el, { opacity: 0, y: 22, duration: .6, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 88%" } });
+    });
+
+    // counters
+    document.querySelectorAll("[data-count]").forEach(function(el){
+      var t = parseInt(el.getAttribute("data-count"), 10), o = { v: 0 }, isScore = t === 37;
+      gsap.to(o, { v: t, duration: 1.1, ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 92%" },
+        onUpdate: function(){ el.textContent = isScore ? (o.v/10).toFixed(1).replace(".", ",") : Math.round(o.v); } });
+    });
+  }
+
+
+  var rt;
+  window.addEventListener("resize", function(){
+    clearTimeout(rt);
+    rt = setTimeout(function(){ buildPipe(); ScrollTrigger.refresh(); }, 180);
+  });
+  window.addEventListener("load", function(){ buildPipe(); ScrollTrigger.refresh(); });
+})();
+</script>
+
+</body>
+</html>
