@@ -114,10 +114,7 @@
   }
 
   /* ---------- 2. ANSWER BAR ---------- */
-  .answer{background:#fff;border-bottom:1px solid var(--line);padding:0}
-  .answer .in{padding-top:30px;padding-bottom:30px;display:flex;gap:20px 40px;align-items:center;flex-wrap:wrap}
-  .answer p{font-size:clamp(17px,2.1vw,21px);line-height:1.45;color:var(--ink);max-width:34ch;font-weight:600;flex:1 1 320px}
-  .answer .rr{display:flex;flex-direction:column;gap:12px;flex:0 1 auto}
+  .answer{background:#fff;padding:0}
   .ticker{position:relative;overflow:hidden;background:var(--warm);
     border-top:1px solid #F0DDC9;border-bottom:1px solid #F0DDC9;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
@@ -131,7 +128,6 @@
   @keyframes tickR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
   @media (max-width:560px){.tset{font-size:13px;gap:28px;padding:13px 14px}.tick{animation-duration:34s}}
   @media (prefers-reduced-motion: reduce){.tick{animation:none}}
-  @media (max-width:560px){.answer .rr{width:100%}.answer .row{width:100%}.answer .row .btn{flex:1 1 100%}}
 
   /* ---------- 3. TRACKS ---------- */
   .tracks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -377,17 +373,8 @@
     </div>
   </section>
 
-  <!-- 2. SVAR-BJÆLKE -->
+  <!-- 2. TILLIDSBÅND -->
   <section class="answer">
-    <div class="in">
-      <p>Autoriseret VVS-installatør og blikkenslager i Skælskør. Vi kører i hele Vestsjælland.</p>
-      <div class="rr">
-        <div class="row">
-          <a class="btn" href="#kontakt">Få et uforpligtende tilbud</a>
-          <a class="btn line" href="tel:+4528511070">Ring 28 51 10 70</a>
-        </div>
-      </div>
-    </div>
     <div class="ticker">
       <div class="tick">
         <div class="tset">
