@@ -3,761 +3,855 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vestsjællands Gas · VVS · Blik — designforslag</title>
-<meta name="description" content="Designforslag til Vestsjællands Gas, VVS og Blikkenslagerforretning i Skælskør. Autoriseret VVS-installatør og blikkenslager i Vestsjælland.">
+<title>VVS-installatør og blikkenslager i Skælskør — Vestsjællands Gas, VVS &amp; Blik</title>
+<meta name="description" content="Autoriseret VVS-installatør og blikkenslager i Skælskør. Specialister i vedvarende energi: varmepumper, solvarme, jordvarme. Bad, køkken, rør, tag, tagrender og zink. Vagtordning. Ring 28 51 10 70.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="color-scheme" content="light">
+<meta property="og:title" content="VVS-installatør og blikkenslager i Skælskør — Vestsjællands Gas, VVS &amp; Blik">
+<meta property="og:description" content="Specialister i vedvarende energi. Vand, varme og tag i samme firma. Ring 28 51 10 70.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Vestsjællands Gas · VVS · Blik — designforslag">
-<meta property="og:description" content="Varmen indenfor. Zinken udenfor. Samme håndværker.">
-<meta property="og:locale" content="da_DK">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231656C8'/%3E%3Cpath d='M9 8v9a7 7 0 0 0 7 7h7' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@600;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
-</head>
-<body>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%231656C8'/%3E%3Cpath d='M12 11v10a7 7 0 0 0 7 7h9' stroke='white' stroke-width='3.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
 <style>
   :root{
-    --ink:#FFFFFF;            /* страница */
-    --ink-2:#F5F9FD;          /* панели */
-    --ink-3:#EEF4FA;          /* поля ввода */
-    --line:#D9E3EE;
-    --navy:#0A2A5E;           /* тёмный блок */
-    --glacier:#2B7FE0;        /* светло-синий акцент */
-    --ember:#1656C8;          /* основной синий */
-    --copper:#2E82E6;         /* труба */
-    --on-ink:#0B1524;
-    --mute:#55657A;
-    --display:"Darker Grotesque","Helvetica Neue",Arial,sans-serif;
-    --body:"Manrope","Segoe UI",system-ui,sans-serif;
+    --bg:#FFFFFF; --alt:#F4F7FB; --card:#FFFFFF; --line:#DCE3EC;
+    --ink:#0B1626; --mute:#54657A;
+    --blue:#1656C8; --blue-d:#0F3F97; --navy:#07203F; --sky:#E9F1FD;
+    --body:"Manrope","Segoe UI",system-ui,-apple-system,sans-serif;
     --mono:"DM Mono",ui-monospace,Menlo,monospace;
-    --grad-text:linear-gradient(100deg,#4FA3F7 0%,#1656C8 55%,#0A2A5E 100%);
+    --r:16px; --shadow:0 24px 50px -38px rgba(7,32,63,.55);
+    --max:1120px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--ink);color:var(--on-ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  h1,h2,h3{font-family:var(--display);margin:0;font-weight:800;line-height:.93;letter-spacing:-.015em;text-wrap:balance}
-  h1{font-size:clamp(50px,8.4vw,124px)}
-  h2{font-size:clamp(36px,5.2vw,68px)}
-  h3{font-size:25px;line-height:1.05}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+  h1{font-size:clamp(34px,6vw,68px);line-height:.99}
+  h2{font-size:clamp(27px,3.6vw,40px);line-height:1.06}
+  h3{font-size:19px;letter-spacing:-.01em}
   p{margin:0}
-  a{color:inherit}
-  .mono{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-  .grad{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .in{max-width:var(--max);margin:0 auto;padding:0 22px}
+  section{padding:clamp(52px,7vw,92px) 0}
+  section[id]{scroll-margin-top:88px}
+  @media (max-width:760px){section[id]{scroll-margin-top:104px}}
+  .alt{background:var(--alt)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+  .lead{color:var(--mute);font-size:17px;max-width:62ch}
+  .stack{display:flex;flex-direction:column;gap:14px}
+  .row{display:flex;flex-wrap:wrap;gap:10px}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
 
-  /* the pipe layer runs the full height of the document */
-  #pipeLayer{position:absolute;top:0;left:0;width:100%;z-index:0;pointer-events:none}
-  #page{position:relative;z-index:1}
-  .in{max-width:1080px;margin:0 auto;padding:0 26px}
-  section{padding:clamp(78px,10vw,140px) 0;position:relative}
-
-  .ribbon{background:var(--ink-2);border-bottom:1px solid var(--line);color:var(--mute);font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px;text-align:center;position:relative;z-index:3}
-  .bar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-  .bar-in{max-width:1080px;margin:0 auto;padding:13px 26px;display:flex;align-items:center;gap:22px}
-  .brand{margin-right:auto;display:flex;flex-direction:column;gap:2px;min-width:0}
-  .brand b{font-family:var(--display);font-size:23px;line-height:1}
-  .brand span{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
-  nav{display:flex;gap:24px}
-  nav a{text-decoration:none;font-size:14.5px;color:var(--mute);transition:color .18s}
-  nav a:hover{color:var(--on-ink)}
-  .btn{white-space:nowrap;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;border-radius:100px;font-weight:600;font-size:15px;padding:13px 22px;text-decoration:none;border:0;cursor:pointer;transition:transform .14s ease;font-family:var(--body)}
-  .btn:hover{transform:translateY(-2px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--blue);color:#fff;
+    border-radius:999px;padding:13px 26px;font-weight:700;font-size:16px;border:0;cursor:pointer;
+    transition:transform .12s ease,background .12s ease}
+  .btn:hover{background:var(--blue-d);transform:translateY(-1px)}
   .btn:active{transform:scale(.985)}
-  .btn-hot{background:var(--ember);color:#fff;box-shadow:0 10px 24px -14px rgba(22,86,200,.9)}
-  .btn-line{border:1px solid var(--line);color:var(--on-ink);background:transparent}
-  .btn-line:hover{border-color:var(--glacier)}
-  .brand b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  @media (max-width:1240px){nav{gap:17px}nav a{font-size:13.5px}.brand b{font-size:20px}}
-  @media (max-width:1060px){nav{display:none}}
-  @media (max-width:560px){.brand span{display:none}}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
 
-  .hero{padding-top:clamp(52px,7vw,96px)}
-  .kicker{color:var(--glacier);margin-bottom:24px;display:flex;align-items:center;gap:12px}
-  .kicker::before{content:"";width:36px;height:1px;background:var(--ember)}
-  .h-line{display:block;overflow:hidden}
-  .h-line>span{display:block}
-  .hero-sub{margin-top:28px;max-width:52ch;font-size:clamp(17px,1.5vw,20.5px);color:var(--mute)}
-  .hero-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
-  .hero-meta{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  @media (max-width:700px){.hero-meta{grid-template-columns:1fr}}
-  .hero-meta div{background:var(--ink-2);padding:20px 22px}
-  .hero-meta b{display:block;font-family:var(--display);font-size:30px;line-height:1;margin-bottom:6px}
-  .hero-meta span{font-size:13.5px;color:var(--mute)}
+  .top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .top .in{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
+  .brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+  .brand b{font-size:16px;font-weight:800;line-height:1.1;letter-spacing:-.015em}
+  .brand .sub{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+  .nav{display:flex;gap:18px;font-size:14.5px;color:var(--mute)}
+  .nav a:hover{color:var(--ink)}
+  .tel{background:var(--blue);color:#fff;border-radius:999px;padding:11px 20px;font-weight:700;font-size:15px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .tel:hover{background:var(--blue-d)}
+  @media (max-width:920px){.nav{display:none}}
+  @media (max-width:520px){.brand .sub{display:none}.brand b{font-size:15px}.tel{padding:11px 16px;font-size:14.5px}}
 
-  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2);overflow:hidden;padding:15px 0;position:relative;z-index:2}
-  .track-m{display:flex;gap:44px;width:max-content;will-change:transform}
-  .track-m span{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:inline-flex;align-items:center;gap:12px;white-space:nowrap}
-  .track-m span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ember)}
+  .heroWrap{position:relative;height:240vh;padding:0}
+  @media (max-width:760px){.heroWrap{height:185vh}}
+  .heroSticky{position:sticky;top:0;height:100vh;min-height:520px;overflow:hidden;background:#05101F;
+    display:flex;flex-direction:column;justify-content:center}
+  #heroGL{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
+  .heroFallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}
+  .heroSticky .veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,rgba(4,12,26,.62),rgba(4,12,26,.10) 34%,rgba(4,12,26,.26) 58%,rgba(4,12,26,.92))}
+  .heroSticky .in{position:relative;z-index:3;color:#fff;display:flex;flex-direction:column;align-items:center;
+    text-align:center;gap:18px;padding-bottom:118px}
+  .hero h1{max-width:16ch}
+  .hero .sub{color:#D6E5F8;font-size:clamp(16px,2vw,19px);max-width:52ch}
+  .hero .marks{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-family:var(--mono);font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:#A9C8F2}
+  .hero .marks span{display:inline-flex;align-items:center;gap:7px}
+  .hero .marks i{width:5px;height:5px;border-radius:50%;background:#6FA8F5}
+  .track{position:absolute;z-index:4;left:0;right:0;bottom:24px;max-width:var(--max);margin:0 auto;padding:0 22px;
+    display:flex;flex-direction:column;gap:9px}
+  .track .now{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
+    transition:opacity .2s ease}
+  .track .bar{height:3px;border-radius:2px;background:rgba(255,255,255,.20);overflow:hidden}
+  .track .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4C8DF0,#B4703C)}
+  .track .ms{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.14em;
+    text-transform:uppercase;color:#7E9EC8}
+  .track .ms b{font-weight:500;transition:color .2s}
+  .track .ms b.on{color:#fff}
 
-  .sec-top{max-width:58ch;display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(34px,5vw,56px)}
-  .lead{color:var(--mute);font-size:18px}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 14px 34px -30px rgba(11,21,36,.55)}
-
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media (max-width:860px){.cards{grid-template-columns:1fr}}
-  .card{padding:clamp(26px,3vw,36px);display:flex;flex-direction:column;gap:18px;transition:transform .22s ease,border-color .22s ease}
-  .card:hover{transform:translateY(-4px)}
-  .card.cold:hover{border-color:#9CC4EE}
-  .card.hot{background:var(--navy);border-color:var(--navy);color:#F2F7FF}
-  .card.hot .lead{color:#B9CDE9}
-  .card.hot li{color:#C6D8EE}
-  .card.hot li::before{background:#4FA3F7}
-  .card.hot:hover{border-color:#123A76}
-  .card ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
-  @media (max-width:540px){.card ul{grid-template-columns:1fr}}
-  .card li{font-size:15.5px;padding-left:20px;position:relative;color:var(--mute)}
-  .card li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:2px;border-radius:2px;background:var(--copper)}
-  .card.cold li::before{background:var(--glacier)}
-
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
-  @media (max-width:540px){.steps{grid-template-columns:1fr}}
-  .step{display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:1px solid var(--line);position:relative}
-  .step::after{content:"";position:absolute;top:-1px;left:0;width:36%;height:2px;background:var(--ember)}
-  .step .n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ember)}
-  .step p{font-size:15.5px;color:var(--mute)}
-
-  .duo{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:start}
-  @media (max-width:940px){.duo{grid-template-columns:1fr}}
-  .facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-  .fact{background:var(--ink-2);padding:26px}
-  .fact b{display:block;font-family:var(--display);font-size:52px;line-height:.9;font-variant-numeric:tabular-nums}
-  .fact.g b{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .fact span{display:block;margin-top:10px;font-size:13.5px;color:var(--mute)}
-
-  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
-  .chip{border:1px solid var(--line);background:var(--ink-2);border-radius:100px;padding:8px 16px;font-size:14.5px;color:var(--mute)}
-  .slot{border:1px dashed #A9C4E2;border-radius:18px;padding:26px;background:#EFF6FF;display:flex;flex-direction:column;gap:10px}
-  .slot .mono{color:var(--glacier)}
-  .slot p{color:var(--mute);font-size:15.5px}
-
-  .form-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,52px);align-items:start}
-  @media (max-width:940px){.form-grid{grid-template-columns:1fr}}
-  form{padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:16px}
-  label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
-  input,textarea{font-family:var(--body);font-size:16px;padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:var(--ink-3);color:var(--on-ink)}
-  input::placeholder,textarea::placeholder{color:#8C9BAC}
-  textarea{min-height:104px;resize:vertical}
-  input:focus-visible,textarea:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--glacier);outline-offset:2px}
-  .formnote{font-size:13px;color:var(--mute)}
-  .info-row{padding:20px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
-  .info-row:last-child{border-bottom:0}
-  .info-row a,.info-row b{font-family:var(--display);font-size:32px;line-height:1;text-decoration:none}
-  .info-row .mono{color:var(--mute)}
-
-  footer{background:var(--navy);color:#B9CDE9;padding:52px 0 120px;font-size:14px;position:relative}
-  footer b{color:#fff}
-  footer .in{display:flex;flex-direction:column;gap:11px}
-  footer b{color:var(--on-ink)}
-
-  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line)}
-  .callbar a{flex:1;text-align:center;text-decoration:none;padding:15px 10px;border-radius:100px;font-weight:600;font-size:16px}
-  .callbar .p{background:var(--ember);color:#fff}
-  .callbar .s{border:1px solid var(--line);color:var(--on-ink)}
-  @media (max-width:900px){.callbar{display:flex}}
-
-
-  /* ——— reviews ——— */
-  .rev-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(20px,3vw,38px);align-items:start}
-  @media (max-width:940px){.rev-grid{grid-template-columns:1fr}}
-  .score{background:var(--navy);color:#fff;border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:10px}
-  .score .big{font-family:var(--display);font-size:76px;line-height:.85;font-variant-numeric:tabular-nums}
-  .stars{display:flex;gap:4px}
-  .stars svg{width:19px;height:19px}
-  .score a{color:#9CC8FF;font-size:14px}
-  .bars{display:flex;flex-direction:column;gap:7px;margin-top:8px}
-  .brow{display:grid;grid-template-columns:26px 1fr 38px;gap:10px;align-items:center;font-size:12.5px;color:#B9CDE9;font-family:var(--mono)}
-  .btrack{height:6px;border-radius:6px;background:rgba(255,255,255,.16);overflow:hidden}
-  .btrack i{display:block;height:100%;background:#4FA3F7;border-radius:6px}
-  .revs{display:flex;flex-direction:column;gap:12px}
-  .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:8px}
-  .rev .who{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13.5px;color:var(--mute);font-family:var(--mono)}
-  .rev h3{font-size:23px}
-  .rev.low{border-color:#E4D2B4;background:#FFFCF5}
-  .answer{background:#EFF6FF;border:1px solid #C7DCF5;border-radius:16px;padding:20px 22px;font-size:15.5px;color:#20395C}
-  .answer b{color:var(--ember)}
-
-  /* ——— gallery ——— */
-  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media (max-width:900px){.gal{grid-template-columns:1fr 1fr}}
-  @media (max-width:560px){.gal{grid-template-columns:1fr}}
-  .shot{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .22s ease,border-color .22s ease}
-  .shot:hover{transform:translateY(-4px);border-color:#9CC4EE}
-  .shot .art{background:#F1F7FE;position:relative}
-  .shot .art svg{display:block;width:100%;height:auto}
-  .shot .tag{position:absolute;top:10px;left:10px;background:rgba(10,42,94,.9);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 9px;border-radius:100px}
-  .shot .cap{padding:14px 16px;display:flex;flex-direction:column;gap:3px}
-  .shot .cap b{font-family:var(--display);font-size:20px;line-height:1.05}
-  .shot .cap span{font-size:13.5px;color:var(--mute)}
-
-  /* ——— video ——— */
-  .video{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--navy);aspect-ratio:16/9}
-  .video canvas{display:block;width:100%;height:100%}
-  .vlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:clamp(20px,3vw,36px);background:linear-gradient(180deg,rgba(10,42,94,0) 45%,rgba(10,42,94,.86) 100%)}
-  .vlay h3{color:#fff;font-size:clamp(26px,3.4vw,42px);max-width:18ch}
-  .vlay p{color:#C6D8EE;font-size:15px;max-width:52ch}
-  .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.94);border:0;cursor:pointer;display:grid;place-items:center;transition:transform .18s ease}
-  .play:hover{transform:translate(-50%,-50%) scale(1.06)}
-  .play svg{width:26px;height:26px;margin-left:4px}
-  .vnote{margin-top:12px;font-size:13.5px;color:var(--mute)}
-
-
-  /* ——— mobil ——— */
-  @media (max-width:700px){
-    #pipeLayer{opacity:.95}
-    h1{font-size:clamp(34px,9vw,52px)}
-    h2{font-size:clamp(27px,7.4vw,38px)}
-    section{padding:58px 0}
-    .in{padding:0 20px}
-    .sec-top{margin-bottom:26px}
-    .lead{font-size:16.5px}
-    .bar-in{padding:11px 20px;gap:12px}
-    .bar .btn{display:none}
-    .brand b{font-size:17px;white-space:normal;line-height:1.15}
-    .brand span{display:block;font-size:9px}
-    .hero{padding-top:26px}
-    .hero-meta b{font-size:24px}
-    .fact b{font-size:40px}
-    .info-row a,.info-row b{font-size:26px!important}
-    .score .big{font-size:60px}
-    .rev h3{font-size:20px}
-    .shot .cap b{font-size:18px}
-    body{overflow-wrap:anywhere}
+  .bigwrap{background:var(--alt);border-bottom:1px solid var(--line)}
+  .biglist{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media (max-width:980px){.biglist{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:680px){
+    .biglist{grid-template-columns:repeat(2,1fr);gap:10px}
+    .biglist a{font-size:13.5px;padding:15px 13px 15px 15px;min-height:62px;line-height:1.3;
+      overflow-wrap:break-word;letter-spacing:-.01em}
+    .biglist a::after{display:none}
   }
+  .biglist a{position:relative;display:block;overflow:hidden;
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:19px 42px 19px 20px;
+    font-weight:700;font-size:15.5px;line-height:1.3;min-height:62px;
+    overflow-wrap:break-word;word-break:break-word;hyphens:auto;
+    box-shadow:0 12px 26px -22px rgba(7,32,63,.5);
+    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+  .biglist a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);
+    transform:scaleY(0);transform-origin:50% 50%;transition:transform .18s ease}
+  .biglist a::after{content:"\2192";position:absolute;right:15px;top:50%;transform:translateY(-50%);
+    color:var(--blue);font-weight:700;opacity:.45;transition:opacity .16s ease,right .16s ease}
+  .biglist a:hover{transform:translateY(-2px);border-color:#BBD1F0;box-shadow:0 26px 42px -28px rgba(7,32,63,.55)}
+  .biglist a:hover::before{transform:scaleY(1)}
+  .biglist a:hover::after{opacity:1;right:11px}
+  @media (max-width:680px){
+    .biglist{grid-template-columns:repeat(2,1fr);gap:10px}
+    .biglist a{font-size:13.5px;padding:15px 13px;min-height:60px;letter-spacing:-.012em}
+  }
+  @media (max-width:430px){
+    .biglist a{font-size:12.6px;padding:14px 11px;min-height:58px;letter-spacing:-.015em}
+    .biglist a::after{display:none}
+  }
+  .bigwrap .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:20px}
+  .bigwrap .count{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 
-  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:880px){.grid3{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.grid3{grid-template-columns:1fr}}
+  .pillar{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px 26px;background:#fff;
+    display:flex;flex-direction:column;gap:10px;overflow:hidden;
+    box-shadow:0 14px 30px -24px rgba(7,32,63,.55);transition:transform .18s ease,box-shadow .18s ease}
+  .pillar:hover{transform:translateY(-3px);box-shadow:0 30px 50px -32px rgba(7,32,63,.6)}
+  .pillar::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
+    background:linear-gradient(90deg,var(--blue),#4C8DF0)}
+  .pillar.cu::before{background:linear-gradient(90deg,#B4703C,#E3A972)}
+  .pillar .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+  .pillar.cu .k{color:#A25E2A}
+  .pillar p{color:var(--mute);font-size:15.5px}
+
+
+
+  .card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);display:flex;flex-direction:column;
+    box-shadow:0 12px 26px -22px rgba(7,32,63,.5);transition:transform .18s ease,box-shadow .18s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card .pic{position:relative;height:180px;background:linear-gradient(140deg,#0B2A57,#1656C8 60%,#4C8DF0);overflow:hidden}
+  .card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+  .card:hover .pic img{transform:scale(1.05)}
+  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:7px}
+  .card p{color:var(--mute);font-size:15px}
+
+  .all{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  @media (max-width:880px){.all{grid-template-columns:repeat(2,1fr)}}
+  .all span{border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14.5px;background:#fff;
+    box-shadow:0 8px 18px -16px rgba(7,32,63,.45)}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:9px;
+    box-shadow:0 12px 26px -22px rgba(7,32,63,.5)}
+  .step .n{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--blue)}
+  .step p{color:var(--mute);font-size:15px}
+
+  .akut{background:linear-gradient(96deg,#8E2C21,#B8452E);color:#fff;border-radius:var(--r);padding:26px 28px;display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center;justify-content:space-between}
+  .akut h3{color:#fff;font-size:22px}
+  .akut p{color:#FFD9CF;font-size:15.5px;max-width:46ch}
+  .akut .btn{background:#fff;color:#8E2C21}
+  .akut .btn:hover{background:#FFEDE7}
+
+  .mos{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:8px;grid-auto-flow:dense}
+  @media (max-width:880px){.mos{grid-template-columns:repeat(2,1fr)}}
+  .mos figure{margin:0;position:relative;overflow:hidden;border-radius:12px;background:linear-gradient(140deg,#0B2A57,#1656C8 60%,#4C8DF0)}
+  .mos img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+  .mos figure:hover img{transform:scale(1.06)}
+  .mos .tall{grid-row:span 2}
+  .mos figcaption{position:absolute;left:9px;bottom:9px;background:rgba(4,16,38,.72);color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+
+  .revs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media (max-width:760px){.revs{grid-template-columns:1fr}}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:11px;
+    box-shadow:0 12px 26px -22px rgba(7,32,63,.5)}
+  .stars{color:#00B67A;font-size:15px;letter-spacing:2px}
+  .rev q{font-size:17px;font-weight:600;quotes:"»" "«"}
+  .rev .who{color:var(--mute);font-size:14px}
+  .score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .score b{font-size:34px;letter-spacing:-.03em}
+
+  .cta{background:var(--navy);color:#fff}
+  .cta h2{color:#fff}
+  .cta .lead{color:#C6D9F2}
+  .cwrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media (max-width:860px){.cwrap{grid-template-columns:1fr}}
+  form{background:#fff;border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:12px;color:var(--ink)}
+  label{font-size:14px;font-weight:700;display:flex;flex-direction:column;gap:6px}
+  input,textarea{font-family:var(--body);font-size:16px;border:1px solid var(--line);border-radius:10px;padding:13px 14px;background:#fff;color:var(--ink);min-height:48px}
+  textarea{min-height:104px;resize:vertical}
+  .facts{display:flex;flex-direction:column;gap:12px;font-size:16px}
+  .facts a{border-bottom:1px solid rgba(255,255,255,.3);display:inline-flex;align-items:center;min-height:44px}
+  .facts .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8FB4E8;display:block}
+
+  footer{background:#061A34;color:#9FBBDE;font-size:14.5px;padding:34px 0}
+  footer .in{display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between}
+  footer b{color:#fff}
+  footer a{display:inline-flex;align-items:center;min-height:40px;border-bottom:1px solid rgba(159,187,222,.35)}
+  #garanti .lead a{display:inline-flex;align-items:center;min-height:40px}
+  html.rvon .rv{opacity:0;transform:translateY(20px)}
+  html.rvon .rv.seen{opacity:1;transform:none;
+    transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
+
+  /* midt-CTA */
+  .cta2{background:linear-gradient(100deg,#0F3F97,#1656C8 52%,#2E76E8);color:#fff;position:relative;overflow:hidden}
+  .cta2::after{content:"";position:absolute;right:-8%;top:-40%;width:52%;height:180%;
+    background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.14),rgba(255,255,255,0) 62%)}
+  .cta2 .in{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:20px 34px;align-items:center;
+    justify-content:space-between;padding-top:46px;padding-bottom:46px}
+  .cta2 h2{color:#fff;max-width:19ch}
+  .cta2 p{color:#D9E7FB;font-size:16px;max-width:46ch;margin-top:8px}
+  .cta2 .btn{background:#fff;color:var(--navy)}
+  .cta2 .btn:hover{background:#EAF1FE}
+  .cta2 .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+  .cta2 .btn.ghost:hover{background:rgba(255,255,255,.14)}
+
+  /* accordions */
+  .accgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;align-items:start}
+  @media (max-width:820px){.accgrid{grid-template-columns:1fr}}
+  .acc{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;
+    box-shadow:0 12px 26px -22px rgba(7,32,63,.5);transition:border-color .16s ease,box-shadow .16s ease}
+  .acc[open]{border-color:#BBD1F0;box-shadow:0 22px 38px -28px rgba(7,32,63,.55)}
+  .acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;
+    padding:19px 20px;font-weight:800;font-size:16.5px;min-height:62px}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary:hover{background:#F7FAFF}
+  .acc .num{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:#A25E2A;flex:none}
+  .acc .num.bl{color:var(--blue)}
+  .acc summary::after{content:"+";margin-left:auto;font-size:23px;line-height:1;font-weight:700;color:var(--blue);flex:none}
+  .acc[open] summary::after{content:"\2013"}
+  @media (max-width:560px){
+    .acc summary{flex-wrap:wrap;gap:4px 10px;padding:16px 18px;font-size:15.5px;line-height:1.3}
+    .acc .num{flex:1 0 100%;order:-1}
+    .acc summary::after{position:absolute;right:16px;top:16px}
+    .acc{position:relative}
+  }
+  .acc .txt{padding:0 20px 20px;color:var(--mute);font-size:15.5px;animation:accIn .26s ease}
+  @keyframes accIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+
+  .stats{background:var(--navy);color:#fff}
+  .stats .in{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  @media (max-width:940px){.stats .in{grid-template-columns:repeat(2,1fr);gap:26px 18px}}
+  .stat{display:flex;flex-direction:column;gap:4px}
+  .stat b{font-size:clamp(32px,4.2vw,52px);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+  .stat span{font-size:14px;color:#A9C8F2;max-width:22ch}
+
+  .tl{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:760px){.tl{grid-template-columns:1fr;gap:16px}}
+  .tl::before{content:"";position:absolute;left:6%;right:6%;top:26px;height:2px;
+    background:linear-gradient(90deg,var(--blue),#B4703C);opacity:.35}
+  @media (max-width:760px){.tl::before{display:none}}
+  .tl .n{width:54px;height:54px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;
+    font-family:var(--mono);font-size:15px;position:relative;z-index:2;box-shadow:0 12px 26px -14px rgba(22,86,200,.9)}
+  .tl .c{display:flex;flex-direction:column;gap:9px;padding-top:16px}
+  .tl h3{font-size:20px}
+  .tl p{color:var(--mute);font-size:15px}
+
+  .erows{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  @media (max-width:820px){.erows{grid-template-columns:1fr}}
+  .erow{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line);
+    transition:transform .16s ease}
+  .erow:hover{transform:translateX(4px)}
+  .erow .num{font-family:var(--mono);font-size:12px;color:#A25E2A;letter-spacing:.14em;padding-top:5px}
+  .erow h3{font-size:19px;margin-bottom:5px}
+  .erow p{color:var(--mute);font-size:15px}
+
+  .revdark{background:#07203F;color:#fff}
+  .revdark h2{color:#fff}
+  .revdark .lead{color:#C6D9F2}
+  .revdark .score b{font-size:clamp(52px,7vw,86px);line-height:.9;letter-spacing:-.05em}
+  .revdark .rev{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);box-shadow:none;color:#fff}
+  .revdark .rev q{font-size:19px}
+  .revdark .rev .who{color:#9FC3F0}
+  .revdark .rev::before{content:"\201C";display:block;font-size:46px;line-height:.55;color:#4C8DF0;opacity:.75}
+
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}
+    html.rvon .rv{opacity:1!important;transform:none!important}}
 </style>
+</head>
+<body>
 
-<svg id="pipeLayer" aria-hidden="true">
-  <defs>
-    <linearGradient id="pgrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7FBEF7"/><stop offset="0.5" stop-color="#2E82E6"/><stop offset="1" stop-color="#0A2A5E"/>
-    </linearGradient>
-    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  <path id="pipeGhost" fill="none" stroke="#E4EDF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
-  <path id="pipeMain" fill="none" stroke="url(#pgrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
-  <g id="joints"></g>
-  <circle id="drop" r="7" fill="#1656C8" filter="url(#glow)" opacity="0"></circle>
-</svg>
-
-<div id="page">
-  <p class="ribbon">Designforslag udarbejdet af Yurii · ikke firmaets officielle hjemmeside</p>
-
-  <header class="bar">
-    <div class="bar-in">
-      <div class="brand">
-        <b>Vestsjællands Gas · VVS · Blik</b>
-        <span>Aut. VVS-installatør · Skælskør</span>
-      </div>
-      <nav>
-        <a href="#ydelser">Ydelser</a><a href="#varme">Varmepumper</a><a href="#galleri">Galleri</a><a href="#anmeldelser">Anmeldelser</a><a href="#omraade">Område</a><a href="#kontakt">Kontakt</a>
-      </nav>
-      <a class="btn btn-hot" href="tel:+4528511070">Ring 28 51 10 70</a>
-    </div>
-  </header>
-
-  <section class="hero" data-anchor>
-    <div class="in">
-      <p class="mono kicker">25 år i Skælskør · Vestsjælland</p>
-      <h1>
-        <span class="h-line"><span>Varmen <span class="grad">indenfor</span>.</span></span>
-        <span class="h-line"><span>Zinken udenfor.</span></span>
-        <span class="h-line"><span>Samme håndværker.</span></span>
-      </h1>
-      <p class="hero-sub fade">Autoriseret VVS-installatør og blikkenslager i samme firma. Vi tager varmepumpen, badeværelset, tagrenderne og facaden — så du ikke skal koordinere tre firmaer og tre tidsplaner.</p>
-      <div class="hero-cta fade">
-        <a class="btn btn-hot" href="#kontakt">Få et uforpligtende tilbud</a>
-        <a class="btn btn-line" href="tel:+4528511070">Ring 28 51 10 70</a>
-      </div>
-      <div class="hero-meta fade">
-        <div><b>Samme hverdag</b><span>Vi vender tilbage på din henvendelse</span></div>
-        <div><b>Fast tilbud</b><span>Skriftligt, før vi går i gang</span></div>
-        <div><b data-count="25">25</b><span>år med gas, VVS og blik i Vestsjælland</span></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="strip">
-    <div class="track-m" id="marquee">
-      <span>Autoriseret VVS-installatør</span><span>VE-godkendt</span><span>Tekniq Garanti</span><span>Rheinzink-kvalificeret</span><span>Dybkær 3, 4230 Skælskør</span><span>CVR 42202967</span>
-      <span>Autoriseret VVS-installatør</span><span>VE-godkendt</span><span>Tekniq Garanti</span><span>Rheinzink-kvalificeret</span><span>Dybkær 3, 4230 Skælskør</span><span>CVR 42202967</span>
-    </div>
+<header class="top">
+  <div class="in">
+    <a class="brand" href="#top" aria-label="Vestsjællands Gas, VVS og Blik — forside">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#1656C8"/><path d="M12 11v10a7 7 0 0 0 7 7h9" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>Vestsjællands VVS &amp; Blik</b><span class="sub">Aut. VVS-installatør · Skælskør</span></span>
+    </a>
+    <nav class="nav" aria-label="Hovedmenu">
+      <a href="#ydelser">Vi tilbyder</a>
+      <a href="#energi">Vedvarende energi</a>
+      <a href="#garanti">Din garanti</a>
+      <a href="#galleri">Galleri</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="tel" href="tel:+4528511070">Ring 28 51 10 70</a>
   </div>
+</header>
 
-  <section id="ydelser" data-anchor>
-    <div class="in">
-      <div class="sec-top reveal">
-        <p class="mono" style="color:var(--ember)">Hvad vi laver</p>
-        <h2>To fag, ét firma, én regning</h2>
-        <p class="lead">De fleste boligejere ringer til én VVS'er om varmen og til en anden om taget. Her får du begge dele fra samme værksted i Skælskør — og den samme mand tager telefonen, når du ringer bagefter.</p>
-      </div>
-      <div class="cards">
-        <div class="card panel cold reveal">
-          <p class="mono" style="color:var(--glacier)">Indenfor</p>
-          <h3>VVS, varme og bad</h3>
-          <p class="lead">Alt der har med vand og varme at gøre — fra en utæt vandhane til en helt ny varmekilde.</p>
-          <ul>
-            <li>Varmepumper</li><li>Jordvarme</li><li>Solvarme</li><li>Gulvvarme</li>
-            <li>Gas- og oliefyrsservice</li><li>Stokerkedler og pillefyr</li><li>Kedelcentraler</li><li>Badeværelse</li>
-            <li>Køkken</li><li>Rør og fittings</li><li>BWT vandbehandling</li><li>Ventilationsanlæg</li>
-          </ul>
+<main id="top">
+
+  <section class="heroWrap hero" id="heroWrap">
+    <div class="heroSticky">
+      <img class="heroFallback" id="heroStill" alt="Zinktag med stående false" aria-hidden="true">
+      <canvas id="heroGL" aria-label="3D: vandets vej fra tag til kloak"></canvas>
+      <span class="veil"></span>
+      <div class="in">
+        <h1>VVS og blik<br>i samme firma</h1>
+        <p class="sub">Specialister i vedvarende energi. Vand, varme, bad og køkken indenfor — tag, tagrender, facade og zink udenfor. Kvalitetsbevidst arbejde til gode priser.</p>
+        <div class="row" style="justify-content:center">
+          <a class="btn" href="#kontakt">Få et uforpligtende tilbud</a>
+          <a class="btn ghost" href="tel:+4528511070">Ring 28 51 10 70</a>
         </div>
-        <div class="card panel hot reveal">
-          <p class="mono" style="color:var(--ember)">Udenfor</p>
-          <h3>Blikkenslager og tag</h3>
-          <p class="lead">Zink og metal er et selvstændigt håndværk. Vi er Rheinzink-kvalificerede — det kan ikke alle VVS-firmaer skrive.</p>
-          <ul>
-            <li>Tagrender</li><li>Nedløbsrør</li><li>Tagbeklædning</li><li>Facadebeklædning</li>
-            <li>Zinkarbejde i Rheinzink</li><li>Inddækninger og skotrender</li>
-          </ul>
-          <p class="lead" style="margin-top:auto">Skal taget alligevel skiftes, mens varmepumpen sættes op? Så laver vi begge dele i samme forløb — ét stillads, én opstart, én afslutning.</p>
+        <div class="marks">
+          <span><i></i>Autoriseret VVS-installatør</span>
+          <span><i></i>VE-godkendt</span>
+          <span><i></i>Tekniq Garanti</span>
+          <span><i></i>Rheinzink-certificeret</span>
+          <span><i></i>Vagtordning</span>
+        </div>
+      </div>
+      <div class="track" aria-hidden="true">
+        <span class="now" id="stNow">Taget — zinktag og håndlavet tagrende i kobber</span>
+        <div class="bar"><i id="barI"></i></div>
+        <div class="ms" id="stMs"><b>Tag</b><b>Rør i huset</b><b>Gulvvarme</b><b>Kloak</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bigwrap" id="ydelser-liste" aria-label="Alle ydelser">
+    <div class="in">
+      <div class="head">
+        <h2>Det tilbyder vi</h2>
+        <span class="count">16 ydelser · ét firma · én regning</span>
+      </div>
+      <div class="biglist">
+        <a href="#energi">Varmepumper</a>
+        <a href="#energi">Solvarme</a>
+        <a href="#energi">Jordvarme</a>
+        <a href="#energi">Varmeanlæg</a>
+        <a href="#energi">Gulvvarme</a>
+        <a href="#energi">Pillefyr og stokerkedler</a>
+        <a href="#akut">Gas- og oliefyrsservice</a>
+        <a href="#ydelser">Kedelcentraler</a>
+        <a href="#energi">Ventilationsanlæg</a>
+        <a href="#energi">BWT blødgøringsanlæg</a>
+        <a href="#ydelser">Rør &amp; fittings</a>
+        <a href="#ydelser">Badeværelse</a>
+        <a href="#ydelser">Køkken</a>
+        <a href="#ydelser">Tagbeklædning</a>
+        <a href="#ydelser">Facadebeklædning</a>
+        <a href="#ydelser">Tagrender og nedløbsrør</a>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="in stack" style="gap:26px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Hvad har du brug for?</p>
+        <h2>Vi er specialister i vedvarende energi</h2>
+        <p class="lead">Tre fagområder under samme tag. Du slipper for at koordinere flere håndværkere, og du får én regning i stedet for tre.</p>
+      </div>
+      <div class="grid3">
+        <div class="pillar">
+          <span class="k">Varmeanlæg</span>
+          <h3>Varme der kan betale sig</h3>
+          <p>Uanset om det er varmepumpe, solvarme, jordvarme, gas eller andet, er vi klar med et kvalitetsbevidst tilbud — både på nyanlæg, renovering og tilsyn. Vi har naturligvis også vagtordning.</p>
+        </div>
+        <div class="pillar">
+          <span class="k">VVS-installatør</span>
+          <h3>Vand, varme og sanitet</h3>
+          <p>Kvalificeret og autoriseret hjælp til alle projekter inden for vand-, varme- eller sanitetsinstallationer — i hjemmet, i institutionen eller i virksomheden.</p>
+        </div>
+        <div class="pillar">
+          <span class="k">Blikkenslager</span>
+          <h3>Tag, facade og render</h3>
+          <p>Naturskifer samt blikmaterialer som zink og kobber kræver præcision og godt håndværk. Dit tag, din facade og dine tagrender står flot mange år frem.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="varme" data-anchor>
+  <section id="ydelser">
+    <div class="in stack" style="gap:26px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Vi tilbyder</p>
+        <h2>Mange gode løsninger</h2>
+        <p class="lead">Til private, erhverv og offentlige institutioner i hele Vestsjælland.</p>
+      </div>
+      <div class="grid3">
+        <article class="card">
+          <div class="pic"><img data-k="bath" alt="Badeværelse udført af Vestsjællands VVS og Blik" loading="lazy"></div>
+          <div class="body"><h3>Badeværelse</h3><p>Fra det helt klassiske til det mest moderne. Skal du bruge det rette kar, spa eller en særlig bruser, hjælper vi med at finde løsningen — og leverer et professionelt stykke arbejde til den rette pris.</p></div>
+        </article>
+        <article class="card">
+          <div class="pic"><img data-k="pipes" alt="Rørføring i kobber" loading="lazy"></div>
+          <div class="body"><h3>Rør &amp; fittings</h3><p>Som autoriseret VVS-installatør klarer vi alt fra små reparationer og udskiftning af enkelte rør og vinkler til helt nye anlæg og rørsystemer. Skal rør flyttes ved en ombygning, klarer vi også det.</p></div>
+        </article>
+        <article class="card">
+          <div class="pic"><img data-k="outdoor" alt="Udedel af luft til vand-varmepumpe" loading="lazy"></div>
+          <div class="body"><h3>Varmepumper</h3><p>En luft til vand-varmepumpe varmer både bolig og brugsvand med varmen fra udeluften. Støjsvag, med både ude- og indestyring, og kan ses som en totalløsning.</p></div>
+        </article>
+        <article class="card">
+          <div class="pic"><img data-k="boiler" alt="Kedelcentral med gaskedler" loading="lazy"></div>
+          <div class="body"><h3>Kedelcentraler</h3><p>Store varmeløsninger som varmecentraler: opbygning, udskiftning, optimering og servicering. En udskiftning tjener sig ofte ind over en årrække.</p></div>
+        </article>
+        <article class="card">
+          <div class="pic"><img data-k="gutter" alt="Håndlavet tagrende i kobber" loading="lazy"></div>
+          <div class="body"><h3>Tagrender og nedløb</h3><p>Vi leverer og monterer tagrender og nedløbsrør i zink, kobber og aluminium — vedligeholdelsesfrie materialer med livslang levetid, modsat plast, der knækker og revner med årene.</p></div>
+        </article>
+        <article class="card">
+          <div class="pic"><img data-k="zinkroof" alt="Tagbeklædning i zink" loading="lazy"></div>
+          <div class="body"><h3>Tag- og facadebeklædning</h3><p>Kobbertag og zinktag har en levetid på minimum 80 år og er ekstremt robuste. Kobber patinerer irgrønt af regn og vind, zink går fra skinnende til mat — og facaden står som ny mange år frem.</p></div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta2">
     <div class="in">
-      <div class="duo">
-        <div class="sec-top reveal" style="margin-bottom:0">
-          <p class="mono" style="color:var(--glacier)">Varmepumper</p>
-          <h2>Skal oliefyret <span class="grad">ud i år</span>?</h2>
-          <p class="lead">Vi er VE-godkendt installatør. Det er et krav, hvis du vil søge tilskud til en varmepumpe — og præcis den detalje opdager folk for sent, når håndværkeren er valgt efter laveste timepris.</p>
-          <p class="lead">Vi kommer forbi, ser på huset og regner på, hvad der giver mening hos netop dig: luft/vand, jordvarme eller noget helt tredje. Så lægger vi et fast tilbud på bordet. Passer en varmepumpe ikke til huset, siger vi det — i stedet for at sælge dig en.</p>
-          <div class="hero-cta" style="margin-top:8px"><a class="btn btn-hot" href="#kontakt">Book et besøg</a></div>
-        </div>
-        <div class="facts reveal">
-          <div class="fact g"><b data-count="25">25</b><span>år i faget i Vestsjælland</span></div>
-          <div class="fact"><b data-count="2">2</b><span>fag i ét firma: VVS og blik</span></div>
-          <div class="fact"><b>VE</b><span>godkendt — krav ved tilskud</span></div>
-          <div class="fact"><b>Tekniq</b><span>garanti på vores arbejde</span></div>
-        </div>
+      <div>
+        <h2>Skal vi kigge på din opgave?</h2>
+        <p>Det koster ikke noget at få set på opgaven og få prisen på skrift. Vi svarer samme hverdag — og rykker ud med det samme, hvis det haster.</p>
+      </div>
+      <div class="row">
+        <a class="btn" href="#kontakt">Få et uforpligtende tilbud</a>
+        <a class="btn ghost" href="tel:+4528511070">Ring 28 51 10 70</a>
       </div>
     </div>
   </section>
 
-  <section id="forloeb" data-anchor>
+  <section class="stats" aria-label="Tal om firmaet">
     <div class="in">
-      <div class="sec-top reveal">
-        <p class="mono" style="color:var(--ember)">Sådan foregår det</p>
-        <h2>Fire skridt, ingen overraskelser</h2>
-        <p class="lead">Den hyppigste klage over håndværkere er ikke prisen. Det er, at man ikke ved, hvad der sker — og hvornår. Derfor kører vi altid det samme forløb.</p>
+      <div class="stat rv"><b data-to="25">25</b><span>års erfaring i faget</span></div>
+      <div class="stat rv"><b data-to="16">16</b><span>ydelser under samme tag</span></div>
+      <div class="stat rv"><b data-to="150000" data-fmt="dk">150.000</b><span>kr. dækket af Tekniq Garanti</span></div>
+      <div class="stat rv"><b data-to="80">80</b><span>års levetid på kobber- og zinktag</span></div>
+      <div class="stat rv"><b data-to="40">40</b><span>års materialegaranti på Rheinzink</span></div>
+    </div>
+  </section>
+
+  <section id="energi" class="alt">
+    <div class="in stack" style="gap:26px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Vedvarende energi</p>
+        <h2>Grøn varme, der giver mening i regnskabet</h2>
+        <p class="lead">Vi rådgiver om, hvad der reelt kan betale sig i netop dit hus — og siger fra, hvis det ikke kan.</p>
       </div>
-      <div class="steps">
-        <div class="step reveal"><span class="n">01</span><h3>Du ringer eller skriver</h3><p>Fortæl kort, hvad det handler om. Vi vender tilbage samme hverdag — også hvis svaret er, at opgaven ikke er noget for os.</p></div>
-        <div class="step reveal"><span class="n">02</span><h3>Vi ser på opgaven</h3><p>Vi kigger på huset, måler op og spørger ind til, hvad du gerne vil have ud af det. Besøget koster dig ikke noget.</p></div>
-        <div class="step reveal"><span class="n">03</span><h3>Du får et fast tilbud</h3><p>Skriftligt, med materialer, timer og tidsplan. Du kan læse det i ro og mag, inden du siger ja.</p></div>
-        <div class="step reveal"><span class="n">04</span><h3>Vi udfører arbejdet</h3><p>Aftalte dage, ryddet op efter os og Tekniq Garanti på arbejdet. Ét telefonnummer hele vejen.</p></div>
+      <div class="accgrid">
+        <details class="acc rv"><summary><span class="num">01</span>Solvarme</summary><div class="txt">Vi monterer solfangere, så det passer til huset. Ved ombygning kan de tænkes ind fra starten — vi er med fra første skitse, til anlægget kører. Let at kombinere med husets øvrige vand- og varmeanlæg.</div></details>
+        <details class="acc rv"><summary><span class="num">02</span>Jordvarme</summary><div class="txt">Det øvre jordlag lagrer solens varme hen over sommeren, og energien forsvinder ikke om vinteren. Jordvarme leverer energi i ubegrænsede mængder og kan reducere fyringsudgiften markant i forhold til olie og naturgas.</div></details>
+        <details class="acc rv"><summary><span class="num">03</span>Pillefyr og stoker</summary><div class="txt">Med en stokerkedel kan du halvere varmeregningen og fyre med træpiller, korn, halm eller flis. Især en fordel uden for de netbundne energisystemer — og oplagt, når den gamle olietank skal skiftes.</div></details>
+        <details class="acc rv"><summary><span class="num">04</span>Ventilation</summary><div class="txt">Nye huse er ofte så tætte, at mekanisk ventilation er nødvendig. Dårligt indeklima giver husstøvmider og grobund for skimmelsvamp. Anlægget skifter løbende luften ud med filtreret, frisk luft.</div></details>
+        <details class="acc rv"><summary><span class="num">05</span>BWT — kalkfrit vand</summary><div class="txt">Blødgøringsanlægget sidder lige efter vandmåleren og leverer kalkfrit vand til hele hjemmet. Alle BWT-anlæg er godkendt til drikkevand. Vi sætter også filter på varmeanlægget.</div></details>
+        <details class="acc rv"><summary><span class="num">06</span>Gulvvarme</summary><div class="txt">Gulvvarme fordeler varmen jævnt og er behagelig at gå på. Du slipper for radiatorer og har lettere ved at indrette hjemmet.</div></details>
       </div>
     </div>
   </section>
 
-  <section id="omraade" data-anchor>
+  <section id="akut" style="padding-top:0">
     <div class="in">
-      <div class="duo">
-        <div class="sec-top reveal" style="margin-bottom:0">
-          <p class="mono" style="color:var(--ember)">Hvor vi kører</p>
-          <h2>Lokalt håndværk i Vestsjælland</h2>
-          <p class="lead">Værkstedet ligger på Dybkær 3 i Skælskør, og vi kører i lokalområdet. Det betyder korte køretider — og at vi kan komme forbi igen, hvis der er noget bagefter. Ikke om fjorten dage.</p>
-          <div class="chips">
-            <span class="chip">Skælskør</span><span class="chip">Slagelse</span><span class="chip">Korsør</span>
-            <span class="chip">Sorø</span><span class="chip">Dalmose</span><span class="chip">Boeslunde</span>
-            <span class="chip">Vemmelev</span><span class="chip">Fuglebjerg</span><span class="chip">Bisserup</span>
+      <div class="akut">
+        <div class="stack" style="gap:7px">
+          <h3>Vagtordning — gas- og oliefyrsservice</h3>
+          <p>Vi går grundigt og engageret til enhver opgave med gas- og oliefyrsservice og sørger for, at fyret fungerer optimalt. Et effektivt varmesystem gavner både trivsel og pengepung.</p>
+        </div>
+        <a class="btn" href="tel:+4540507057">Vagttelefon 40 50 70 57</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="saadan" class="alt">
+    <div class="in stack" style="gap:26px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Sådan gør vi</p>
+        <h2>Prisen står på skrift, før vi går i gang</h2>
+        <p class="lead">Den hyppigste klage over håndværkere er en regning, der er større end det, man troede, man havde aftalt. Derfor får du prisen skriftligt, og vi ringer, hvis noget undervejs ændrer den.</p>
+      </div>
+      <div class="tl">
+        <div class="rv"><span class="n">01</span><div class="c"><h3>Du ringer eller skriver</h3><p>Fortæl kort, hvad der er galt. Er det akut, rykker vi ud hurtigst muligt. Ellers aftaler vi et besøg.</p></div></div>
+        <div class="rv"><span class="n">02</span><div class="c"><h3>Vi ser på opgaven</h3><p>Vi kommer forbi og kigger. Det koster ikke noget at få set på en opgave og få en pris.</p></div></div>
+        <div class="rv"><span class="n">03</span><div class="c"><h3>Skriftligt tilbud</h3><p>Du får prisen på skrift med, hvad der er med, og hvad der ikke er. Ændrer noget sig undervejs, hører du det fra os først.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="garanti">
+    <div class="in stack" style="gap:26px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Din garanti</p>
+        <h2>Hvordan sikres du bedst kvalitet i arbejdet?</h2>
+        <p class="lead">Tre ordninger står bag arbejdet: Tekniq Garanti, VE-godkendelse og Rheinzink-certificering.</p>
+      </div>
+      <div class="accgrid" style="grid-template-columns:1fr">
+        <details class="acc rv"><summary><span class="num">Tekniq Garanti</span>Dansk VVS Garanti — op til 150.000 kr.</summary><div class="txt">Som medlem af TEKNIQ er vi omfattet af Dansk VVS Garanti. Ordningen sikrer, at en privat forbruger, der får medhold ved Ankenævnet for Tekniske Installationer, får kendelsen opfyldt — også hvis installatøren ikke kan eller vil. Den dækker udgifter op til 150.000 kr. inkl. moms.</div></details>
+        <details class="acc rv"><summary><span class="num">VE-godkendt</span>Blandt de bedste på vedvarende energi</summary><div class="txt">VE-godkendelsen er en mærkningsordning for de virksomheder, der er blandt de bedste til at installere små vedvarende energianlæg — varmepumper, solceller, solvarme, biomassekedler og -ovne. Den dokumenterer, at anlægget installeres korrekt, så du får det største udbytte af det.</div></details>
+        <details class="acc rv"><summary><span class="num">Rheinzink</span>40 års materialegaranti på zink</summary><div class="txt">Rheinzink-certificeringen samler de dygtigste blikkenslagere i Danmark og kræver videreuddannelse samt arbejde efter Rheinzinks tekniske vejledninger. Rheinzink er de eneste, der yder 40 års materialegaranti på zink.</div></details>
+      </div>
+      <p class="lead" style="font-size:15px">Læs mere hos <a href="https://www.tekniq.dk" style="border-bottom:1px solid var(--line)">tekniq.dk</a>, <a href="https://www.el-vvs-anke.dk" style="border-bottom:1px solid var(--line)">el-vvs-anke.dk</a> og <a href="https://www.rheinzink.dk" style="border-bottom:1px solid var(--line)">rheinzink.dk</a>.</p>
+    </div>
+  </section>
+
+  <section id="galleri" class="alt">
+    <div class="in stack" style="gap:24px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Galleri</p>
+        <h2>Lidt inspiration fra vores hverdag</h2>
+        <p class="lead">Ingen arkivbilleder. Alle billeder herunder er opgaver, vi selv har udført på Vestsjælland.</p>
+      </div>
+      <div class="mos">
+        <figure class="tall"><img data-k="gutter" alt="Håndlavet kobbertagrende" loading="lazy"><figcaption>Kobbertagrende</figcaption></figure>
+        <figure><img data-k="zinkroof" alt="Zinktag" loading="lazy"><figcaption>Zinktag</figcaption></figure>
+        <figure><img data-k="bath" alt="Badeværelse" loading="lazy"><figcaption>Badeværelse</figcaption></figure>
+        <figure class="tall"><img data-k="downpipe" alt="Nedløbsrør i kobber" loading="lazy"><figcaption>Nedløb i kobber</figcaption></figure>
+        <figure><img data-k="terrace" alt="Zinkinddækning ved terrasse" loading="lazy"><figcaption>Inddækning</figcaption></figure>
+        <figure><img data-k="tank" alt="Varmtvandsbeholder" loading="lazy"><figcaption>Varmt vand</figcaption></figure>
+        <figure><img data-k="gable" alt="Gavl beklædt i antrazink" loading="lazy"><figcaption>Gavl i zink</figcaption></figure>
+        <figure><img data-k="indoor" alt="Indedel af varmepumpe" loading="lazy"><figcaption>Varmepumpe</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="anmeldelser" class="revdark">
+    <div class="in stack" style="gap:24px">
+      <div class="stack" style="gap:10px">
+        <p class="eyebrow">Anmeldelser</p>
+        <h2>Hvad kunderne skriver</h2>
+        <div class="score"><b>3,7</b><span class="stars">★★★★</span><span class="lead" style="font-size:15px">TrustScore på Trustpilot · 4 anmeldelser · 75 % giver 5 stjerner</span></div>
+      </div>
+      <div class="revs">
+        <blockquote class="rev"><span class="stars">★★★★★</span><q>Service over gennemsnittet</q><span class="who">Jannick Lauge Jensen · Trustpilot, 6. maj 2026</span></blockquote>
+        <blockquote class="rev"><span class="stars">★★★★★</span><q>Meget tilfreds</q><span class="who">piet bierlich · Trustpilot, 9. december 2024</span></blockquote>
+      </div>
+      <p class="lead" style="font-size:15px">Vi har også fået kritik af en regning, der endte over et mundtligt overslag. Det er præcis derfor, prisen nu altid kommer på skrift, før arbejdet går i gang.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="in stack" style="gap:16px">
+      <p class="eyebrow">Om os</p>
+      <h2>Kvalitetsbevidst arbejde til gode priser</h2>
+      <p class="lead">Firmaet drives af <b>Pau Nowak</b> fra Dybkær 3 i Skælskør. Vi kører til Korsør, Slagelse, Sorø, Næstved, Dalmose, Boeslunde, Bisserup og resten af egnen — for private, erhverv og offentlige institutioner. Er du i tvivl, om vi kommer til dig, så ring; så siger vi det ligeud i stedet for at sende dig en regning for kørsel til den anden ende af Sjælland.</p>
+      <p class="lead">Kvalitet er et nøgleord for os. Det gælder i det arbejde, vi laver, i de produkter, vi leverer, og i dialogen med kunden. Kort sagt: vi står for kvalitet hele vejen.</p>
+      <p class="lead">Når det hele bare giver lidt mere mening: vi er glade for at være med til at sponsorere <b>De Danske Hospitalsklovne</b>.</p>
+    </div>
+  </section>
+
+  <section id="kontakt" class="cta">
+    <div class="in">
+      <div class="cwrap">
+        <div class="stack" style="gap:16px">
+          <p class="eyebrow" style="color:#8FB4E8">Kontakt os</p>
+          <h2>Har du brug for et tilbud?</h2>
+          <p class="lead">Skriv kort, hvad opgaven er. Vi svarer samme hverdag. Haster det, så ring — telefonen er hurtigere end formularen.</p>
+          <div class="facts">
+            <span><span class="k">Telefon</span><a href="tel:+4528511070">28 51 10 70</a></span>
+            <span><span class="k">Vagttelefon · gas og oliefyr</span><a href="tel:+4540507057">40 50 70 57</a></span>
+            <span><span class="k">E-mail</span><a href="mailto:pau@vsbf.dk">pau@vsbf.dk</a></span>
+            <span><span class="k">Adresse</span>Dybkær 3, 4230 Skælskør</span>
+            <span><span class="k">CVR</span>42202967</span>
           </div>
         </div>
-        <div class="reveal">
-          <p class="mono" style="color:var(--glacier);margin-bottom:14px">Kort fortalt</p>
-          <h2 style="font-size:36px;margin-bottom:18px">Et værksted, to fagområder</h2>
-          <div class="slot">
-            <p class="mono">Dybkær 3, 4230 Skælskør</p>
-            <p>Herfra kører vi ud til hele Vestsjælland. Ring, hvis du er i tvivl om, om vi dækker din adresse — vi siger det ligeud, hvis turen bliver for lang til, at det kan betale sig for dig.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section id="galleri">
-    <div class="in">
-      <div class="sec-top reveal">
-        <p class="mono" style="color:var(--ember)">Galleri</p>
-        <h2>Sådan ser arbejdet ud</h2>
-        <p class="lead">Seks pladser til billeder af jeres egne opgaver — én pr. fagområde. Indtil billederne er taget, står der en tegning i det format, fotoet skal have. Ingen stockbilleder: kunder i Vestsjælland kan se forskel.</p>
-      </div>
-      <div class="gal">
-        <figure class="shot reveal" style="margin:0">
-          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-<rect x="86" y="86" width="196" height="130" rx="10" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="184" cy="151" r="46" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M184 151 L184 111 M184 151 L219 172 M184 151 L149 172" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="184" cy="151" r="8" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M282 116 h44 M282 186 h44" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M86 216 v34 M282 216 v34" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M60 250 h280" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M96 66 h50 M96 52 h30" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
-          <figcaption class="cap"><b>Varmepumpe, luft/vand</b><span>Udedel monteret på nordfacaden</span></figcaption>
-        </figure>
-        <figure class="shot reveal" style="margin:0">
-          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-<path d="M46 168 L200 66 L354 168" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M46 168 h308" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M52 176 h296 a10 10 0 0 1 -10 18 h-276 a10 10 0 0 1 -10 -18 z" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M316 194 v72 a10 10 0 0 0 10 10 h16" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M96 122 L200 54 L304 122" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M200 90 v-24" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
-          <figcaption class="cap"><b>Tagrender i zink</b><span>Rheinzink, med nedløb og inddækning</span></figcaption>
-        </figure>
-        <figure class="shot reveal" style="margin:0">
-          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-<path d="M120 60 v54" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M96 114 h48 a6 6 0 0 1 6 8 l-6 12 h-48 l-6 -12 a6 6 0 0 1 6 -8 z" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M104 150 v22 M120 150 v30 M136 150 v22" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<rect x="212" y="96" width="120" height="150" rx="8" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M212 146 h120 M212 196 h120 M272 96 v150" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M84 246 h248" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="120" cy="228" r="12" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
-          <figcaption class="cap"><b>Badeværelse fra bunden</b><span>Rør, afløb, fliser og armaturer</span></figcaption>
-        </figure>
-        <figure class="shot reveal" style="margin:0">
-          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-<path d="M50 232 h300" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M74 208 h252" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M78 194 h244 a18 18 0 0 1 0 -36 h-244 a18 18 0 0 1 0 -36 h244 a18 18 0 0 1 0 -36 h-244" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M62 90 v142" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M338 90 v142" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M150 60 v18 M200 52 v26 M250 60 v18" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
-          <figcaption class="cap"><b>Gulvvarme</b><span>Slynger lagt før støbning</span></figcaption>
-        </figure>
-        <figure class="shot reveal" style="margin:0">
-          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-<rect x="118" y="64" width="164" height="164" rx="12" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="200" cy="126" r="30" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M200 126 L216 110" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M146 186 h108" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M146 204 h72" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M118 96 h-42 v96 h42" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M282 96 h42 v96 h-42" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M160 64 v-26 M240 64 v-26" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M150 252 h100" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
-          <figcaption class="cap"><b>Fyr og kedelcentral</b><span>Service, udskiftning og fejlfinding</span></figcaption>
-        </figure>
-        <figure class="shot reveal" style="margin:0">
-          <div class="art"><svg viewBox="0 0 400 300" role="img" aria-hidden="true">
-<path d="M70 58 v190 M110 58 v190 M150 58 v190 M190 58 v190 M230 58 v190 M270 58 v190 M310 58 v190" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M70 58 h240 M70 248 h240" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M90 58 v190 M170 58 v190 M250 58 v190" stroke="#2E82E6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M70 120 h240" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/>
-<path d="M70 186 h240" stroke="#A9CBEF" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg><span class="tag">Foto sættes ind her</span></div>
-          <figcaption class="cap"><b>Facadebeklædning</b><span>Stående false i zink</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="video" style="padding-top:0">
-    <div class="in">
-      <div class="sec-top reveal">
-        <p class="mono" style="color:var(--glacier)">Video</p>
-        <h2>Et forløb på halvandet minut</h2>
-        <p class="lead">En kort film gør mere end tyve linjer tekst: I går fra oliefyr til varmepumpe, mens en stemme fortæller, hvad der sker hvornår. Rammen står klar — den fyldes med jeres optagelse.</p>
-      </div>
-      <div class="video reveal">
-        <canvas id="vcanvas"></canvas>
-        <button class="play" id="playBtn" aria-label="Afspil video">
-          <svg viewBox="0 0 24 24" fill="#0A2A5E"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div class="vlay">
-          <h3>Fra oliefyr til varmepumpe på tre dage</h3>
-          <p>Optages hos en rigtig kunde i Skælskør — med tilladelse, uden musik, med håndværkeren der fortæller.</p>
-        </div>
-      </div>
-      <p class="vnote" id="vnote">Videopladsen er tom i designforslaget. På den færdige side ligger filmen her og starter uden lyd.</p>
-    </div>
-  </section>
-
-  <section id="anmeldelser">
-    <div class="in">
-      <div class="sec-top reveal">
-        <p class="mono" style="color:var(--ember)">Anmeldelser</p>
-        <h2>Hvad kunderne har skrevet</h2>
-        <p class="lead">Hentet fra Trustpilot 6. september 2026 — rigtige anmeldelser, også den sure. Vi viser dem, som de står.</p>
-      </div>
-      <div class="rev-grid">
-        <div class="score reveal">
-          <div class="stars" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="#4FA3F7"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#4FA3F7"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#4FA3F7"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#4FA3F7" opacity=".55"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
-            <svg viewBox="0 0 24 24" fill="#4FA3F7" opacity=".2"><path d="M12 2l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.8 5.7 21.4l1.5-7.1L1.8 9.4 9 8.6z"/></svg>
-          </div>
-          <p class="big"><span data-count="37">3,7</span></p>
-          <p style="color:#B9CDE9;font-size:14.5px">TrustScore 3,7 af 5 · 4 anmeldelser</p>
-          <div class="bars">
-            <div class="brow"><span>5★</span><span class="btrack"><i style="width:75%"></i></span><span>75%</span></div>
-            <div class="brow"><span>4★</span><span class="btrack"><i style="width:0%"></i></span><span>0%</span></div>
-            <div class="brow"><span>3★</span><span class="btrack"><i style="width:0%"></i></span><span>0%</span></div>
-            <div class="brow"><span>2★</span><span class="btrack"><i style="width:0%"></i></span><span>0%</span></div>
-            <div class="brow"><span>1★</span><span class="btrack"><i style="width:25%"></i></span><span>25%</span></div>
-          </div>
-          <a href="https://dk.trustpilot.com/review/vsbf.dk" target="_blank" rel="noopener">Se alle anmeldelser på Trustpilot →</a>
-        </div>
-        <div class="revs">
-          <article class="rev reveal">
-            <div class="who"><span>Jannick Lauge Jensen</span><span>6. maj 2026</span><span style="color:var(--ember)">★★★★★</span></div>
-            <h3>„Service over gennemsnittet"</h3>
-            <p class="lead" style="font-size:15.5px">Nyt gasfyr sat op, med grundig forklaring undervejs og en pris, kunden selv kalder rimelig.</p>
-          </article>
-          <article class="rev reveal">
-            <div class="who"><span>piet bierlich</span><span>9. december 2024</span><span style="color:var(--ember)">★★★★★</span></div>
-            <h3>„Meget tilfreds"</h3>
-            <p class="lead" style="font-size:15.5px">Roser kvaliteten af arbejdet og beskriver folkene som venlige og grundige. Anbefaler firmaet videre.</p>
-          </article>
-          <article class="rev low reveal">
-            <div class="who"><span>Thomas</span><span>9. januar 2026</span><span style="color:#B4731A">★☆☆☆☆</span></div>
-            <h3>„Håndværkere af værste skuffe!"</h3>
-            <p class="lead" style="font-size:15.5px">Kunden fik en mundtlig pris og oplevede derefter en regning, der lå markant over. Det er den kritik, vi tager alvorligt.</p>
-          </article>
-          <div class="answer reveal">
-            <b>Derfor gør vi det anderledes nu:</b> ingen mundtlige overslag på større opgaver. Du får et <b>fast tilbud på skrift</b> med materialer, timer og tidsplan, inden vi går i gang — og ændrer opgaven sig undervejs, hører du det, før regningen kommer.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="kontakt">
-    <div class="in">
-      <div class="sec-top reveal">
-        <p class="mono" style="color:var(--glacier)">Kontakt</p>
-        <h2>Her ender røret — hos dig</h2>
-        <p class="lead">Tre felter. Så ringer vi tilbage samme hverdag og aftaler et besøg. Haster det — for eksempel et sprunget rør — så ring med det samme.</p>
-      </div>
-      <div class="form-grid">
-        <form id="lead" class="panel reveal" novalidate>
-          <label>Navn<input name="navn" type="text" autocomplete="name" placeholder="Dit navn" required></label>
-          <label>Telefon<input name="telefon" type="tel" autocomplete="tel" placeholder="12 34 56 78" required></label>
-          <label>Hvad drejer det sig om?<textarea name="opgave" placeholder="F.eks.: oliefyret skal skiftes til varmepumpe, hus på 140 m² i Boeslunde"></textarea></label>
-          <button class="btn btn-hot" type="submit">Få et uforpligtende tilbud</button>
-          <p class="formnote" id="fnote">Vi bruger kun dine oplysninger til at svare på din henvendelse.</p>
+        <form id="tilbud" novalidate>
+          <label>Navn<input type="text" name="navn" autocomplete="name" required></label>
+          <label>Telefon<input type="tel" name="telefon" autocomplete="tel" required></label>
+          <label>Hvad drejer det sig om?<textarea name="opgave" required></textarea></label>
+          <button class="btn" type="submit">Send — svar samme hverdag</button>
+          <p id="formNote" style="font-size:14px;color:var(--mute)">Vi bruger kun dine oplysninger til at svare på din henvendelse.</p>
         </form>
-        <div class="reveal">
-          <div class="info-row"><p class="mono">Ring</p><a href="tel:+4528511070">28 51 10 70</a></div>
-          <div class="info-row"><p class="mono">Skriv</p><a href="mailto:pau@vsbf.dk" style="font-size:25px">pau@vsbf.dk</a></div>
-          <div class="info-row"><p class="mono">Værksted</p><b style="font-size:25px">Dybkær 3, 4230 Skælskør</b></div>
-          <div class="info-row"><p class="mono">CVR</p><b style="font-size:25px">42202967</b></div>
-        </div>
       </div>
     </div>
   </section>
+</main>
 
-  <footer>
-    <div class="in">
-      <p><b>Vestsjællands Gas · VVS · Blikkenslagerforretning</b> — Dybkær 3, 4230 Skælskør · CVR 42202967 · 28 51 10 70 · pau@vsbf.dk</p>
-      <p>Autoriseret VVS-installatør · VE-godkendt · Tekniq Garanti · Rheinzink-kvalificeret</p>
-      <p style="color:var(--glacier)">Denne side er et designforslag udarbejdet af Yurii og er ikke firmaets officielle hjemmeside.</p>
-    </div>
-  </footer>
-</div>
+<footer>
+  <div class="in">
+    <span><b>Vestsjællands Gas- VVS- og blikkenslagerforretning</b><br>v/ Pau Nowak · Dybkær 3, 4230 Skælskør · CVR 42202967</span>
+    <span><a href="tel:+4528511070">28 51 10 70</a> · vagt <a href="tel:+4540507057">40 50 70 57</a> · <a href="mailto:pau@vsbf.dk">pau@vsbf.dk</a></span>
+    <span>Aut. VVS-installatør · VE-godkendt · Tekniq Garanti · Rheinzink</span>
+  </div>
+</footer>
 
-<div class="callbar">
-  <a class="p" href="tel:+4528511070">Ring nu</a>
-  <a class="s" href="#kontakt">Få tilbud</a>
-</div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Plumber",
+"name":"Vestsjællands Gas- VVS- og blikkenslagerforretning",
+"telephone":"+4528511070","email":"pau@vsbf.dk","founder":"Pau Nowak",
+"address":{"@type":"PostalAddress","streetAddress":"Dybkær 3","postalCode":"4230","addressLocality":"Skælskør","addressCountry":"DK"},
+"areaServed":["Skælskør","Korsør","Slagelse","Sorø","Næstved","Dalmose","Boeslunde","Bisserup"],
+"vatID":"DK42202967"}
+</script>
 
 <script>
 (function(){
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var G = "https://impro.usercontent.one/appid/oneComWsb/domain/vsbf.dk/media/vsbf.dk/Galleri%20forside/";
+  var MAP = {
+    gutter:   G+"H%C3%A5ndlavet%20kobbertagrende.jpg",
+    downpipe: G+"kobbernedl%C3%B8bsr%C3%B8r.jpg",
+    bath:     G+"Baderum.jpg",
+    pipes:    G+"R%C3%B8rf%C3%B8ring.jpg",
+    tank:     G+"Varmtvandsbeholder.jpg",
+    boiler:   G+"kedelcentral%20gaskedler.jpg",
+    indoor:   G+"Indedel%20Vaillant%20lille.jpg",
+    outdoor:  G+"Udedel%20Vaillant%20lille.jpg",
+    zinkroof: G+"Zinktag.jpg",
+    gable:    G+"Gavl%20i%20antrazink.jpg",
+    terrace:  G+"Zinkindd%C3%A6kning%20terrasse.jpg"
+  };
+  var imgs = document.querySelectorAll("img[data-k]");
+  for (var i=0;i<imgs.length;i++){
+    (function(el){ el.decoding="async"; el.src = MAP[el.getAttribute("data-k")]; })(imgs[i]);
+  }
 
-  var f = document.getElementById('lead'), note = document.getElementById('fnote');
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    note.textContent = 'Formularen er ikke tilsluttet i dette designforslag — ring 28 51 10 70 eller skriv til pau@vsbf.dk.';
-    note.style.color = 'var(--ember)';
+  document.getElementById("heroStill").src = "https://d8j0ntlcm91z4.cloudfront.net/user_3IzymvUx5SiGzXaKbR0s6NlAKb8/hf_20260907_115850_fa2b64b6-afeb-46e2-9885-332d3e813397.png";
+
+  var f = document.getElementById("tilbud"), note = document.getElementById("formNote");
+  f.addEventListener("submit", function(e){
+    e.preventDefault(); var ok = true;
+    ["navn","telefon","opgave"].forEach(function(n){ if(!f.elements[n].value.trim()) ok = false; });
+    note.textContent = ok ? "Tak — vi vender tilbage samme hverdag. (Demo: formularen sender ikke endnu.)"
+                          : "Udfyld venligst navn, telefon og en kort beskrivelse.";
+    note.style.color = ok ? "#1C7A55" : "#B3261E";
   });
 
-  // ——— blueprint loop in the video frame ———
-  (function(){
-    var cv = document.getElementById("vcanvas"); if(!cv) return;
-    var ctx = cv.getContext("2d"), host = cv.parentElement, W, H, dpr = Math.min(2, window.devicePixelRatio||1), t = 0;
-    function size(){ W = host.clientWidth; H = host.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-    var lines = [ {y:.28, s:1.0}, {y:.5, s:.72}, {y:.72, s:1.25} ];
-    function frame(){
-      requestAnimationFrame(frame);
-      if(!reduce) t += 1;
-      ctx.clearRect(0,0,W,H);
-      ctx.fillStyle = "#0A2A5E"; ctx.fillRect(0,0,W,H);
-      ctx.strokeStyle = "rgba(255,255,255,.06)"; ctx.lineWidth = 1;
-      for(var gx=0; gx<W; gx+=44){ ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
-      for(var gy=0; gy<H; gy+=44){ ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
-      lines.forEach(function(l, i){
-        var y = H*l.y;
-        ctx.strokeStyle = "rgba(122,180,247,.5)"; ctx.lineWidth = 5; ctx.lineCap = "round";
-        ctx.setLineDash([]); ctx.beginPath();
-        ctx.moveTo(-20, y); ctx.lineTo(W*0.42, y);
-        ctx.quadraticCurveTo(W*0.5, y, W*0.5, y + (i-1)*40);
-        ctx.lineTo(W+20, y + (i-1)*40); ctx.stroke();
-        ctx.strokeStyle = "#8FD0FF"; ctx.lineWidth = 2.4;
-        ctx.setLineDash([16, 26]); ctx.lineDashOffset = -(t*l.s) % 42;
-        ctx.beginPath();
-        ctx.moveTo(-20, y); ctx.lineTo(W*0.42, y);
-        ctx.quadraticCurveTo(W*0.5, y, W*0.5, y + (i-1)*40);
-        ctx.lineTo(W+20, y + (i-1)*40); ctx.stroke();
-        ctx.setLineDash([]);
-      });
+  /* ---- appearance on scroll + tællere ---- */
+  (function reveal(){
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduce || !("IntersectionObserver" in window)) return;
+    document.documentElement.classList.add("rvon");
+    var sel = ".biglist a,.card,.pillar,.acc,.tl > div,.mos figure,.rev,.stat,.akut,.score,.eyebrow";
+    var els = [].slice.call(document.querySelectorAll(sel));
+    els.forEach(function(el){ el.classList.add("rv"); });
+
+    function dk(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."); }
+    function countUp(el){
+      var to = parseInt(el.getAttribute("data-to"),10), fmt = el.getAttribute("data-fmt");
+      var t0 = Date.now(), dur = 1100;
+      function paint(v){ el.textContent = (fmt==="dk") ? dk(v) : String(v); }
+      var iv = setInterval(function(){
+        var k = Math.min(1,(Date.now()-t0)/dur);
+        paint(Math.round(to*(1-Math.pow(1-k,3))));
+        if(k>=1){ clearInterval(iv); paint(to); }
+      }, 40);
     }
-    window.addEventListener("resize", size);
-    size(); frame();
-    var btn = document.getElementById("playBtn"), vn = document.getElementById("vnote");
-    if(btn) btn.addEventListener("click", function(){
-      vn.textContent = "Her starter firmaets egen film på den færdige side — i designforslaget er pladsen tom med vilje.";
-      vn.style.color = "var(--ember)";
-    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target, sibs = el.parentNode ? [].slice.call(el.parentNode.children) : [el];
+        var i = Math.max(0, sibs.indexOf(el));
+        el.style.transitionDelay = Math.min(i,8)*45 + "ms";
+        el.classList.add("seen");
+        var num = el.querySelector ? el.querySelector("b[data-to]") : null;
+        if(num && !num.__done){ num.__done = true; countUp(num); }
+        io.unobserve(el);
+      });
+    },{ threshold:0.12, rootMargin:"0px 0px -8% 0px" });
+    els.forEach(function(el){ io.observe(el); });
   })();
 
+  /* ---- 3D på forsiden: vandets vej fra tag til kloak (ren WebGL) ---- */
+  var VS = "attribute vec2 p;varying vec2 v;void main(){v=p*0.5+0.5;gl_Position=vec4(p,0.0,1.0);}";
+  var FS = [
+"precision highp float;",
+"varying vec2 v;uniform vec2 uRes;uniform float uT;uniform float uJ;uniform vec2 uM;",
+"mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}",
+"float box(vec3 p,vec3 b){vec3 d=abs(p)-b;return length(max(d,0.0))+min(max(d.x,max(d.y,d.z)),0.0);}",
+"float cyl(vec3 p,vec3 a,vec3 b,float r){vec3 ba=b-a,pa=p-a;float bb=dot(ba,ba),pb=dot(pa,ba);",
+"  float x=length(pa*bb-ba*pb)-r*bb;float y=abs(pb-bb*0.5)-bb*0.5;float x2=x*x;float y2=y*y*bb;",
+"  float d=(max(x,y)<0.0)?-min(x2,y2):(((x>0.0)?x2:0.0)+((y>0.0)?y2:0.0));return sign(d)*sqrt(abs(d))/bb;}",
+"float torY(vec3 p,vec2 t){vec2 q=vec2(length(p.xz)-t.x,p.y);return length(q)-t.y;}",
+"float torX(vec3 p,vec2 t){vec2 q=vec2(length(p.yz)-t.x,p.x);return length(q)-t.y;}",
+"vec2 mn(vec2 a,vec2 b){return a.x<b.x?a:b;}",
+// materials: 1 zink, 2 kobber, 3 beton, 4 kloak(mørk), 5 vand
+"vec2 map(vec3 p){",
+"  p.y+=uJ;",
+"  vec2 r=vec2(1e9,0.0);",
+// ---- TAG ----
+"  if(p.y>1.6&&p.y<9.0){",
+"    vec3 a=p-vec3(0.0,5.2,0.0);a.yz*=rot(-0.42);",
+"    r=mn(r,vec2(box(a,vec3(3.4,0.09,2.3)),1.0));",
+"    vec3 s=a;s.x=mod(s.x+0.42,0.84)-0.42;",
+"    float sm=box(s-vec3(0.0,0.13,0.0),vec3(0.035,0.10,2.3));sm=max(sm,box(a,vec3(3.36,0.42,2.3)));",
+"    r=mn(r,vec2(sm,1.0));",
+"    vec3 g=p-vec3(0.0,3.55,2.42);",
+"    r=mn(r,vec2(cyl(g,vec3(-3.3,0.0,0.0),vec3(3.3,0.0,0.0),0.20),2.0));",
+"    r=mn(r,vec2(cyl(p-vec3(2.75,0.0,2.42),vec3(0.0,1.7,0.0),vec3(0.0,3.5,0.0),0.14),2.0));",
+"  }",
+// ---- ROER I HUSET ----
+"  if(p.y>-1.3&&p.y<3.6){",
+"    r=mn(r,vec2(box(p-vec3(-0.2,1.05,-0.55),vec3(2.3,1.45,0.09)),3.0));",
+"    r=mn(r,vec2(box(p-vec3(-1.0,1.35,0.05),vec3(0.34,0.46,0.22))-0.06,6.0));",
+"    r=mn(r,vec2(cyl(p-vec3(-1.0,0.0,0.05),vec3(0.0,1.90,0.0),vec3(0.0,2.70,0.0),0.085),1.0));",
+"    r=mn(r,vec2(cyl(p-vec3(-1.22,0.0,0.05),vec3(0.0,0.58,0.0),vec3(0.0,0.88,0.0),0.045),2.0));",
+"    r=mn(r,vec2(cyl(p-vec3(-1.00,0.0,0.05),vec3(0.0,0.58,0.0),vec3(0.0,0.88,0.0),0.045),2.0));",
+"    r=mn(r,vec2(cyl(p-vec3(-0.78,0.0,0.05),vec3(0.0,0.58,0.0),vec3(0.0,0.88,0.0),0.045),2.0));",
+"    vec3 mf=p-vec3(0.0,0.58,0.05);",
+"    r=mn(r,vec2(cyl(mf,vec3(-1.45,0.0,0.0),vec3(0.62,0.0,0.0),0.10),2.0));",
+"    vec3 mc=mf;mc.x=mod(mc.x+0.25,0.5)-0.25;",
+"    float mcl=torX(mc,vec2(0.10,0.028));mcl=max(mcl,box(mf-vec3(-0.42,0.0,0.0),vec3(1.00,0.2,0.2)));",
+"    r=mn(r,vec2(mcl,1.0));",
+"    r=mn(r,vec2(cyl(p-vec3(0.62,0.0,0.05),vec3(0.0,0.58,0.0),vec3(0.0,1.15,0.0),0.07),2.0));",
+"    r=mn(r,vec2(cyl(p-vec3(0.0,1.15,0.05),vec3(0.62,0.0,0.0),vec3(0.95,0.0,-0.18),0.07),2.0));",
+"    vec3 tk=p-vec3(1.12,0.0,-0.13);",
+"    r=mn(r,vec2(cyl(tk,vec3(0.0,0.12,0.0),vec3(0.0,1.32,0.0),0.30),6.0));",
+"    r=mn(r,vec2(length(tk-vec3(0.0,1.32,0.0))-0.30,6.0));",
+"    r=mn(r,vec2(cyl(p-vec3(0.10,0.0,0.05),vec3(0.0,0.58,0.0),vec3(0.0,-0.95,0.0),0.08),2.0));",
+"    vec3 dp=p-vec3(2.75,0.0,2.42);",
+"    r=mn(r,vec2(cyl(dp,vec3(0.0,-0.90,0.0),vec3(0.0,1.90,0.0),0.14),2.0));",
+"    vec3 dc=dp;dc.y=mod(dc.y+0.45,0.9)-0.45;",
+"    float dcl=torY(dc,vec2(0.14,0.035));dcl=max(dcl,box(dp-vec3(0.0,0.5,0.0),vec3(0.34,1.42,0.34)));",
+"    r=mn(r,vec2(dcl,1.0));",
+"  }",
+// ---- GULVVARME ----
+"  if(p.y>-2.6&&p.y<0.3){",
+"    r=mn(r,vec2(box(p-vec3(0.0,-1.35,0.6),vec3(3.2,0.10,2.4)),3.0));",
+"    vec3 f=p-vec3(0.0,-1.16,0.6);",
+"    float iz=floor(f.z/0.52+0.5);float zc=f.z-0.52*iz;",
+"    if(abs(iz)<5.0){",
+"      r=mn(r,vec2(cyl(vec3(f.x,f.y,zc),vec3(-2.2,0.0,0.0),vec3(2.2,0.0,0.0),0.062),5.0));",
+"      float sx=mod(iz,2.0)<0.5?2.2:-2.2;",
+"      float cp=torY(vec3(f.x-sx,f.y,f.z-0.52*(iz+0.5)),vec2(0.26,0.062));",
+"      cp=max(cp,(sx>0.0)?(2.18-f.x):(f.x+2.18));",
+"      r=mn(r,vec2(cp,5.0));",
+"    }",
+"  }",
+// ---- KLOAK ----
+"  if(p.y<-1.4){",
+"    vec3 k=p-vec3(-1.5,-2.2,0.9);",
+"    r=mn(r,vec2(cyl(k,vec3(0.0,0.9,0.0),vec3(0.0,-1.5,0.0),0.36),4.0));",
+"    r=mn(r,vec2(length(k-vec3(0.0,-1.5,0.0))-0.40,4.0));",
+"    r=mn(r,vec2(cyl(k-vec3(0.0,-1.5,0.0),vec3(0.0,0.0,0.0),vec3(3.6,0.0,0.0),0.36),4.0));",
+"    vec3 rb=k;rb.y=mod(rb.y+0.3,0.6)-0.3;",
+"    float rr=torY(rb,vec2(0.36,0.045));rr=max(rr,box(k-vec3(0.0,-0.3,0.0),vec3(0.55,1.22,0.55)));",
+"    r=mn(r,vec2(rr,4.0));",
+"    r=mn(r,vec2(cyl(k-vec3(1.9,-1.5,0.0),vec3(0.0,0.0,0.0),vec3(0.0,0.34,0.0),0.14),4.0));",
+"  }",
+"  return r;}",
+"vec3 nrm(vec3 p){vec2 e=vec2(0.0022,0.0);return normalize(vec3(",
+"  map(p+e.xyy).x-map(p-e.xyy).x,map(p+e.yxy).x-map(p-e.yxy).x,map(p+e.yyx).x-map(p-e.yyx).x));}",
+"vec3 sky(vec3 d,float j){",
+"  vec3 up=mix(vec3(0.16,0.32,0.55),vec3(0.03,0.09,0.19),clamp(j*0.16,0.0,1.0));",
+"  return mix(vec3(0.01,0.04,0.10),up,clamp(d.y*0.5+0.55,0.0,1.0));}",
+"void main(){",
+"  vec2 uv=(v*2.0-1.0);uv.x*=uRes.x/uRes.y;",
+"  vec3 ro=vec3(0.9+uM.x*0.5,0.55+uM.y*0.35,8.2);",
+"  vec3 rd=normalize(vec3(uv.x,uv.y-0.05,-2.1));",
+"  rd.xz*=rot(-0.16);",
+"  float t=0.0;vec2 h=vec2(0.0);bool hit=false;",
+"  for(int i=0;i<84;i++){vec3 q=ro+rd*t;h=map(q);if(h.x<0.0022){hit=true;break;}t+=h.x*0.82;if(t>26.0)break;}",
+"  vec3 col=sky(rd,uJ);",
+"  if(hit){",
+"    vec3 q=ro+rd*t;vec3 n=nrm(q);",
+"    vec3 L=normalize(vec3(0.5,0.85,0.4));",
+"    vec3 base=vec3(0.6);",
+"    float rough=0.5;",
+"    if(h.y<1.5){base=vec3(0.58,0.63,0.68);rough=0.35;}",
+"    else if(h.y<2.5){base=vec3(0.71,0.40,0.21);rough=0.30;}",
+"    else if(h.y<3.5){base=vec3(0.42,0.45,0.50);rough=0.90;}",
+"    else if(h.y<4.5){base=vec3(0.20,0.22,0.25);rough=0.75;}",
+"    else if(h.y<5.5){float fl=fract(q.x*0.22-uT*0.55);base=mix(vec3(0.08,0.26,0.58),vec3(0.32,0.60,0.92),smoothstep(0.35,0.5,fl)*smoothstep(0.75,0.55,fl));rough=0.10;}",
+"    else{base=vec3(0.87,0.89,0.91);rough=0.55;}",
+"    float dif=clamp(dot(n,L),0.0,1.0);",
+"    float spe=pow(clamp(dot(reflect(-L,n),-rd),0.0,1.0),mix(90.0,10.0,rough));",
+"    float fre=pow(1.0-clamp(dot(n,-rd),0.0,1.0),3.0);",
+"    vec3 env=sky(reflect(rd,n),uJ);",
+"    col=base*(0.18+0.66*dif)+env*(0.20+0.60*fre)*(1.0-rough*0.6)+vec3(1.0,0.95,0.88)*spe*(1.2-rough);",
+"    if(h.y>4.5){col+=vec3(0.10,0.28,0.55)*0.28;}",
+"    col=mix(col,sky(rd,uJ),clamp((t-8.0)/16.0,0.0,1.0));",
+"  }",
+"  col+=vec3(0.06,0.14,0.28)*pow(clamp(1.0-length(uv*vec2(0.6,0.95)),0.0,1.0),2.0);",
+"  col=pow(clamp(col,0.0,1.0),vec3(0.88));",
+"  gl_FragColor=vec4(col,1.0);}"
+  ].join("\n");
 
-  var svg = document.getElementById("pipeLayer"),
-      main = document.getElementById("pipeMain"),
-      ghost = document.getElementById("pipeGhost"),
-      joints = document.getElementById("joints"),
-      drop = document.getElementById("drop");
-
-  // ——— build one continuous pipe from the header to the footer ———
-  function buildPipe(){
-    var W = document.documentElement.clientWidth;
-        var H = document.getElementById("page").offsetHeight;
-    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
-    svg.setAttribute("width", W);
-    svg.setAttribute("height", H);
-    svg.style.height = H + "px";
-
-    var narrow = W <= 700;
-    var content = Math.min(1080, W - 52);
-    var gut = narrow ? 10 : Math.max(16, (W - content) / 2 * 0.42 + 14);   // pipe lives in the gutter
-    var R = narrow ? 13 : Math.min(38, gut * 0.95);
-    var anchors = Array.prototype.slice.call(document.querySelectorAll("[data-anchor]"));
-
-    var x = gut, d = "M " + x + " 0";
-    var pts = [];
-    anchors.forEach(function(el, i){
-      if(i === 0) return;
-      var y = el.getBoundingClientRect().top + window.scrollY + (narrow ? 26 : 46);
-      var nx = (x === gut) ? (W - gut) : gut;
-      var dir = nx > x ? 1 : -1;
-      d += " L " + x + " " + (y - R);
-      d += " Q " + x + " " + y + " " + (x + dir * R) + " " + y;
-      d += " L " + (nx - dir * R) + " " + y;
-      d += " Q " + nx + " " + y + " " + nx + " " + (y + R);
-      pts.push([x, y], [nx, y]);
-      x = nx;
+  (function hero3d(){
+    var wrap=document.getElementById("heroWrap"), cv=document.getElementById("heroGL");
+    if(!wrap||!cv) return;
+    if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var gl=cv.getContext("webgl",{antialias:false,alpha:false})||cv.getContext("experimental-webgl");
+    if(!gl) return;
+    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);
+      if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){ window.__dbg=(window.__dbg||"")+gl.getShaderInfoLog(o); return null; }
+      return o;}
+    var vs=sh(gl.VERTEX_SHADER,VS), fs=sh(gl.FRAGMENT_SHADER,FS);
+    if(!vs||!fs){ window.__dbg="shader compile failed"; return; }
+    var pr=gl.createProgram();gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){ window.__dbg="link: "+gl.getProgramInfoLog(pr); return; }
+    gl.useProgram(pr);
+    var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var lp=gl.getAttribLocation(pr,"p");gl.enableVertexAttribArray(lp);gl.vertexAttribPointer(lp,2,gl.FLOAT,false,0,0);
+    var uRes=gl.getUniformLocation(pr,"uRes"),uT=gl.getUniformLocation(pr,"uT"),
+        uJ=gl.getUniformLocation(pr,"uJ"),uM=gl.getUniformLocation(pr,"uM");
+    var J0=4.40, J1=-4.70, prog=0, shown=0;
+    var STAGES=[
+      {p:0.00,t:"Taget \u2014 zinktag og h\u00e5ndlavet tagrende i kobber"},
+      {p:0.30,t:"R\u00f8r i huset \u2014 gaskedel, fordelerr\u00f8r og varmtvandsbeholder"},
+      {p:0.57,t:"Gulvvarme \u2014 slanger st\u00f8bt i gulvet"},
+      {p:0.83,t:"Kloak \u2014 faldstamme og kloakledning"}
+    ];
+    var now=document.getElementById("stNow"), barI=document.getElementById("barI"),
+        ms=document.getElementById("stMs").children, cur=-1;
+    function stage(p){var i=0;for(var k=0;k<STAGES.length;k++){if(p>=STAGES[k].p)i=k;}return i;}
+    function setStage(i){
+      if(i===cur)return; cur=i;
+      now.style.opacity=0;
+      setTimeout(function(){ now.textContent=STAGES[i].t; now.style.opacity=1; },150);
+      for(var k=0;k<ms.length;k++){ ms[k].className=(k===i)?"on":""; }
+    }
+    var mtx=0,mty=0,mx=0,my=0,vis=true;
+    wrap.addEventListener("pointermove",function(e){
+      var r=wrap.getBoundingClientRect();
+      mtx=((e.clientX-r.left)/r.width-0.5)*2; mty=((e.clientY-(r.top+window.innerHeight/2))/window.innerHeight)*2;
     });
-    var endY = anchors.length ? (anchors[anchors.length-1].getBoundingClientRect().top + window.scrollY + (narrow ? 170 : 260)) : (H - 60);
-    d += " L " + x + " " + endY;
-    main.setAttribute("d", d);
-    window.__pipeEnd = endY;
-    ghost.setAttribute("d", d);
-    ghost.setAttribute("stroke", "#E4EDF6");
-    main.setAttribute("stroke-width", narrow ? "3.4" : "6"); ghost.setAttribute("stroke-width", narrow ? "3.4" : "6");
-
-    joints.innerHTML = "";
-    pts.push([x, endY]);
-    pts.forEach(function(p){
-      var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
-      c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", narrow ? 4 : 5.5);
-      c.setAttribute("fill", "#FFFFFF"); c.setAttribute("stroke", "#2E82E6"); c.setAttribute("stroke-width", narrow ? "1.8" : "2.5");
-      c.setAttribute("class", "joint");
-      joints.appendChild(c);
-    });
-  }
-
-  buildPipe();
-
-  if(!window.gsap){ return; }
-  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, DrawSVGPlugin);
-
-  if(reduce){
-    gsap.set(drop, { opacity: 0 });
-  } else {
-    // hero entrance
-    gsap.from(".h-line > span", { yPercent: 105, duration: 1, stagger: .11, ease: "expo.out" });
-    gsap.from(".hero .fade", { opacity: 0, y: 14, duration: .6, stagger: .08, delay: .35, ease: "power2.out" });
-
-    // certification strip
-    gsap.to("#marquee", { xPercent: -50, duration: 34, repeat: -1, ease: "none" });
-
-    // the pipe draws itself across the entire page, tied to the scrollbar
-    gsap.set(main, { drawSVG: "0%" });
-    gsap.to(main, {
-      drawSVG: "100%", ease: "none",
-      scrollTrigger: { trigger: "#page", start: "top top", scrub: 1.15,
-        end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); } }
-    });
-
-    // a droplet rides the pipe exactly where you are on the page
-    var dropTarget = null, dropPos = null;
-    ScrollTrigger.create({ trigger: "#page", start: "top top", scrub: 1.15,
-      end: function(){ return "+=" + Math.max(400, (window.__pipeEnd || 2000) - window.innerHeight * 0.5); },
-      onUpdate: function(self){
-        var L = main.getTotalLength ? main.getTotalLength() : 0;
-        if(L < 60){ dropTarget = null; drop.style.opacity = 0; return; }
-        dropTarget = main.getPointAtLength(L * Math.min(1, Math.max(0, self.progress)));
-      }
-    });
-
-    // the droplet glides toward its target instead of snapping to it
-    (function glide(){
-      requestAnimationFrame(glide);
-      if(!dropTarget){ return; }
-      if(!dropPos){ dropPos = { x: dropTarget.x, y: dropTarget.y }; }
-      dropPos.x += (dropTarget.x - dropPos.x) * 0.12;
-      dropPos.y += (dropTarget.y - dropPos.y) * 0.12;
-      drop.setAttribute("cx", dropPos.x.toFixed(2));
-      drop.setAttribute("cy", dropPos.y.toFixed(2));
-      if(drop.style.opacity !== "1"){ drop.style.opacity = 1; }
+    if(window.IntersectionObserver){
+      new IntersectionObserver(function(es){vis=es[0].isIntersecting;},{threshold:0.01}).observe(wrap);
+    }
+    function scrollProg(){
+      var r=wrap.getBoundingClientRect();
+      var total=wrap.offsetHeight-window.innerHeight;
+      if(total<=0) return 0;
+      return Math.min(1,Math.max(0,(-r.top)/total));
+    }
+    function size(){
+      var d=Math.min(window.devicePixelRatio||1,1.5)*(window.innerWidth<760?0.52:0.62);
+      var w=Math.max(1,Math.round(cv.clientWidth*d)), h=Math.max(1,Math.round(cv.clientHeight*d));
+      if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);}
+    }
+    var t0=Date.now();
+    (function loop(){
+      requestAnimationFrame(loop);
+      if(!vis) return;
+      prog=scrollProg();
+      shown+=(prog-shown)*0.12;
+      mx+=(mtx-mx)*0.05; my+=(mty-my)*0.05;
+      size();
+      gl.uniform2f(uRes,cv.width,cv.height);
+      gl.uniform1f(uT,(Date.now()-t0)/1000);
+      gl.uniform1f(uJ,J0+(J1-J0)*shown);
+      gl.uniform2f(uM,mx*0.6,my*0.4);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+      barI.style.width=(shown*100).toFixed(1)+"%";
+      setStage(stage(shown));
     })();
-    gsap.set(drop, { attr: { r: document.documentElement.clientWidth <= 700 ? 5 : 7 } });
-    gsap.to(drop, { attr: { r: document.documentElement.clientWidth <= 700 ? 7 : 9.5 }, duration: 1, repeat: -1, yoyo: true, ease: "sine.inOut" });
-
-    // fittings pop when the pipe reaches them
-    gsap.utils.toArray(".joint").forEach(function(c){
-      gsap.from(c, {
-        scale: 0, transformOrigin: "50% 50%", duration: .55, ease: "back.out(1.6)",
-        scrollTrigger: { trigger: "#page", toggleActions: "play none none reverse",
-          start: function(){ return "top top+=" + Math.max(0, parseFloat(c.getAttribute("cy")) - window.innerHeight * 0.8); } }
-      });
-    });
-
-    // content arrives
-    gsap.utils.toArray(".reveal").forEach(function(el){
-      gsap.from(el, { opacity: 0, y: 18, duration: .85, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 88%" } });
-    });
-
-    // counters
-    document.querySelectorAll("[data-count]").forEach(function(el){
-      var t = parseInt(el.getAttribute("data-count"), 10), o = { v: 0 }, isScore = t === 37;
-      gsap.to(o, { v: t, duration: 1.1, ease: "power2.out",
-        scrollTrigger: { trigger: el, start: "top 92%" },
-        onUpdate: function(){ el.textContent = isScore ? (o.v/10).toFixed(1).replace(".", ",") : Math.round(o.v); } });
-    });
-  }
-
-
-  var rt;
-  window.addEventListener("resize", function(){
-    clearTimeout(rt);
-    rt = setTimeout(function(){ buildPipe(); ScrollTrigger.refresh(); }, 180);
-  });
-  window.addEventListener("load", function(){ buildPipe(); ScrollTrigger.refresh(); });
+    setStage(0);
+    window.__hero3d=true;
+  })();
 })();
 </script>
-
 </body>
 </html>
