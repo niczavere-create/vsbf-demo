@@ -14,12 +14,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
 <style>
   :root{
-    --bg:#FFFFFF; --alt:#F4F7FB; --card:#FFFFFF; --line:#DCE3EC;
+    --bg:#FFFFFF; --alt:#F2F6FC; --card:#FFFFFF; --line:#DCE3EC;
     --ink:#0B1626; --mute:#54657A;
-    --blue:#1656C8; --blue-d:#0F3F97; --navy:#07203F; --sky:#E9F1FD;
+    --blue:#1656C8; --blue-d:#0F3F97; --navy:#061B36; --sky:#E9F1FD;
+    --cu:#C2703A; --cu-l:#E58F44; --warm:#FFF3E8; --red:#C4342A;
     --body:"Manrope","Segoe UI",system-ui,-apple-system,sans-serif;
     --mono:"DM Mono",ui-monospace,Menlo,monospace;
-    --r:16px; --shadow:0 24px 50px -38px rgba(7,32,63,.55);
+    --r:18px; --shadow:0 24px 50px -38px rgba(6,27,54,.55);
     --max:1120px;
   }
   *{box-sizing:border-box}
@@ -27,263 +28,315 @@
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
-  h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+  h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.028em;text-wrap:balance}
   h1{font-size:clamp(34px,6vw,68px);line-height:.99}
-  h2{font-size:clamp(27px,3.6vw,40px);line-height:1.06}
-  h3{font-size:19px;letter-spacing:-.01em}
+  h2{font-size:clamp(28px,4vw,46px);line-height:1.03}
+  h3{font-size:20px;letter-spacing:-.015em;line-height:1.25}
   p{margin:0}
   .in{max-width:var(--max);margin:0 auto;padding:0 22px}
-  section{padding:clamp(52px,7vw,92px) 0}
+  section{padding:clamp(56px,7.5vw,104px) 0}
   section[id]{scroll-margin-top:88px}
   @media (max-width:760px){section[id]{scroll-margin-top:104px}}
   .alt{background:var(--alt)}
-  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
-  .lead{color:var(--mute);font-size:17px;max-width:62ch}
   .stack{display:flex;flex-direction:column;gap:14px}
-  .row{display:flex;flex-wrap:wrap;gap:10px}
-  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+  .row{display:flex;flex-wrap:wrap;gap:12px}
+  :focus-visible{outline:3px solid var(--cu-l);outline-offset:3px;border-radius:8px}
+  .hl{background-image:linear-gradient(180deg,transparent 78%,rgba(229,143,68,.85) 78%,rgba(229,143,68,.85) 94%,transparent 94%)}
+  .dark .hl,.cta .hl{background-image:linear-gradient(180deg,transparent 78%,rgba(229,143,68,.95) 78%,rgba(229,143,68,.95) 94%,transparent 94%)}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cu);
+    display:inline-flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--cu);flex:none;border-radius:2px}
+  .lead{color:var(--mute);font-size:17.5px;max-width:62ch}
+  .hd{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;max-width:44ch}
+  .hd.wide{max-width:none}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--blue);color:#fff;
-    border-radius:999px;padding:13px 26px;font-weight:700;font-size:16px;border:0;cursor:pointer;
-    transition:transform .12s ease,background .12s ease}
-  .btn:hover{background:var(--blue-d);transform:translateY(-1px)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;background:var(--blue);color:#fff;
+    border-radius:999px;padding:14px 28px;font-weight:800;font-size:16.5px;border:0;cursor:pointer;letter-spacing:-.01em;
+    box-shadow:0 12px 26px -14px rgba(22,86,200,.85);
+    transition:transform .14s ease,background .14s ease,box-shadow .14s ease}
+  .btn:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 18px 32px -14px rgba(22,86,200,.9)}
   .btn:active{transform:scale(.985)}
-  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+  .btn.cu{background:var(--cu);box-shadow:0 12px 26px -14px rgba(194,112,58,.9)}
+  .btn.cu:hover{background:#A85D2C}
+  .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
   .btn.ghost:hover{background:rgba(255,255,255,.12)}
+  .btn.line{background:#fff;color:var(--blue);border:2px solid var(--blue);padding:12px 26px;box-shadow:none}
+  .btn.line:hover{background:#EDF4FF;color:var(--blue-d)}
 
-  .top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .top .in{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
   .brand{display:flex;align-items:center;gap:10px;margin-right:auto}
   .brand b{font-size:16px;font-weight:800;line-height:1.1;letter-spacing:-.015em}
   .brand .sub{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
-  .nav{display:flex;gap:18px;font-size:14.5px;color:var(--mute)}
+  .nav{display:flex;gap:18px;font-size:14.5px;color:var(--mute);font-weight:600}
+  .nav a{position:relative;padding-bottom:2px;white-space:nowrap}
+  .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--cu);transition:right .2s ease}
   .nav a:hover{color:var(--ink)}
-  .tel{background:var(--blue);color:#fff;border-radius:999px;padding:11px 20px;font-weight:700;font-size:15px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+  .nav a:hover::after{right:0}
+  .tel{background:var(--blue);color:#fff;border-radius:999px;padding:11px 20px;font-weight:800;font-size:15px;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
   .tel:hover{background:var(--blue-d)}
   @media (max-width:920px){.nav{display:none}}
   @media (max-width:520px){.brand .sub{display:none}.brand b{font-size:15px}.tel{padding:11px 16px;font-size:14.5px}}
 
+  /* ---------- HERO 3D ---------- */
   .heroWrap{position:relative;height:240vh;padding:0}
   @media (max-width:760px){.heroWrap{height:185vh}}
-  .heroSticky{position:sticky;top:0;height:100vh;min-height:520px;overflow:hidden;background:#05101F;
-    display:flex;flex-direction:column;justify-content:center}
+  .heroSticky{position:sticky;top:var(--hh,69px);height:calc(100vh - var(--hh,69px));min-height:480px;
+    overflow:hidden;background:#05101F;display:flex;flex-direction:column;justify-content:flex-start}
+  @supports (height:100svh){.heroSticky{height:calc(100svh - var(--hh,69px))}}
   #heroGL{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
   .heroFallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}
   .heroSticky .veil{position:absolute;inset:0;z-index:2;pointer-events:none;
     background:linear-gradient(180deg,rgba(4,12,26,.62),rgba(4,12,26,.10) 34%,rgba(4,12,26,.26) 58%,rgba(4,12,26,.92))}
   @media (max-width:760px){
     .heroSticky .veil{background:linear-gradient(180deg,rgba(4,12,26,.74),rgba(4,12,26,.46) 24%,rgba(4,12,26,.58) 60%,rgba(4,12,26,.95))}
-    .heroSticky .in{padding-bottom:126px}
+    .heroSticky .in{padding-top:26px;padding-bottom:0}
   }
   .heroSticky .in{position:relative;z-index:3;color:#fff;display:flex;flex-direction:column;align-items:center;
-    text-align:center;gap:18px;padding-bottom:118px}
-  .hero h1{max-width:16ch}
-  .hero .sub{color:#D6E5F8;font-size:clamp(16px,2vw,19px);max-width:52ch}
-  .hero .marks{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-family:var(--mono);font-size:10px;
-    letter-spacing:.14em;text-transform:uppercase;color:#A9C8F2}
-  .hero .marks span{display:inline-flex;align-items:center;gap:7px}
-  .hero .marks i{width:5px;height:5px;border-radius:50%;background:#6FA8F5}
-  .track{position:absolute;z-index:4;left:0;right:0;bottom:24px;max-width:var(--max);margin:0 auto;padding:0 22px;
-    display:flex;flex-direction:column;gap:9px}
-  .track .now{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
-    transition:opacity .2s ease}
-  .track .bar{height:3px;border-radius:2px;background:rgba(255,255,255,.20);overflow:hidden}
-  .track .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4C8DF0,#B4703C)}
-  .track .ms{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.14em;
-    text-transform:uppercase;color:#7E9EC8}
+    text-align:center;gap:18px;padding-top:clamp(28px,7vh,72px);padding-bottom:0}
+  .hero h1{max-width:24ch}
+  .track{position:absolute;z-index:4;left:0;right:0;bottom:26px;max-width:var(--max);margin:0 auto;padding:0 22px;
+    display:flex;flex-direction:column;gap:12px}
+  .track::before{content:"";position:absolute;left:0;right:0;bottom:-26px;height:230px;z-index:-1;pointer-events:none;
+    background:linear-gradient(180deg,transparent,rgba(3,10,22,.55) 42%,rgba(3,10,22,.92))}
+  .track .now{font-family:var(--body);font-size:clamp(20px,3vw,32px);font-weight:800;letter-spacing:-.025em;
+    line-height:1.15;color:#fff;transition:opacity .2s ease;text-wrap:balance;
+    text-shadow:0 2px 18px rgba(0,0,0,.55)}
+  .track .bar{height:4px;border-radius:2px;background:rgba(255,255,255,.24);overflow:hidden}
+  .track .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4C8DF0,var(--cu-l))}
+  .track .ms{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:#95B2D6}
   .track .ms b{font-weight:500;transition:color .2s}
   .track .ms b.on{color:#fff}
-
-  .bigwrap{background:var(--alt);border-bottom:1px solid var(--line)}
-  .biglist{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-  @media (max-width:980px){.biglist{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:680px){
-    .biglist{grid-template-columns:repeat(2,1fr);gap:10px}
-    .biglist a{font-size:13.5px;padding:15px 13px 15px 15px;min-height:62px;line-height:1.3;
-      overflow-wrap:break-word;letter-spacing:-.01em}
-    .biglist a::after{display:none}
+  @media (max-width:760px){
+    .track{bottom:96px}
+    .track::before{bottom:-96px;height:290px}
   }
-  .biglist a{position:relative;display:block;overflow:hidden;
-    background:#fff;border:1px solid var(--line);border-radius:12px;padding:19px 42px 19px 20px;
-    font-weight:700;font-size:15.5px;line-height:1.3;min-height:62px;
-    overflow-wrap:break-word;word-break:break-word;hyphens:auto;
-    box-shadow:0 12px 26px -22px rgba(7,32,63,.5);
-    transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
-  .biglist a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);
-    transform:scaleY(0);transform-origin:50% 50%;transition:transform .18s ease}
-  .biglist a::after{content:"\2192";position:absolute;right:15px;top:50%;transform:translateY(-50%);
-    color:var(--blue);font-weight:700;opacity:.45;transition:opacity .16s ease,right .16s ease}
-  .biglist a:hover{transform:translateY(-2px);border-color:#BBD1F0;box-shadow:0 26px 42px -28px rgba(7,32,63,.55)}
-  .biglist a:hover::before{transform:scaleY(1)}
-  .biglist a:hover::after{opacity:1;right:11px}
-  @media (max-width:680px){
-    .biglist{grid-template-columns:repeat(2,1fr);gap:10px}
-    .biglist a{font-size:13.5px;padding:15px 13px;min-height:60px;letter-spacing:-.012em}
-  }
-  @media (max-width:430px){
-    .biglist a{font-size:12.6px;padding:14px 11px;min-height:58px;letter-spacing:-.015em}
-    .biglist a::after{display:none}
-  }
-  .bigwrap .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:20px}
-  .bigwrap .count{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media (max-width:880px){.grid3{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:600px){.grid3{grid-template-columns:1fr}}
-  .pillar{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px 26px;background:#fff;
-    display:flex;flex-direction:column;gap:10px;overflow:hidden;
-    box-shadow:0 14px 30px -24px rgba(7,32,63,.55);transition:transform .18s ease,box-shadow .18s ease}
-  .pillar:hover{transform:translateY(-3px);box-shadow:0 30px 50px -32px rgba(7,32,63,.6)}
-  .pillar::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
-    background:linear-gradient(90deg,var(--blue),#4C8DF0)}
-  .pillar.cu::before{background:linear-gradient(90deg,#B4703C,#E3A972)}
-  .pillar .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
-  .pillar.cu .k{color:#A25E2A}
-  .pillar p{color:var(--mute);font-size:15.5px}
+  /* ---------- 2. ANSWER BAR ---------- */
+  .answer{background:#fff;border-bottom:1px solid var(--line);padding:0}
+  .answer .in{padding-top:30px;padding-bottom:30px;display:flex;gap:20px 40px;align-items:center;flex-wrap:wrap}
+  .answer p{font-size:clamp(17px,2.1vw,21px);line-height:1.45;color:var(--ink);max-width:34ch;font-weight:600;flex:1 1 320px}
+  .answer .rr{display:flex;flex-direction:column;gap:12px;flex:0 1 auto}
+  .ticker{position:relative;overflow:hidden;background:var(--warm);
+    border-top:1px solid #F0DDC9;border-bottom:1px solid #F0DDC9;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .tick{display:flex;width:max-content;animation:tickR 42s linear infinite;will-change:transform}
+  .ticker:hover .tick{animation-play-state:paused}
+  .tset{display:flex;align-items:center;gap:38px;padding:15px 19px;font-family:var(--mono);
+    font-size:14.5px;letter-spacing:.13em;text-transform:uppercase;color:#5A3A1F;white-space:nowrap}
+  .tset span{display:inline-flex;align-items:center;gap:11px}
+  .tset i{width:7px;height:7px;border-radius:50%;background:var(--cu);flex:none}
+  @keyframes tickR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @media (max-width:560px){.tset{font-size:13px;gap:28px;padding:13px 14px}.tick{animation-duration:34s}}
+  @media (prefers-reduced-motion: reduce){.tick{animation:none}}
+  @media (max-width:560px){.answer .rr{width:100%}.answer .row{width:100%}.answer .row .btn{flex:1 1 100%}}
 
+  /* ---------- 3. TRACKS ---------- */
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:820px){.tracks{grid-template-columns:1fr}}
+  .trk{position:relative;overflow:hidden;border-radius:24px;min-height:360px;display:flex;flex-direction:column;
+    justify-content:flex-end;padding:28px;color:#fff;background:var(--navy);
+    transition:transform .18s ease,box-shadow .18s ease}
+  .trk.b{background:#1E1206}
+  .trk:hover{transform:translateY(-4px);box-shadow:0 34px 60px -34px rgba(6,27,54,.7)}
+  .trk img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .trk:hover img{transform:scale(1.05)}
+  .trk::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(163deg,rgba(6,27,54,.18) 0%,rgba(6,27,54,.66) 46%,rgba(4,17,34,.94) 100%)}
+  .trk.b::after{background:linear-gradient(163deg,rgba(58,28,6,.20) 0%,rgba(38,20,6,.68) 46%,rgba(18,11,4,.95) 100%)}
+  .trk > *:not(img){position:relative;z-index:2}
+  .trk .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:#fff;background:var(--blue);border-radius:999px;padding:6px 13px;align-self:flex-start;margin-bottom:auto}
+  .trk.b .tag{background:var(--cu)}
+  .trk h3{font-size:clamp(24px,3vw,31px);margin-bottom:8px;letter-spacing:-.025em}
+  .trk p{color:#D6E2F2;font-size:16px;max-width:34ch}
+  .trk .go{margin-top:16px;display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:16px;color:#fff}
+  .trk .go i{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;
+    font-style:normal;transition:transform .18s ease,background .18s ease}
+  .trk:hover .go i{transform:translateX(4px);background:rgba(255,255,255,.3)}
 
+  /* ---------- 4. OPGAVER ---------- */
+  .opg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:820px){.opg{grid-template-columns:1fr}}
+  .op{background:#fff;border:1px solid var(--line);border-left:4px solid var(--cu);border-radius:14px;padding:22px 24px;
+    display:flex;flex-direction:column;gap:9px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+  .op:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-left-color:var(--blue)}
+  .op q{font-size:19px;font-weight:800;letter-spacing:-.02em;line-height:1.3;quotes:"\00bb" "\00ab"}
+  .op p{color:var(--mute);font-size:16px}
+  .op .fix{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cu)}
 
-  .card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card);display:flex;flex-direction:column;
-    box-shadow:0 12px 26px -22px rgba(7,32,63,.5);transition:transform .18s ease,box-shadow .18s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .card .pic{position:relative;height:180px;background:linear-gradient(140deg,#0B2A57,#1656C8 60%,#4C8DF0);overflow:hidden}
-  .card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
-  .card:hover .pic img{transform:scale(1.05)}
-  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:7px}
-  .card p{color:var(--mute);font-size:15px}
+  /* ---------- 5. YDELSER ---------- */
+  .grp{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden}
+  .grp > summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;align-items:center;gap:14px;
+    font-weight:800;font-size:20px;letter-spacing:-.02em}
+  .grp > summary::-webkit-details-marker{display:none}
+  .grp > summary .cnt{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;margin-left:auto}
+  .grp > summary .chev{width:12px;height:12px;border-right:2.5px solid var(--cu);border-bottom:2.5px solid var(--cu);
+    transform:rotate(45deg);transition:transform .2s ease;flex:none;margin-top:-4px}
+  .grp[open] > summary .chev{transform:rotate(-135deg);margin-top:4px}
+  .grp > summary .ic{width:34px;height:34px;border-radius:10px;background:var(--warm);display:grid;place-items:center;
+    font-size:17px;flex:none}
+  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:0 24px 24px}
+  @media (max-width:820px){.chips{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:480px){.chips{grid-template-columns:1fr}}
+  .chips a{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--alt);
+    border:1px solid transparent;border-radius:11px;padding:13px 15px;font-weight:700;font-size:15.5px;
+    letter-spacing:-.01em;line-height:1.25;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+  .chips a::after{content:"→";color:var(--cu);font-weight:700;flex:none}
+  .chips a:hover{background:#fff;border-color:var(--cu);transform:translateX(3px)}
+  .onebill{margin-top:22px;background:var(--navy);color:#fff;border-radius:18px;padding:26px 28px;
+    display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .onebill b{font-size:clamp(19px,2.4vw,25px);font-weight:800;letter-spacing:-.02em;flex:1 1 340px;line-height:1.25}
+  .onebill span{color:#B9CBE4;font-size:15.5px;flex:1 1 260px}
 
-  .all{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-  @media (max-width:880px){.all{grid-template-columns:repeat(2,1fr)}}
-  .all span{border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:14.5px;background:#fff;
-    box-shadow:0 8px 18px -16px rgba(7,32,63,.45)}
+  /* ---------- DARK sections ---------- */
+  .dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .dark::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:120%;pointer-events:none;
+    background:radial-gradient(closest-side,rgba(108,164,240,.16),transparent 72%)}
+  .dark .in{position:relative}
+  .dark .lead{color:#B9CBE4}
+  .dark .eyebrow{color:var(--cu-l)}
+  .dark .eyebrow::before{background:var(--cu-l)}
 
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media (max-width:760px){.steps{grid-template-columns:1fr}}
-  .step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:9px;
-    box-shadow:0 12px 26px -22px rgba(7,32,63,.5)}
-  .step .n{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--blue)}
-  .step p{color:var(--mute);font-size:15px}
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  @media (max-width:900px){.split{grid-template-columns:1fr;gap:28px}}
+  .split .shot{border-radius:20px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(0,0,0,.8)}
+  .split .shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+  .ticks{display:flex;flex-direction:column;gap:11px;margin-top:8px}
+  .ticks li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;color:#E4EDF9}
+  .ticks li::before{content:"✓";color:var(--cu-l);font-weight:800;flex:none;
+    width:24px;height:24px;border-radius:50%;background:rgba(229,143,68,.16);display:grid;place-items:center;font-size:13px;margin-top:2px}
+  ul.ticks{list-style:none;padding:0;margin:8px 0 0}
 
-  .akut{background:linear-gradient(96deg,#8E2C21,#B8452E);color:#fff;border-radius:var(--r);padding:26px 28px;display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center;justify-content:space-between}
-  .akut h3{color:#fff;font-size:22px}
-  .akut p{color:#FFD9CF;font-size:15.5px;max-width:46ch}
-  .akut .btn{background:#fff;color:#8E2C21}
-  .akut .btn:hover{background:#FFEDE7}
+  .accgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:820px){.accgrid{grid-template-columns:1fr}}
+  .acc{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .acc summary{list-style:none;cursor:pointer;padding:17px 20px;font-weight:800;font-size:16.5px;
+    display:flex;align-items:center;gap:12px;letter-spacing:-.015em}
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary::after{content:"+";margin-left:auto;color:var(--cu);font-weight:800;font-size:20px;line-height:1}
+  .acc[open] summary::after{content:"–"}
+  .acc .num{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--cu);text-transform:uppercase;flex:none}
+  .acc .txt{padding:0 20px 20px;color:var(--mute);font-size:16px}
+  .dark .acc{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+  .dark .acc .txt{color:#B9CBE4}
 
-  .mos{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:8px;grid-auto-flow:dense}
-  @media (max-width:880px){.mos{grid-template-columns:repeat(2,1fr)}}
-  .mos figure{margin:0;position:relative;overflow:hidden;border-radius:12px;background:linear-gradient(140deg,#0B2A57,#1656C8 60%,#4C8DF0)}
-  .mos img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+  /* ---------- CTA1 ---------- */
+  .cta1{background:#A2551F;color:#fff;position:relative;overflow:hidden}
+  .cta1::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(75% 120% at 78% 12%,rgba(255,186,120,.28),transparent 66%)}
+  .cta1 .in{position:relative;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .cta1 h2{max-width:16ch}
+  .cta1 p{color:#FBE7D6;max-width:44ch;margin-top:12px;font-size:17px}
+  .cta1 .free{display:inline-flex;align-items:center;gap:9px;margin-top:16px;font-family:var(--mono);
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+  .cta1 .free::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;
+    box-shadow:0 0 0 5px rgba(255,255,255,.22)}
+  .cta1 .btn.cu{background:#fff;color:#8A4419;box-shadow:0 14px 28px -16px rgba(0,0,0,.6)}
+  .cta1 .btn.cu:hover{background:#FFF3E9;color:#6E3512}
+  .cta1 .btn.ghost{border-color:rgba(255,255,255,.7)}
+
+  /* ---------- STEPS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;counter-reset:s}
+  @media (max-width:960px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.steps{grid-template-columns:1fr}}
+  .step{position:relative;padding-top:18px;border-top:2px solid var(--line);transition:border-color .2s ease}
+  .step:hover{border-top-color:var(--cu)}
+  .step .n{font-family:var(--mono);font-size:34px;font-weight:500;line-height:1;color:transparent;
+    -webkit-text-stroke:1.5px var(--cu);display:block;margin-bottom:12px}
+  .step h3{font-size:17.5px;margin-bottom:6px}
+  .step p{color:var(--mute);font-size:15.5px}
+
+  /* ---------- STATS ---------- */
+  .stats .in{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+  @media (max-width:900px){.stats .in{grid-template-columns:repeat(2,1fr)}}
+  .stat{display:flex;flex-direction:column;gap:2px}
+  .stat b{font-size:clamp(34px,5vw,50px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--blue);
+    font-variant-numeric:tabular-nums}
+  .stat span{color:var(--mute);font-size:14.5px;line-height:1.35}
+
+  /* ---------- GALLERI ---------- */
+  .mos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media (max-width:900px){.mos{grid-template-columns:repeat(2,1fr)}}
+  .mos figure{margin:0;position:relative;border-radius:14px;overflow:hidden;background:#DDE6F2}
+  .mos figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;transition:transform .5s ease}
+  .mos figure.tall img{aspect-ratio:1/1.55}
+  @media (min-width:901px){.mos figure.tall{grid-row:span 2}}
   .mos figure:hover img{transform:scale(1.06)}
-  .mos .tall{grid-row:span 2}
-  .mos figcaption{position:absolute;left:9px;bottom:9px;background:rgba(4,16,38,.72);color:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+  .mos figcaption{position:absolute;left:10px;bottom:10px;background:rgba(6,27,54,.82);color:#fff;
+    font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
 
-  .revs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media (max-width:760px){.revs{grid-template-columns:1fr}}
-  .rev{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:11px;
-    box-shadow:0 12px 26px -22px rgba(7,32,63,.5)}
-  .stars{color:#00B67A;font-size:15px;letter-spacing:2px}
-  .rev q{font-size:17px;font-weight:600;quotes:"»" "«"}
-  .rev .who{color:var(--mute);font-size:14px}
-  .score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .score b{font-size:34px;letter-spacing:-.03em}
+  /* ---------- ANMELDELSER ---------- */
+  .revs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:820px){.revs{grid-template-columns:1fr}}
+  .rev{margin:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;
+    padding:22px 24px;display:flex;flex-direction:column;gap:9px}
+  .rev q{font-size:19px;font-weight:800;letter-spacing:-.02em;quotes:"\201c" "\201d"}
+  .rev .who{color:#9FB6D4;font-size:14px}
+  .stars{color:#FFB23F;letter-spacing:.14em;font-size:15px}
+  .score{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .score b{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1}
 
+  /* ---------- AKUT ---------- */
+  .akutband{background:var(--red);color:#fff;position:relative;overflow:hidden;padding:clamp(34px,4.5vw,54px) 0}
+  .akutband::before{content:"";position:absolute;inset:0;opacity:.07;pointer-events:none;
+    background:repeating-linear-gradient(135deg,#000 0 24px,transparent 24px 48px)}
+  .akutband .in{position:relative;display:flex;gap:22px 32px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .akutband .in > div{flex:1 1 460px}
+  .akutband .btn{flex:none}
+  .akutband h2{font-size:clamp(24px,3.2vw,36px)}
+  .akutband p{color:#FFE1DE;margin-top:8px;max-width:52ch}
+  .akutband .btn{background:#fff;color:var(--red);box-shadow:none;font-size:18px}
+  .akutband .btn:hover{background:#FFF0EE}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:840px}
+  .faq .acc{margin-bottom:10px}
+
+  /* ---------- KONTAKT ---------- */
   .cta{background:var(--navy);color:#fff}
-  .cta h2{color:#fff}
-  .cta .lead{color:#C6D9F2}
-  .cwrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
-  @media (max-width:860px){.cwrap{grid-template-columns:1fr}}
-  form{background:#fff;border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:12px;color:var(--ink)}
-  label{font-size:14px;font-weight:700;display:flex;flex-direction:column;gap:6px}
-  input,textarea{font-family:var(--body);font-size:16px;border:1px solid var(--line);border-radius:10px;padding:13px 14px;background:#fff;color:var(--ink);min-height:48px}
-  textarea{min-height:104px;resize:vertical}
-  .facts{display:flex;flex-direction:column;gap:12px;font-size:16px}
-  .facts a{border-bottom:1px solid rgba(255,255,255,.3);display:inline-flex;align-items:center;min-height:44px}
-  .facts .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8FB4E8;display:block}
+  .cwrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  @media (max-width:900px){.cwrap{grid-template-columns:1fr;gap:28px}}
+  .cta .lead{color:#B9CBE4}
+  .facts{display:grid;gap:12px;margin-top:8px}
+  .facts span{display:flex;flex-direction:column}
+  .facts .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8FB4E8}
+  .facts a{font-weight:800;font-size:19px;display:inline-block;padding:5px 0}
+  form{background:#fff;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;color:var(--ink)}
+  form label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14.5px}
+  form input,form textarea{font:inherit;font-weight:500;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;min-height:50px}
+  form textarea{min-height:104px;resize:vertical}
+  form input:focus,form textarea:focus{outline:none;border-color:var(--blue)}
+  .seg{display:flex;gap:8px}
+  .seg label{flex:1;position:relative;cursor:pointer}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg span{display:block;text-align:center;padding:12px 10px;border:1.5px solid var(--line);border-radius:12px;
+    font-weight:700;font-size:15px;transition:all .15s ease}
+  .seg input:checked + span{border-color:var(--blue);background:var(--sky);color:var(--blue-d)}
+  .seg input:focus-visible + span{outline:3px solid var(--cu-l);outline-offset:2px}
 
-  footer{background:#061A34;color:#9FBBDE;font-size:14.5px;padding:34px 0}
+  footer{background:#04122A;color:#93A9C6;padding:34px 0;font-size:14.5px}
   footer .in{display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between}
   footer b{color:#fff}
-  footer a{display:inline-flex;align-items:center;min-height:40px;border-bottom:1px solid rgba(159,187,222,.35)}
-  #garanti .lead a{display:inline-flex;align-items:center;min-height:40px}
-  html.rvon .rv{opacity:0;transform:translateY(20px)}
-  html.rvon .rv.seen{opacity:1;transform:none;
-    transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
+  footer a{color:#fff}
 
-  /* midt-CTA */
-  .cta2{background:linear-gradient(100deg,#0F3F97,#1656C8 52%,#2E76E8);color:#fff;position:relative;overflow:hidden}
-  .cta2::after{content:"";position:absolute;right:-8%;top:-40%;width:52%;height:180%;
-    background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.14),rgba(255,255,255,0) 62%)}
-  .cta2 .in{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:20px 34px;align-items:center;
-    justify-content:space-between;padding-top:46px;padding-bottom:46px}
-  .cta2 h2{color:#fff;max-width:19ch}
-  .cta2 p{color:#D9E7FB;font-size:16px;max-width:46ch;margin-top:8px}
-  .cta2 .btn{background:#fff;color:var(--navy)}
-  .cta2 .btn:hover{background:#EAF1FE}
-  .cta2 .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
-  .cta2 .btn.ghost:hover{background:rgba(255,255,255,.14)}
+  /* ---------- MOBIL CTA BAR ---------- */
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:9px;padding:9px 12px calc(9px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .bar .btn{flex:1;min-height:50px;font-size:15.5px;padding:12px 10px}
+  @media (max-width:760px){.bar{display:flex}body{padding-bottom:74px}}
 
-  /* accordions */
-  .accgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;align-items:start}
-  @media (max-width:820px){.accgrid{grid-template-columns:1fr}}
-  .acc{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;
-    box-shadow:0 12px 26px -22px rgba(7,32,63,.5);transition:border-color .16s ease,box-shadow .16s ease}
-  .acc[open]{border-color:#BBD1F0;box-shadow:0 22px 38px -28px rgba(7,32,63,.55)}
-  .acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;
-    padding:19px 20px;font-weight:800;font-size:16.5px;min-height:62px}
-  .acc summary::-webkit-details-marker{display:none}
-  .acc summary:hover{background:#F7FAFF}
-  .acc .num{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:#A25E2A;flex:none}
-  .acc .num.bl{color:var(--blue)}
-  .acc summary::after{content:"+";margin-left:auto;font-size:23px;line-height:1;font-weight:700;color:var(--blue);flex:none}
-  .acc[open] summary::after{content:"\2013"}
-  @media (max-width:560px){
-    .acc summary{flex-wrap:wrap;gap:4px 10px;padding:16px 18px;font-size:15.5px;line-height:1.3}
-    .acc .num{flex:1 0 100%;order:-1}
-    .acc summary::after{position:absolute;right:16px;top:16px}
-    .acc{position:relative}
+  /* ---------- REVEAL ---------- */
+  .rv{transition:opacity .5s ease,transform .5s ease}
+  html.rvon .rv{opacity:0;transform:translateY(14px)}
+  html.rvon .rv.seen{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    html.rvon .rv{opacity:1 !important;transform:none !important}
+    html{scroll-behavior:auto}
   }
-  .acc .txt{padding:0 20px 20px;color:var(--mute);font-size:15.5px;animation:accIn .26s ease}
-  @keyframes accIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
-
-  .stats{background:var(--navy);color:#fff}
-  .stats .in{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-  @media (max-width:940px){.stats .in{grid-template-columns:repeat(2,1fr);gap:26px 18px}}
-  .stat{display:flex;flex-direction:column;gap:4px}
-  .stat b{font-size:clamp(32px,4.2vw,52px);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-  .stat span{font-size:14px;color:#A9C8F2;max-width:22ch}
-
-  .tl{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  @media (max-width:760px){.tl{grid-template-columns:1fr;gap:16px}}
-  .tl::before{content:"";position:absolute;left:6%;right:6%;top:26px;height:2px;
-    background:linear-gradient(90deg,var(--blue),#B4703C);opacity:.35}
-  @media (max-width:760px){.tl::before{display:none}}
-  .tl .n{width:54px;height:54px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;
-    font-family:var(--mono);font-size:15px;position:relative;z-index:2;box-shadow:0 12px 26px -14px rgba(22,86,200,.9)}
-  .tl .c{display:flex;flex-direction:column;gap:9px;padding-top:16px}
-  .tl h3{font-size:20px}
-  .tl p{color:var(--mute);font-size:15px}
-
-  .erows{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
-  @media (max-width:820px){.erows{grid-template-columns:1fr}}
-  .erow{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line);
-    transition:transform .16s ease}
-  .erow:hover{transform:translateX(4px)}
-  .erow .num{font-family:var(--mono);font-size:12px;color:#A25E2A;letter-spacing:.14em;padding-top:5px}
-  .erow h3{font-size:19px;margin-bottom:5px}
-  .erow p{color:var(--mute);font-size:15px}
-
-  .revdark{background:#07203F;color:#fff}
-  .revdark h2{color:#fff}
-  .revdark .lead{color:#C6D9F2}
-  .revdark .score b{font-size:clamp(52px,7vw,86px);line-height:.9;letter-spacing:-.05em}
-  .revdark .rev{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);box-shadow:none;color:#fff}
-  .revdark .rev q{font-size:19px}
-  .revdark .rev .who{color:#9FC3F0}
-  .revdark .rev::before{content:"\201C";display:block;font-size:46px;line-height:.55;color:#4C8DF0;opacity:.75}
-
-  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}
-    html.rvon .rv{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -295,10 +348,10 @@
       <span><b>Vestsjællands VVS &amp; Blik</b><span class="sub">Aut. VVS-installatør · Skælskør</span></span>
     </a>
     <nav class="nav" aria-label="Hovedmenu">
-      <a href="#ydelser">Vi tilbyder</a>
-      <a href="#energi">Vedvarende energi</a>
-      <a href="#garanti">Din garanti</a>
-      <a href="#galleri">Galleri</a>
+      <a href="#opgaver">Opgaver</a>
+      <a href="#ydelser">Ydelser</a>
+      <a href="#energi">Varmepumpe</a>
+      <a href="#saadan">Sådan gør vi</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <a class="tel" href="tel:+4528511070">Ring 28 51 10 70</a>
@@ -307,157 +360,198 @@
 
 <main id="top">
 
+  <!-- 1. HERO -->
   <section class="heroWrap hero" id="heroWrap">
     <div class="heroSticky">
-      <img class="heroFallback" id="heroStill" alt="Zinktag med stående false" aria-hidden="true">
+      <img class="heroFallback" id="heroStill" alt="" aria-hidden="true">
       <canvas id="heroGL" aria-label="3D: vandets vej fra tag til kloak"></canvas>
       <span class="veil"></span>
       <div class="in">
-        <h1>VVS og blik<br>i samme firma</h1>
-        <p class="sub">Specialister i vedvarende energi. Vand, varme, bad og køkken indenfor — tag, tagrender, facade og zink udenfor. Kvalitetsbevidst arbejde til gode priser.</p>
-        <div class="row" style="justify-content:center">
-          <a class="btn" href="#kontakt">Få et uforpligtende tilbud</a>
-          <a class="btn ghost" href="tel:+4528511070">Ring 28 51 10 70</a>
-        </div>
-        <div class="marks">
-          <span><i></i>Autoriseret VVS-installatør</span>
-          <span><i></i>VE-godkendt</span>
-          <span><i></i>Tekniq Garanti</span>
-          <span><i></i>Rheinzink-certificeret</span>
-          <span><i></i>Vagtordning</span>
-        </div>
+        <h1>Varme, vand og tag.<br><span class="hl">Ét firma</span>, én regning.</h1>
       </div>
       <div class="track" aria-hidden="true">
         <span class="now" id="stNow">Taget — zinktag og håndlavet tagrende i kobber</span>
-        <div class="bar"><i id="barI"></i></div>
+        <div class="bar2"><div class="bar"><i id="barI"></i></div></div>
         <div class="ms" id="stMs"><b>Tag</b><b>Rør i huset</b><b>Gulvvarme</b><b>Kloak</b></div>
       </div>
     </div>
   </section>
 
-  <section class="bigwrap" id="ydelser-liste" aria-label="Alle ydelser">
+  <!-- 2. SVAR-BJÆLKE -->
+  <section class="answer">
     <div class="in">
-      <div class="head">
-        <h2>Det tilbyder vi</h2>
-        <span class="count">16 ydelser · ét firma · én regning</span>
-      </div>
-      <div class="biglist">
-        <a href="#energi">Varmepumper</a>
-        <a href="#energi">Solvarme</a>
-        <a href="#energi">Jordvarme</a>
-        <a href="#energi">Varmeanlæg</a>
-        <a href="#energi">Gulvvarme</a>
-        <a href="#energi">Pillefyr og stokerkedler</a>
-        <a href="#akut">Gas- og oliefyrsservice</a>
-        <a href="#ydelser">Kedelcentraler</a>
-        <a href="#energi">Ventilationsanlæg</a>
-        <a href="#energi">BWT blødgøringsanlæg</a>
-        <a href="#ydelser">Rør &amp; fittings</a>
-        <a href="#ydelser">Badeværelse</a>
-        <a href="#ydelser">Køkken</a>
-        <a href="#ydelser">Tagbeklædning</a>
-        <a href="#ydelser">Facadebeklædning</a>
-        <a href="#ydelser">Tagrender og nedløbsrør</a>
+      <p>Autoriseret VVS-installatør og blikkenslager i Skælskør. Vi kører i hele Vestsjælland.</p>
+      <div class="rr">
+        <div class="row">
+          <a class="btn" href="#kontakt">Få et uforpligtende tilbud</a>
+          <a class="btn line" href="tel:+4528511070">Ring 28 51 10 70</a>
+        </div>
       </div>
     </div>
-  </section>
-
-
-  <section>
-    <div class="in stack" style="gap:26px">
-      <div class="stack" style="gap:10px">
-        <p class="eyebrow">Hvad har du brug for?</p>
-        <h2>Vi er specialister i vedvarende energi</h2>
-        <p class="lead">Tre fagområder under samme tag. Du slipper for at koordinere flere håndværkere, og du får én regning i stedet for tre.</p>
-      </div>
-      <div class="grid3">
-        <div class="pillar">
-          <span class="k">Varmeanlæg</span>
-          <h3>Varme der kan betale sig</h3>
-          <p>Uanset om det er varmepumpe, solvarme, jordvarme, gas eller andet, er vi klar med et kvalitetsbevidst tilbud — både på nyanlæg, renovering og tilsyn. Vi har naturligvis også vagtordning.</p>
+    <div class="ticker">
+      <div class="tick">
+        <div class="tset">
+          <span><i></i>Autoriseret VVS-installatør</span>
+          <span><i></i>VE-godkendt</span>
+          <span><i></i>Tekniq Garanti</span>
+          <span><i></i>Rheinzink-certificeret</span>
+          <span><i></i>Vagtordning 24/7</span>
+          <span><i></i>25 års erfaring</span>
+          <span><i></i>Fast pris på skrift</span>
+          <span><i></i>Ét firma — én regning</span>
+          <span><i></i>Skælskør · Slagelse · Korsør · Sorø · Næstved</span>
         </div>
-        <div class="pillar">
-          <span class="k">VVS-installatør</span>
-          <h3>Vand, varme og sanitet</h3>
-          <p>Kvalificeret og autoriseret hjælp til alle projekter inden for vand-, varme- eller sanitetsinstallationer — i hjemmet, i institutionen eller i virksomheden.</p>
-        </div>
-        <div class="pillar">
-          <span class="k">Blikkenslager</span>
-          <h3>Tag, facade og render</h3>
-          <p>Naturskifer samt blikmaterialer som zink og kobber kræver præcision og godt håndværk. Dit tag, din facade og dine tagrender står flot mange år frem.</p>
+        <div class="tset" aria-hidden="true">
+          <span><i></i>Autoriseret VVS-installatør</span>
+          <span><i></i>VE-godkendt</span>
+          <span><i></i>Tekniq Garanti</span>
+          <span><i></i>Rheinzink-certificeret</span>
+          <span><i></i>Vagtordning 24/7</span>
+          <span><i></i>25 års erfaring</span>
+          <span><i></i>Fast pris på skrift</span>
+          <span><i></i>Ét firma — én regning</span>
+          <span><i></i>Skælskør · Slagelse · Korsør · Sorø · Næstved</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 3. TO SPOR -->
+  <section id="spor">
+    <div class="in">
+      <div class="hd">
+        <p class="eyebrow">Hvor hører du til?</p>
+        <h2>Vælg dit spor — så er du hurtigere fremme</h2>
+      </div>
+      <div class="tracks">
+        <a class="trk rv" href="#opgaver">
+          <img data-k="bath" alt="Nyt badeværelse udført af Vestsjællands VVS og Blik" loading="lazy">
+          <span class="tag">Privat bolig</span>
+          <h3>Varmepumpe, bad, gulvvarme, tag og tagrender</h3>
+          <p>Fast pris, før vi går i gang. Vi rydder op efter os, og du får dokumentationen med.</p>
+          <span class="go">Se løsninger til boligen <i>→</i></span>
+        </a>
+        <a class="trk b rv" href="#erhverv">
+          <img data-k="boiler" alt="Kedelcentral med gaskedler" loading="lazy">
+          <span class="tag">Erhverv og boligforening</span>
+          <h3>Kedelcentraler, ventilation og serviceaftaler</h3>
+          <p>Fast kontaktperson, dokumentation på arbejdet og planlagt eftersyn, så anlægget ikke står stille.</p>
+          <span class="go">Se erhvervsløsninger <i>→</i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. OPGAVER -->
+  <section id="opgaver" class="alt">
+    <div class="in">
+      <div class="hd wide">
+        <p class="eyebrow">Kender du den?</p>
+        <h2>Hvad kan vi hjælpe med?</h2>
+        <p class="lead">De fleste opkald starter med en af de her sætninger. Find din — så ved du, hvad næste skridt er.</p>
+      </div>
+      <div class="opg">
+        <div class="op rv">
+          <q>Gasfyret er 20 år, og regningen bliver ved med at stige.</q>
+          <p>Vi regner på varmepumpe og siger ærligt, hvad der bedst kan betale sig hos jer — også hvis svaret er at beholde det, I har.</p>
+          <span class="fix">Varmepumpe · beregning · tilskud</span>
+        </div>
+        <div class="op rv">
+          <q>Der er ikke varmt vand nok om morgenen.</q>
+          <p>Ny varmtvandsbeholder eller cirkulation på det varme vand. Ofte klaret på én dag.</p>
+          <span class="fix">Varmt vand · beholder · cirkulation</span>
+        </div>
+        <div class="op rv">
+          <q>Tagrenden løber over og ned ad facaden.</q>
+          <p>Håndlavet tagrende i kobber eller zink. Vi laver den selv — det er ikke standardvare fra hylden, og den holder i årtier.</p>
+          <span class="fix">Tagrender · nedløb · zink og kobber</span>
+        </div>
+        <div class="op rv">
+          <q>Badeværelset trænger til en renovering.</q>
+          <p>Vi tager rør, afløb, gulvvarme og sanitet — og koordinerer med de andre håndværkere, så du kun har én at ringe til.</p>
+          <span class="fix">Bad · gulvvarme · afløb</span>
+        </div>
+        <div class="op rv">
+          <q>Kloakken stopper igen og igen.</q>
+          <p>Vi finder årsagen i stedet for bare at spule. Er faldstammen eller ledningen slidt op, laver vi den om.</p>
+          <span class="fix">Kloak · faldstamme · ledning</span>
+        </div>
+        <div class="op rv">
+          <q>Røret er sprunget — lige nu.</q>
+          <p>Vagtordning uden for åbningstid. Ring, luk for vandet, og lad være med at vente til i morgen.</p>
+          <span class="fix">Vagt · 40 50 70 57</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. YDELSER -->
   <section id="ydelser">
-    <div class="in stack" style="gap:26px">
-      <div class="stack" style="gap:10px">
-        <p class="eyebrow">Vi tilbyder</p>
-        <h2>Mange gode løsninger</h2>
-        <p class="lead">Til private, erhverv og offentlige institutioner i hele Vestsjælland.</p>
-      </div>
-      <div class="grid3">
-        <article class="card">
-          <div class="pic"><img data-k="bath" alt="Badeværelse udført af Vestsjællands VVS og Blik" loading="lazy"></div>
-          <div class="body"><h3>Badeværelse</h3><p>Fra det helt klassiske til det mest moderne. Skal du bruge det rette kar, spa eller en særlig bruser, hjælper vi med at finde løsningen — og leverer et professionelt stykke arbejde til den rette pris.</p></div>
-        </article>
-        <article class="card">
-          <div class="pic"><img data-k="pipes" alt="Rørføring i kobber" loading="lazy"></div>
-          <div class="body"><h3>Rør &amp; fittings</h3><p>Som autoriseret VVS-installatør klarer vi alt fra små reparationer og udskiftning af enkelte rør og vinkler til helt nye anlæg og rørsystemer. Skal rør flyttes ved en ombygning, klarer vi også det.</p></div>
-        </article>
-        <article class="card">
-          <div class="pic"><img data-k="outdoor" alt="Udedel af luft til vand-varmepumpe" loading="lazy"></div>
-          <div class="body"><h3>Varmepumper</h3><p>En luft til vand-varmepumpe varmer både bolig og brugsvand med varmen fra udeluften. Støjsvag, med både ude- og indestyring, og kan ses som en totalløsning.</p></div>
-        </article>
-        <article class="card">
-          <div class="pic"><img data-k="boiler" alt="Kedelcentral med gaskedler" loading="lazy"></div>
-          <div class="body"><h3>Kedelcentraler</h3><p>Store varmeløsninger som varmecentraler: opbygning, udskiftning, optimering og servicering. En udskiftning tjener sig ofte ind over en årrække.</p></div>
-        </article>
-        <article class="card">
-          <div class="pic"><img data-k="gutter" alt="Håndlavet tagrende i kobber" loading="lazy"></div>
-          <div class="body"><h3>Tagrender og nedløb</h3><p>Vi leverer og monterer tagrender og nedløbsrør i zink, kobber og aluminium — vedligeholdelsesfrie materialer med livslang levetid, modsat plast, der knækker og revner med årene.</p></div>
-        </article>
-        <article class="card">
-          <div class="pic"><img data-k="zinkroof" alt="Tagbeklædning i zink" loading="lazy"></div>
-          <div class="body"><h3>Tag- og facadebeklædning</h3><p>Kobbertag og zinktag har en levetid på minimum 80 år og er ekstremt robuste. Kobber patinerer irgrønt af regn og vind, zink går fra skinnende til mat — og facaden står som ny mange år frem.</p></div>
-        </article>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="cta2">
     <div class="in">
-      <div>
-        <h2>Skal vi kigge på din opgave?</h2>
-        <p>Det koster ikke noget at få set på opgaven og få prisen på skrift. Vi svarer samme hverdag — og rykker ud med det samme, hvis det haster.</p>
+      <div class="hd wide">
+        <p class="eyebrow">16 ydelser</p>
+        <h2>Ét firma til <span class="hl">hele huset</span> — inde og ude</h2>
+        <p class="lead">VVS indenfor og blikkenslagerarbejde udenfor. De to fag sidder normalt i hver sit firma — her sidder de i samme.</p>
       </div>
-      <div class="row">
-        <a class="btn" href="#kontakt">Få et uforpligtende tilbud</a>
-        <a class="btn ghost" href="tel:+4528511070">Ring 28 51 10 70</a>
+
+      <details class="grp" open>
+        <summary><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C2703A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2.5-6 6-10z"/></svg></span>Indenfor — VVS og varme<span class="cnt">13 ydelser</span><span class="chev"></span></summary>
+        <div class="chips">
+          <a href="#energi">Varmepumper</a>
+          <a href="#energi">Solvarme</a>
+          <a href="#energi">Jordvarme</a>
+          <a href="#energi">Varmeanlæg</a>
+          <a href="#energi">Gulvvarme</a>
+          <a href="#energi">Pillefyr og stokerkedler</a>
+          <a href="#akut">Gas- og oliefyrsservice</a>
+          <a href="#erhverv">Kedelcentraler</a>
+          <a href="#energi">Ventilationsanlæg</a>
+          <a href="#energi">BWT blødgøringsanlæg</a>
+          <a href="#opgaver">Rør &amp; fittings</a>
+          <a href="#opgaver">Badeværelse</a>
+          <a href="#opgaver">Køkken</a>
+        </div>
+      </details>
+
+      <details class="grp" open>
+        <summary><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C2703A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v9h14v-9"/></svg></span>Udenfor — blik, tag og zink<span class="cnt">3 ydelser</span><span class="chev"></span></summary>
+        <div class="chips">
+          <a href="#galleri">Tagbeklædning</a>
+          <a href="#galleri">Facadebeklædning</a>
+          <a href="#galleri">Tagrender og nedløbsrør</a>
+        </div>
+      </details>
+
+      <div class="onebill rv">
+        <b>Du skal ikke koordinere tre firmaer.</b>
+        <span>Vi laver både rørene indenfor og pladearbejdet på taget — én aftale, én ansvarlig, én regning.</span>
       </div>
     </div>
   </section>
 
-  <section class="stats" aria-label="Tal om firmaet">
+  <!-- 6. VARMEPUMPE -->
+  <section id="energi" class="dark">
     <div class="in">
-      <div class="stat rv"><b data-to="25">25</b><span>års erfaring i faget</span></div>
-      <div class="stat rv"><b data-to="16">16</b><span>ydelser under samme tag</span></div>
-      <div class="stat rv"><b data-to="150000" data-fmt="dk">150.000</b><span>kr. dækket af Tekniq Garanti</span></div>
-      <div class="stat rv"><b data-to="80">80</b><span>års levetid på kobber- og zinktag</span></div>
-      <div class="stat rv"><b data-to="40">40</b><span>års materialegaranti på Rheinzink</span></div>
-    </div>
-  </section>
-
-  <section id="energi" class="alt">
-    <div class="in stack" style="gap:26px">
-      <div class="stack" style="gap:10px">
-        <p class="eyebrow">Vedvarende energi</p>
-        <h2>Grøn varme, der giver mening i regnskabet</h2>
-        <p class="lead">Vi rådgiver om, hvad der reelt kan betale sig i netop dit hus — og siger fra, hvis det ikke kan.</p>
+      <div class="split">
+        <div class="stack" style="gap:14px">
+          <p class="eyebrow">Vedvarende energi</p>
+          <h2>Ud med gasfyret.<br>Ind med <span class="hl">varmepumpen</span>.</h2>
+          <p class="lead">Vi er VE-godkendte og har sat varmepumper op i Vestsjælland i mange år. Vi regner på, hvad anlægget koster at drive — ikke kun hvad det koster at købe.</p>
+          <ul class="ticks">
+            <li>Gratis besøg og beregning på adressen</li>
+            <li>Fast, skriftligt tilbud — ingen overraskelser</li>
+            <li>Vi hjælper med ansøgning om tilskud</li>
+            <li>Arbejdsløn står for sig, så du kan bruge håndværkerfradrag</li>
+            <li>Service og eftersyn bagefter — samme firma</li>
+          </ul>
+          <div class="row" style="margin-top:10px">
+            <a class="btn cu" href="#kontakt">Få beregning på varmepumpe</a>
+          </div>
+        </div>
+        <div class="shot rv"><img data-k="outdoor" alt="Udedel af luft til vand-varmepumpe" loading="lazy"></div>
       </div>
-      <div class="accgrid">
+
+      <div class="accgrid" style="margin-top:44px">
         <details class="acc rv"><summary><span class="num">01</span>Solvarme</summary><div class="txt">Vi monterer solfangere, så det passer til huset. Ved ombygning kan de tænkes ind fra starten — vi er med fra første skitse, til anlægget kører. Let at kombinere med husets øvrige vand- og varmeanlæg.</div></details>
         <details class="acc rv"><summary><span class="num">02</span>Jordvarme</summary><div class="txt">Det øvre jordlag lagrer solens varme hen over sommeren, og energien forsvinder ikke om vinteren. Jordvarme leverer energi i ubegrænsede mængder og kan reducere fyringsudgiften markant i forhold til olie og naturgas.</div></details>
         <details class="acc rv"><summary><span class="num">03</span>Pillefyr og stoker</summary><div class="txt">Med en stokerkedel kan du halvere varmeregningen og fyre med træpiller, korn, halm eller flis. Især en fordel uden for de netbundne energisystemer — og oplagt, når den gamle olietank skal skiftes.</div></details>
@@ -468,54 +562,95 @@
     </div>
   </section>
 
-  <section id="akut" style="padding-top:0">
+  <!-- 7. CTA 1 -->
+  <section class="cta1">
     <div class="in">
-      <div class="akut">
-        <div class="stack" style="gap:7px">
-          <h3>Vagtordning — gas- og oliefyrsservice</h3>
-          <p>Vi går grundigt og engageret til enhver opgave med gas- og oliefyrsservice og sørger for, at fyret fungerer optimalt. Et effektivt varmesystem gavner både trivsel og pengepung.</p>
-        </div>
-        <a class="btn" href="tel:+4540507057">Vagttelefon 40 50 70 57</a>
+      <div>
+        <h2>Vil du vide, hvad det koster hos jer?</h2>
+        <p>Vi kommer forbi, ser på opgaven og giver en fast pris på skrift. Haster det, rykker vi ud med det samme.</p>
+        <span class="free">Det koster ikke noget at spørge</span>
+      </div>
+      <div class="row">
+        <a class="btn cu" href="#kontakt">Skriv til os</a>
+        <a class="btn ghost" href="tel:+4528511070">Ring 28 51 10 70</a>
       </div>
     </div>
   </section>
 
-  <section id="saadan" class="alt">
-    <div class="in stack" style="gap:26px">
-      <div class="stack" style="gap:10px">
-        <p class="eyebrow">Sådan gør vi</p>
-        <h2>Prisen står på skrift, før vi går i gang</h2>
-        <p class="lead">Den hyppigste klage over håndværkere er en regning, der er større end det, man troede, man havde aftalt. Derfor får du prisen skriftligt, og vi ringer, hvis noget undervejs ændrer den.</p>
+  <!-- 8. SÅDAN -->
+  <section id="saadan">
+    <div class="in">
+      <div class="hd wide">
+        <p class="eyebrow">Sådan foregår det</p>
+        <h2>Prisen står på skrift, <span class="hl">før vi går i gang</span></h2>
+        <p class="lead">Den hyppigste klage over håndværkere er en regning, der er større end det, man troede, man havde aftalt. Derfor arbejder vi sådan her.</p>
       </div>
-      <div class="tl">
-        <div class="rv"><span class="n">01</span><div class="c"><h3>Du ringer eller skriver</h3><p>Fortæl kort, hvad der er galt. Er det akut, rykker vi ud hurtigst muligt. Ellers aftaler vi et besøg.</p></div></div>
-        <div class="rv"><span class="n">02</span><div class="c"><h3>Vi ser på opgaven</h3><p>Vi kommer forbi og kigger. Det koster ikke noget at få set på en opgave og få en pris.</p></div></div>
-        <div class="rv"><span class="n">03</span><div class="c"><h3>Skriftligt tilbud</h3><p>Du får prisen på skrift med, hvad der er med, og hvad der ikke er. Ændrer noget sig undervejs, hører du det fra os først.</p></div></div>
+      <div class="steps">
+        <div class="step rv"><span class="n">01</span><h3>Du ringer eller skriver</h3><p>Fortæl kort, hvad der er galt. Vi vender tilbage samme hverdag.</p></div>
+        <div class="step rv"><span class="n">02</span><h3>Vi kommer og ser på det</h3><p>Gratis og uforpligtende. Vi måler op og spørger ind, før vi gætter på en pris.</p></div>
+        <div class="step rv"><span class="n">03</span><h3>Du får et fast tilbud</h3><p>På skrift, med hvad der er med — og hvad der ikke er. Ændrer noget sig, hører du det først.</p></div>
+        <div class="step rv"><span class="n">04</span><h3>Vi udfører arbejdet</h3><p>Og rydder op efter os. Du ved, hvem der kommer, og hvornår vi er færdige.</p></div>
+        <div class="step rv"><span class="n">05</span><h3>Dokumentation og garanti</h3><p>Du får papirerne med og er dækket af Tekniq Garantiordningen.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="garanti">
-    <div class="in stack" style="gap:26px">
-      <div class="stack" style="gap:10px">
+  <!-- 9. TAL + GARANTI -->
+  <section class="stats alt" aria-label="Tal om firmaet">
+    <div class="in">
+      <div class="stat rv"><b data-to="25">25</b><span>års erfaring i faget</span></div>
+      <div class="stat rv"><b data-to="16">16</b><span>ydelser under samme tag</span></div>
+      <div class="stat rv"><b data-to="150000" data-fmt="dk">150.000</b><span>kr. dækket af Tekniq Garanti</span></div>
+      <div class="stat rv"><b data-to="80">80</b><span>års levetid på kobber- og zinktag</span></div>
+      <div class="stat rv"><b data-to="40">40</b><span>års materialegaranti på Rheinzink</span></div>
+    </div>
+  </section>
+
+  <section id="garanti" class="alt" style="padding-top:0">
+    <div class="in">
+      <div class="hd wide">
         <p class="eyebrow">Din garanti</p>
-        <h2>Hvordan sikres du bedst kvalitet i arbejdet?</h2>
-        <p class="lead">Tre ordninger står bag arbejdet: Tekniq Garanti, VE-godkendelse og Rheinzink-certificering.</p>
+        <h2>Hvad dækker dig, hvis noget går galt?</h2>
       </div>
       <div class="accgrid" style="grid-template-columns:1fr">
         <details class="acc rv"><summary><span class="num">Tekniq Garanti</span>Dansk VVS Garanti — op til 150.000 kr.</summary><div class="txt">Som medlem af TEKNIQ er vi omfattet af Dansk VVS Garanti. Ordningen sikrer, at en privat forbruger, der får medhold ved Ankenævnet for Tekniske Installationer, får kendelsen opfyldt — også hvis installatøren ikke kan eller vil. Den dækker udgifter op til 150.000 kr. inkl. moms.</div></details>
         <details class="acc rv"><summary><span class="num">VE-godkendt</span>Blandt de bedste på vedvarende energi</summary><div class="txt">VE-godkendelsen er en mærkningsordning for de virksomheder, der er blandt de bedste til at installere små vedvarende energianlæg — varmepumper, solceller, solvarme, biomassekedler og -ovne. Den dokumenterer, at anlægget installeres korrekt, så du får det største udbytte af det.</div></details>
         <details class="acc rv"><summary><span class="num">Rheinzink</span>40 års materialegaranti på zink</summary><div class="txt">Rheinzink-certificeringen samler de dygtigste blikkenslagere i Danmark og kræver videreuddannelse samt arbejde efter Rheinzinks tekniske vejledninger. Rheinzink er de eneste, der yder 40 års materialegaranti på zink.</div></details>
       </div>
-      <p class="lead" style="font-size:15px">Læs mere hos <a href="https://www.tekniq.dk" style="border-bottom:1px solid var(--line)">tekniq.dk</a>, <a href="https://www.el-vvs-anke.dk" style="border-bottom:1px solid var(--line)">el-vvs-anke.dk</a> og <a href="https://www.rheinzink.dk" style="border-bottom:1px solid var(--line)">rheinzink.dk</a>.</p>
+      <p class="lead" style="font-size:15px;margin-top:16px">Læs mere hos <a href="https://www.tekniq.dk" style="border-bottom:1px solid var(--line)">tekniq.dk</a>, <a href="https://www.el-vvs-anke.dk" style="border-bottom:1px solid var(--line)">el-vvs-anke.dk</a> og <a href="https://www.rheinzink.dk" style="border-bottom:1px solid var(--line)">rheinzink.dk</a>.</p>
     </div>
   </section>
 
-  <section id="galleri" class="alt">
-    <div class="in stack" style="gap:24px">
-      <div class="stack" style="gap:10px">
+  <!-- 10. ERHVERV -->
+  <section id="erhverv" class="dark">
+    <div class="in">
+      <div class="split">
+        <div class="shot rv"><img data-k="boiler" alt="Kedelcentral med gaskedler" loading="lazy"></div>
+        <div class="stack" style="gap:14px">
+          <p class="eyebrow">Erhverv og boligforening</p>
+          <h2>Når anlægget ikke må stå stille</h2>
+          <p class="lead">Kedelcentraler, ventilation, blødgøringsanlæg og rørarbejde for virksomheder, andelsboligforeninger og institutioner i hele Vestsjælland.</p>
+          <ul class="ticks">
+            <li>Fast kontaktperson — du ringer til den samme hver gang</li>
+            <li>Planlagt eftersyn, så I ikke opdager fejlen i december</li>
+            <li>Dokumentation på det udførte arbejde</li>
+            <li>Vagtordning uden for åbningstid</li>
+          </ul>
+          <div class="row" style="margin-top:10px">
+            <a class="btn cu" href="#kontakt">Book et møde</a>
+            <a class="btn ghost" href="tel:+4528511070">Ring 28 51 10 70</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. GALLERI -->
+  <section id="galleri">
+    <div class="in">
+      <div class="hd wide">
         <p class="eyebrow">Galleri</p>
-        <h2>Lidt inspiration fra vores hverdag</h2>
+        <h2>Se hvad vi har lavet</h2>
         <p class="lead">Ingen arkivbilleder. Alle billeder herunder er opgaver, vi selv har udført på Vestsjælland.</p>
       </div>
       <div class="mos">
@@ -531,38 +666,70 @@
     </div>
   </section>
 
-  <section id="anmeldelser" class="revdark">
-    <div class="in stack" style="gap:24px">
-      <div class="stack" style="gap:10px">
+  <!-- 12. ANMELDELSER -->
+  <section id="anmeldelser" class="dark">
+    <div class="in">
+      <div class="hd wide">
         <p class="eyebrow">Anmeldelser</p>
         <h2>Hvad kunderne skriver</h2>
-        <div class="score"><b>3,7</b><span class="stars">★★★★</span><span class="lead" style="font-size:15px">TrustScore på Trustpilot · 4 anmeldelser · 75 % giver 5 stjerner</span></div>
+        <div class="score rv"><b>3,7</b><span class="stars">★★★★</span><span class="lead" style="font-size:15px">TrustScore på Trustpilot · 4 anmeldelser · 75 % giver 5 stjerner</span></div>
       </div>
       <div class="revs">
-        <blockquote class="rev"><span class="stars">★★★★★</span><q>Service over gennemsnittet</q><span class="who">Jannick Lauge Jensen · Trustpilot, 6. maj 2026</span></blockquote>
-        <blockquote class="rev"><span class="stars">★★★★★</span><q>Meget tilfreds</q><span class="who">piet bierlich · Trustpilot, 9. december 2024</span></blockquote>
+        <blockquote class="rev rv"><span class="stars">★★★★★</span><q>Service over gennemsnittet</q><span class="who">Jannick Lauge Jensen · Trustpilot, 6. maj 2026</span></blockquote>
+        <blockquote class="rev rv"><span class="stars">★★★★★</span><q>Meget tilfreds</q><span class="who">piet bierlich · Trustpilot, 9. december 2024</span></blockquote>
       </div>
-      <p class="lead" style="font-size:15px">Vi har også fået kritik af en regning, der endte over et mundtligt overslag. Det er præcis derfor, prisen nu altid kommer på skrift, før arbejdet går i gang.</p>
+      <p class="lead" style="font-size:15px;margin-top:18px">Vi har også fået kritik af en regning, der endte over et mundtligt overslag. Det er præcis derfor, prisen nu altid kommer på skrift, før arbejdet går i gang.</p>
     </div>
   </section>
 
-  <section class="alt">
+  <!-- 13. AKUT -->
+  <section id="akut" class="akutband">
+    <div class="in">
+      <div>
+        <h2>Sprunget rør? Stoppet kloak? Ingen varme?</h2>
+        <p>Vagtordning uden for åbningstid — gas- og oliefyrsservice og akutte VVS-skader. Luk for vandet og ring med det samme.</p>
+      </div>
+      <a class="btn" href="tel:+4540507057">Vagttelefon 40 50 70 57</a>
+    </div>
+  </section>
+
+  <!-- 14. FAQ -->
+  <section id="faq" class="alt">
+    <div class="in">
+      <div class="hd wide">
+        <p class="eyebrow">Før du ringer</p>
+        <h2>Det spørger folk om</h2>
+      </div>
+      <div class="faq">
+        <details class="acc rv"><summary>Hvad koster det, at I kommer ud?</summary><div class="txt">Første besøg og tilbud er gratis og uforpligtende i vores område. Er du i tvivl, om vi kører til dig, så ring — så siger vi det ligeud i stedet for at sende dig en regning for kørsel.</div></details>
+        <details class="acc rv"><summary>Hvor arbejder I henne?</summary><div class="txt">Skælskør, Korsør, Slagelse, Sorø, Næstved, Dalmose, Boeslunde, Bisserup og resten af Vestsjælland — for private, erhverv og offentlige institutioner.</div></details>
+        <details class="acc rv"><summary>Hvor hurtigt kan I komme?</summary><div class="txt">Akutte skader klarer vi via vagtordningen — ring på 40 50 70 57. Almindelige opgaver aftaler vi typisk inden for et par uger, afhængigt af sæsonen.</div></details>
+        <details class="acc rv"><summary>Kan jeg få håndværkerfradrag?</summary><div class="txt">Ja, på arbejdslønnen for de opgaver, der er omfattet af ordningen. Vi skriver arbejdsløn og materialer hver for sig på fakturaen, så du har det, du skal bruge til Skat.</div></details>
+        <details class="acc rv"><summary>Hvad hvis noget går galt?</summary><div class="txt">Vi er med i Tekniq Garantiordning, som dækker op til 150.000 kr. inkl. moms, og du kan klage til Ankenævnet for Tekniske Installationer. Vi retter naturligvis op på det først.</div></details>
+        <details class="acc rv"><summary>Laver I både VVS og tag?</summary><div class="txt">Ja. Det er hele pointen med firmaet: rørene indenfor og pladearbejdet udenfor i samme hus. Én aftale, én ansvarlig, én regning.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. OM OS -->
+  <section id="om">
     <div class="in stack" style="gap:16px">
       <p class="eyebrow">Om os</p>
       <h2>Kvalitetsbevidst arbejde til gode priser</h2>
-      <p class="lead">Firmaet drives af <b>Pau Nowak</b> fra Dybkær 3 i Skælskør. Vi kører til Korsør, Slagelse, Sorø, Næstved, Dalmose, Boeslunde, Bisserup og resten af egnen — for private, erhverv og offentlige institutioner. Er du i tvivl, om vi kommer til dig, så ring; så siger vi det ligeud i stedet for at sende dig en regning for kørsel til den anden ende af Sjælland.</p>
+      <p class="lead">Firmaet drives af <b>Pau Nowak</b> fra Dybkær 3 i Skælskør. Vi kører til Korsør, Slagelse, Sorø, Næstved, Dalmose, Boeslunde, Bisserup og resten af egnen — for private, erhverv og offentlige institutioner.</p>
       <p class="lead">Kvalitet er et nøgleord for os. Det gælder i det arbejde, vi laver, i de produkter, vi leverer, og i dialogen med kunden. Kort sagt: vi står for kvalitet hele vejen.</p>
       <p class="lead">Når det hele bare giver lidt mere mening: vi er glade for at være med til at sponsorere <b>De Danske Hospitalsklovne</b>.</p>
     </div>
   </section>
 
+  <!-- 16. KONTAKT -->
   <section id="kontakt" class="cta">
     <div class="in">
       <div class="cwrap">
         <div class="stack" style="gap:16px">
-          <p class="eyebrow" style="color:#8FB4E8">Kontakt os</p>
-          <h2>Har du brug for et tilbud?</h2>
-          <p class="lead">Skriv kort, hvad opgaven er. Vi svarer samme hverdag. Haster det, så ring — telefonen er hurtigere end formularen.</p>
+          <p class="eyebrow">Kontakt os</p>
+          <h2>Fortæl kort, hvad der skal laves</h2>
+          <p class="lead">Vi ringer tilbage samme hverdag. Haster det, så ring — telefonen er hurtigere end formularen.</p>
           <div class="facts">
             <span><span class="k">Telefon</span><a href="tel:+4528511070">28 51 10 70</a></span>
             <span><span class="k">Vagttelefon · gas og oliefyr</span><a href="tel:+4540507057">40 50 70 57</a></span>
@@ -572,11 +739,15 @@
           </div>
         </div>
         <form id="tilbud" novalidate>
+          <div class="seg">
+            <label><input type="radio" name="type" value="privat" checked><span>Privat</span></label>
+            <label><input type="radio" name="type" value="erhverv"><span>Erhverv / forening</span></label>
+          </div>
           <label>Navn<input type="text" name="navn" autocomplete="name" required></label>
           <label>Telefon<input type="tel" name="telefon" autocomplete="tel" required></label>
           <label>Hvad drejer det sig om?<textarea name="opgave" required></textarea></label>
-          <button class="btn" type="submit">Send — svar samme hverdag</button>
-          <p id="formNote" style="font-size:14px;color:var(--mute)">Vi bruger kun dine oplysninger til at svare på din henvendelse.</p>
+          <button class="btn" type="submit">Send — vi ringer tilbage</button>
+          <p id="formNote" style="font-size:14px;color:var(--mute)">Vi ringer tilbage samme hverdag. Dine oplysninger bruges kun til at svare dig.</p>
         </form>
       </div>
     </div>
@@ -590,6 +761,11 @@
     <span>Aut. VVS-installatør · VE-godkendt · Tekniq Garanti · Rheinzink</span>
   </div>
 </footer>
+
+<div class="bar" id="ctabar">
+  <a class="btn line" href="#kontakt">Få tilbud</a>
+  <a class="btn" href="tel:+4528511070">Ring 28 51 10 70</a>
+</div>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Plumber",
@@ -627,17 +803,27 @@
   f.addEventListener("submit", function(e){
     e.preventDefault(); var ok = true;
     ["navn","telefon","opgave"].forEach(function(n){ if(!f.elements[n].value.trim()) ok = false; });
-    note.textContent = ok ? "Tak — vi vender tilbage samme hverdag. (Demo: formularen sender ikke endnu.)"
+    note.textContent = ok ? "Tak — vi ringer tilbage samme hverdag. (Demo: formularen sender ikke endnu.)"
                           : "Udfyld venligst navn, telefon og en kort beskrivelse.";
     note.style.color = ok ? "#1C7A55" : "#B3261E";
   });
+
+  /* ---- skjul mobil-bjælken, når kontaktformularen er synlig ---- */
+  (function(){
+    var bar = document.getElementById("ctabar"), kt = document.getElementById("kontakt");
+    if(!bar || !kt || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function(es){
+      bar.style.transform = es[0].isIntersecting ? "translateY(110%)" : "none";
+      bar.style.transition = "transform .25s ease";
+    },{threshold:0.15}).observe(kt);
+  })();
 
   /* ---- appearance on scroll + tællere ---- */
   (function reveal(){
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if(reduce || !("IntersectionObserver" in window)) return;
     document.documentElement.classList.add("rvon");
-    var sel = ".biglist a,.card,.pillar,.acc,.tl > div,.mos figure,.rev,.stat,.akut,.score,.eyebrow";
+    var sel = ".trk,.op,.step,.stat,.acc,.mos figure,.rev,.score,.onebill,.shot";
     var els = [].slice.call(document.querySelectorAll(sel));
     els.forEach(function(el){ el.classList.add("rv"); });
 
@@ -754,7 +940,7 @@
 "  vec2 uv=(v*2.0-1.0);uv.x*=uRes.x/uRes.y;",
 "  float A=uRes.x/uRes.y;",
 "  float narrow=1.0-clamp((A-0.45)/0.95,0.0,1.0);",
-"  vec3 ro=vec3(0.9+uM.x*0.5,0.55+uM.y*0.35-narrow*0.10,8.2+narrow*3.8);",
+"  vec3 ro=vec3(0.9+narrow*0.72+uM.x*0.5,0.55+uM.y*0.35-narrow*0.10,8.2+narrow*4.7);",
 "  vec3 rd=normalize(vec3(uv.x,uv.y-0.05-narrow*0.10,-(2.1-narrow*0.78)));",
 "  rd.xz*=rot(-0.16);",
 "  float t=0.0;vec2 h=vec2(0.0);bool hit=false;",
@@ -827,11 +1013,18 @@
     if(window.IntersectionObserver){
       new IntersectionObserver(function(es){vis=es[0].isIntersecting;},{threshold:0.01}).observe(wrap);
     }
+    var stk=wrap.querySelector(".heroSticky");
+    function hh(){
+      var t=document.querySelector(".top");
+      if(t) document.documentElement.style.setProperty("--hh",Math.round(t.getBoundingClientRect().height)+"px");
+    }
+    hh(); window.addEventListener("resize",hh);
     function scrollProg(){
       var r=wrap.getBoundingClientRect();
-      var total=wrap.offsetHeight-window.innerHeight;
+      var total=wrap.offsetHeight-(stk?stk.offsetHeight:window.innerHeight);
       if(total<=0) return 0;
-      return Math.min(1,Math.max(0,(-r.top)/total));
+      var off=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hh"))||0;
+      return Math.min(1,Math.max(0,(off-r.top)/total));
     }
     function size(){
       var d=Math.min(window.devicePixelRatio||1,1.5)*(window.innerWidth<760?0.52:0.62);
